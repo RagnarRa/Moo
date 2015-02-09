@@ -35,7 +35,7 @@ module.exports = function(grunt) {
     uglify: {
       my_target: {
         files: {
-          'build/chatapp.min.js': ['src/**/*.js']
+          'build/chatapp.min.js': ['app.js', 'src/**/*.js']
         } //oll folders undir src.. oll js files.. yfir i chatapp.min.js.. 
       }
     }

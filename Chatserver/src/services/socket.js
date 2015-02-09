@@ -1,4 +1,4 @@
-app.factory("SocketService", ["$http", function($http) {
+angular.module("ChatApp").factory("SocketService", ["$http", function($http) {
 	var username = "";
 	var socket;
 	return {

@@ -3,7 +3,16 @@
 		<div class="col-md-12">
 			<h1>Velkomin á Spjallgrím</h1>
 			<input type="text" placeholder="Notandanafn" ng-model="username" />
-			<button class="btn btn-default" ng-click="connect()">Connect</button>
+			<button class="btn btn-default" ng-click="connectToServer()">Connect</button>
+			<p class="bg-danger" ng-show="usernameTaken">Notandanafnið sem þú valdir er í notkun. Vinsamlegast veldu annað notandanafn.</p>
+			<div class="room-list" ng-show="showRooms">
+				<select ng-model="selectedRoom" ng-options="key as key for (key , value) in rooms" size="roomCount">
+					<!-- <option ng-repeat="(room, value) in rooms" value="{{room}}">{{room}}</option> -->
+				</select>
+				<button class="btn btn-default" ng-click="joinRoom()">Join room</button>
+				<input type="text" placeholder="Búa til room" ng-model="nameOfRoomToCreate" />
+				<button class="btn btn-default" ng-click="createRoom()">Create room</button>
+			</div>
 		</div> 
 	</div>
 </div>
