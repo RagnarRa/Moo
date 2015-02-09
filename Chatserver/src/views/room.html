@@ -28,4 +28,32 @@
 	<input ng-model="currentMessage" class="form-control" ng-keypress="keyPress($event)" />
 	<button ng-click="send()">Send!</button>
 	<button ng-click="leaveRoom()">Leave room</button> 
+	<div class="row"> 
+		<div class="col-md-12">
+			<div>
+		   		<tabset>
+		   			<tab ng-repeat="tab in tabs" ng-if="tab.isRoom" heading="{{tab.title}}" active="tab.active">
+		   				<div class="well">
+							<ul style="list-style: none">
+								<li ng-repeat="message in messages">
+									<span>
+										<strong>[{{ message.timestamp | date:"HH:mm:ss" }}]:</strong>
+										<strong>
+											{{ message.nick }}
+										</strong>
+										{{ message.message }}
+									</span>
+								</li>
+							</ul>
+		   				</div>
+		   			</tab>
+		      		<tab ng-repeat="tab in tabs" ng-if="!tab.isRoom" heading="{{tab.title}}" active="tab.active">
+		      			<div class="well">
+		         			{{ tab.content }}
+		         		</div>
+		      		</tab>
+		   		</tabset>
+			</div>
+		</div>
+	</div>   
 </div>

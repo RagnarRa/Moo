@@ -2,7 +2,7 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 	$scope.roomName = $routeParams.roomName;
 	$scope.currentMessage = "";
 	$scope.privateMessages = null;
-
+	$scope.tabs = [ { title: $scope.roomName, active: true, isRoom: true }, { title: 'tab2', active: false, content: 'Content here', isRoom: false }, { title: 'tab3', active: false, content: 'Content here', isRoom: false } ];
 	var socket = SocketService.getSocket();
 
 	if(socket) {
@@ -54,7 +54,7 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 					return; 
 				}
 			}
-			
+
 			privateMessages.push({ from: fromUser, messages: [message]});
 		});
 	}
