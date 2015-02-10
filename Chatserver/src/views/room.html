@@ -89,7 +89,7 @@
 								</li>
 							</ul>
 		         		</div>
-		         		<input ng-model="currentPM.PM" class="form-control" ng-keypress="keyPress($event)" />
+		         		<input ng-model="currentPM.PM" class="form-control" ng-keypress="keyPress($event, true, tab.title)" />
 		         		<button ng-click="sendPM(tab.title)">Send PM</button>
 		      		</tab>
 		   		</tabset>

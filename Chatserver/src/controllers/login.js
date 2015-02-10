@@ -2,7 +2,7 @@ angular.module("ChatApp").controller("LoginController", ["$scope", "$location", 
 	$scope.username = "";
 	$scope.usernameTaken = false; 
 	$scope.rooms = {};
-	$scope.showRooms = SocketService.getUsername(); //Show rooms ef notandi var logged in (t.d. ef honum er kicked ur room) 
+	$scope.showRooms = SocketService.getUsername(); //Show rooms ef notandi var logged in (t.d. ef honum er kicked ur room)
 	$scope.roomCount = 0;
 	$scope.selectedRoom = null;
 	$scope.nameOfRoomToCreate = null;

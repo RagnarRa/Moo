@@ -150,6 +150,8 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 					$scope.tabs.push({ title: parameters[2], isActive: false, isRoom: false });
 				}
 			}
+
+			$scope.currentMessage.message = "";
 		}
 		else { //Venjulegt message
 			if(socket) {
@@ -167,9 +169,14 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 		}
 	};
 
-	$scope.keyPress = function($event) {
+	$scope.keyPress = function($event, isPM, PMToUser) {
 		if($event.keyCode === 13) {
-			$scope.send();
+			if (isPM) {
+				$scope.sendPM(PMToUser);
+			}
+			else {
+				$scope.send();
+			}
 		}
 	};
 
@@ -183,5 +190,7 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 				break;
 			}
 		}
+
+		$scope.currentPM.PM = "";
 	};
 }]);
