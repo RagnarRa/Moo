@@ -35,8 +35,6 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 		});
 
 		socket.on("kicked", function(room, userKicked, kickedBy) {
-			console.log("Notandanafn mitt: " + SocketService.getUsername());
-			console.log("Kicked: " + userKicked);
 			if (SocketService.getUsername() === userKicked) {
 				$location.path("/");
 			}
@@ -50,13 +48,10 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 
 		socket.on("recv_privatemsg", function(fromUser, message) {
 			//Athugum hvort við séum með previous skilaboð frá þessum user..
-			console.log("Fekk PM!");
-			console.log(fromUser + " : " + message);
 			var hasPMFromUser = false, hasTabWithUser = false;
 			//Athugum hvort við séum með message history við þennan notanda.. bætum þá við hana..
 			for (var i = 0; i < $scope.privateMessages.length; i++) {
 				if ($scope.privateMessages[i].from === fromUser) {
-					console.log("From => " + fromUser + " Message: { from: " + fromUser + " msg: " + message + " }");
 					$scope.privateMessages[i].messages.push({ from: fromUser, msg: message });
 					hasPMFromUser = true;
 					break;
@@ -64,7 +59,6 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 			}
 
 			if (!hasPMFromUser) {
-				console.log("From => " + fromUser + " Message: { from: " + fromUser + " msg: " + message + " }");
 				$scope.privateMessages.push({ from: fromUser, messages: [ { from: fromUser, msg: message } ] });
 			}
 
@@ -72,25 +66,19 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 			for (i = 0; i < $scope.tabs.length; i++) {
 				if ($scope.tabs[i].title === fromUser) {
 					hasTabWithUser = true;
-					console.log("I have a tab open with that guy");
 					break;
 				}
 			}
 
 			if (!hasTabWithUser) {
-				console.log("I don't have a tab open with that guy");
 				$scope.tabs.push({ title: fromUser, active: false, isRoom: false });
 			}
 
-			console.log("Tabs: ");
-			console.dir($scope.tabs);
 			$scope.$apply();
 		});
 	}
 
 	$scope.send = function() {
-		console.log("Current message: " + $scope.currentMessage.message);
-		
 		if ($scope.currentMessage.message.length > 0 && $scope.currentMessage.message[0] == '/') { //Skipun 
 			var usernameArray; 
 			$scope.currentMessage.message = $scope.currentMessage.message.slice(1); // / í burtu
@@ -99,8 +87,6 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 			if ($scope.currentMessage.message.match(regex) !== null) { //Kick
 				regex = /[^\s]+\S+$/; //Náum í username á notanda sem á að sparka
 				usernameArray = $scope.currentMessage.message.match(regex);
-				console.log("Notandi: " + usernameArray[0]);
-				console.log("Room: " + $scope.roomName);
 				socket.emit("kick", { user : usernameArray[0], room : $scope.roomName }, function(wasKicked) { });
 			} 
 
@@ -115,40 +101,7 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 			regex = /^msg \S+ .+$/; //Athugum hvort msg + 2 parameters
 
 			if ($scope.currentMessage.message.match(regex) !== null) { //Message
-				regex = /^(msg) (\S+) (.+)$/; //Náum í username á notanda sem á að PM-a
-				var parameters = $scope.currentMessage.message.match(regex); //[1] er msg, [2] er username, [3] er message.... 
-				socket.emit("privatemsg", { nick: parameters[2], message: parameters[3] }, function (wasMessaged) {});
-				//console.log("Param 1: " + parameters[1] + " Param 2: " + parameters[2] + " Param 3: " + parameters[3]);
-				var hasPMHistory = false, hasTabWithUser = false;
-
-
-				//Athugum hvort við séum með samræður við notandan.. viljum þá bæta við þær..
-				for (var i = 0; i < $scope.privateMessages.length; i++) {
-					if ($scope.privateMessages[i].from === parameters[2]) { //Ef med PM vid thennan notanda.. 
-						console.log("From => " + parameters[2] + " Message: { from: " + SocketService.getUsername() + " msg: " + parameters[3] + " }");
-						$scope.privateMessages[i].messages.push({ from: SocketService.getUsername(), msg: parameters[3]});
-						hasPMHistory = true;
-						break;
-					}
-				}
-
-				if (!hasPMHistory) {
-					console.log("From => " + parameters[2] + " Message: { from: " + SocketService.getUsername() + " msg: " + parameters[3] + " }");
-                	//from user we're sending to.. a message.. from us.. 
-					$scope.privateMessages.push({ from: parameters[2], messages: [{ from: SocketService.getUsername(), msg: parameters[3] }]});
-				}
-
-				//Athugum hvort tab se opinn fyrir thennan notanda
-
-				for (i = 0; i < $scope.tabs.length; i++) {
-					if ($scope.tabs[i].title === parameters[2]) { //Tab opinn.. 
-						hasTabWithUser = true;
-						break;
-					}
-				}
-				if (!hasTabWithUser) {
-					$scope.tabs.push({ title: parameters[2], isActive: false, isRoom: false });
-				}
+				processSendPMCommand();
 			}
 
 			$scope.currentMessage.message = "";
@@ -160,6 +113,40 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 			}
 		}
 	};
+
+	function processSendPMCommand() {
+		var regex = /^(msg) (\S+) (.+)$/; //Náum í username á notanda sem á að PM-a
+		var parameters = $scope.currentMessage.message.match(regex); //[1] er msg, [2] er username, [3] er message.... 
+		socket.emit("privatemsg", { nick: parameters[2], message: parameters[3] }, function (wasMessaged) {});
+		var hasPMHistory = false, hasTabWithUser = false;
+
+
+		//Athugum hvort við séum með samræður við notandan.. viljum þá bæta við þær..
+		for (var i = 0; i < $scope.privateMessages.length; i++) {
+			if ($scope.privateMessages[i].from === parameters[2]) { //Ef med PM vid thennan notanda.. 
+				$scope.privateMessages[i].messages.push({ from: SocketService.getUsername(), msg: parameters[3]});
+				hasPMHistory = true;
+				break;
+			}
+		}
+
+		if (!hasPMHistory) {
+	    	//from user we're sending to.. a message.. from us.. 
+			$scope.privateMessages.push({ from: parameters[2], messages: [{ from: SocketService.getUsername(), msg: parameters[3] }]});
+		}
+
+		//Athugum hvort tab se opinn fyrir thennan notanda
+
+		for (i = 0; i < $scope.tabs.length; i++) {
+			if ($scope.tabs[i].title === parameters[2]) { //Tab opinn.. 
+				hasTabWithUser = true;
+				break;
+			}
+		}
+		if (!hasTabWithUser) {
+			$scope.tabs.push({ title: parameters[2], isActive: false, isRoom: false });
+		}
+	}
 
 	$scope.leaveRoom = function() {
 		if (socket) {

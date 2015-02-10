@@ -31,8 +31,6 @@ angular.module("ChatApp").controller("LoginController", ["$scope", "$location", 
 
 	$scope.joinRoom = function() {
 		if ($scope.selectedRoom !== null) {
-			console.log("Joining room: " + $scope.selectedRoom);
-			console.dir($scope.selectedRoom);
 			$location.path("/room/" + $scope.selectedRoom);
 		}
 		else {
@@ -44,7 +42,6 @@ angular.module("ChatApp").controller("LoginController", ["$scope", "$location", 
 		//Býr til herbergið og bætir user við sem op
 		socket.emit("joinroom", { room: $scope.nameOfRoomToCreate, pass: "" }, function(success, errorMessage) {});
 		$location.path("/room/" + $scope.nameOfRoomToCreate);
-		console.log("Room to create: " + $scope.nameOfRoomToCreate);
 	};
 
 	//Hlustum eftir roomlist
@@ -52,7 +49,6 @@ angular.module("ChatApp").controller("LoginController", ["$scope", "$location", 
 		socket.on("roomlist", function(roomlist) {
 			$scope.rooms = roomlist; 
 			//$scope.showRooms = true; 
-			console.dir(roomlist);
 			$scope.roomCount = Object.keys(roomlist).length;
 			$scope.$apply(); //Events from Socket.IO not visible to angular by default
 		});
