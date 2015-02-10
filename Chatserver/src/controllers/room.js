@@ -55,6 +55,7 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 			//Athugum hvort við séum með message history við þennan notanda.. bætum þá við hana..
 			for (var i = 0; i < $scope.privateMessages.length; i++) {
 				if ($scope.privateMessages[i].from === fromUser) {
+					console.log("From => " + fromUser + " Message: { from: " + fromUser + " msg: " + message + " }");
 					$scope.privateMessages[i].messages.push({ from: fromUser, msg: message });
 					hasPMFromUser = true;
 					break;
@@ -62,6 +63,7 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 			}
 
 			if (!hasPMFromUser) {
+				console.log("From => " + fromUser + " Message: { from: " + fromUser + " msg: " + message + " }");
 				$scope.privateMessages.push({ from: fromUser, messages: [ { from: fromUser, msg: message } ] });
 			}
 
@@ -115,13 +117,14 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 				regex = /^(msg) (\S+) (.+)$/; //Náum í username á notanda sem á að PM-a
 				var parameters = $scope.currentMessage.message.match(regex); //[1] er msg, [2] er username, [3] er message.... 
 				socket.emit("privatemsg", { nick: parameters[2], message: parameters[3] }, function (wasMessaged) {});
-				console.log("Param 1: " + parameters[1] + " Param 2: " + parameters[2] + " Param 3: " + parameters[3]);
+				//console.log("Param 1: " + parameters[1] + " Param 2: " + parameters[2] + " Param 3: " + parameters[3]);
 				var hasPMHistory = false, hasTabWithUser = false;
 
 
 				//Athugum hvort við séum með samræður við notandan.. viljum þá bæta við þær..
 				for (var i = 0; i < $scope.privateMessages.length; i++) {
 					if ($scope.privateMessages[i].from === parameters[2]) { //Ef med PM vid thennan notanda.. 
+						console.log("From => " + parameters[2] + " Message: { from: " + SocketService.getUsername() + " msg: " + parameters[3] + " }");
 						$scope.privateMessages[i].messages.push({ from: SocketService.getUsername(), msg: parameters[3]});
 						hasPMHistory = true;
 						break;
@@ -129,8 +132,9 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 				}
 
 				if (!hasPMHistory) {
+					console.log("From => " + parameters[2] + " Message: { from: " + SocketService.getUsername() + " msg: " + parameters[3] + " }");
                 	//from user we're sending to.. a message.. from us.. 
-					$scope.privateMessages.push({ from: parameters[2], messages: { from: SocketService.getUsername(), msg: parameters[3] }});
+					$scope.privateMessages.push({ from: parameters[2], messages: [{ from: SocketService.getUsername(), msg: parameters[3] }]});
 				}
 
 				//Athugum hvort tab se opinn fyrir thennan notanda
@@ -142,7 +146,7 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 					}
 				}
 				if (!hasTabWithUser) {
-					$scope.tabs.push({ title: parameters[2], isActive: true, isRoom: false });
+					$scope.tabs.push({ title: parameters[2], isActive: false, isRoom: false });
 				}
 			}
 		}
@@ -153,8 +157,6 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 				$scope.currentMessage.message = "";
 			}
 		}
-
-		$scope.$apply();
 	};
 
 	$scope.leaveRoom = function() {
