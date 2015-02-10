@@ -65,7 +65,7 @@
 		      		<tab ng-repeat="tab in tabs" ng-if="!tab.isRoom" heading="{{tab.title}}" active="tab.active">
 		      			<div class="well">
 		         			<!-- {{ tab.content }} -->
-							<ul style="list-style: none">
+							<ul style="list-style: none" ng-repeat="pm in privateMessages" ng-if="pm.from == tab.title">
 								<!-- <li ng-repeat="pm in privateMessages" ng-if="pm.from = tab.title">
 									<span ng-repeat="msg in pm.messages">
 										<strong>
@@ -74,16 +74,23 @@
 										 : {{ msg.msg }}
 									</span>
 								</li> -->
+
+								<!-- Working
 								<li ng-repeat="pm in privateMessages" ng-if="pm.from == tab.title">
 									<span ng-repeat="msg in pm.messages">
 										<strong>
 											{{ msg.from }}
 										</strong>
-										 : {{ msg.msg }}
+									    {{ msg.msg }}
 									</span>
+								</li> -->
+								<li ng-repeat="msg in pm.messages">
+									<strong>{{ msg.from }}</strong> {{ msg.msg }}
 								</li>
 							</ul>
 		         		</div>
+		         		<input ng-model="currentPM.PM" class="form-control" ng-keypress="keyPress($event)" />
+		         		<button ng-click="sendPM(tab.title)">Send PM</button>
 		      		</tab>
 		   		</tabset>
 			</div> 

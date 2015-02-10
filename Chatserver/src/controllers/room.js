@@ -2,6 +2,7 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 	$scope.roomName = $routeParams.roomName;
 	//$scope.currentMessage = "";
 	$scope.currentMessage = { message: ""}; //Tab býr til nýtt scope, þarf að nota dot syntax til að komast í þetta scope
+	$scope.currentPM = { PM: "" };
 	$scope.privateMessages = []; // { from: fromUser, messages: [ { from: fromUser, msg: message }, { from: x, msg: y } ] }
 	$scope.tabs = [ { title: $scope.roomName, active: true, isRoom: true }, { title: 'tab2', active: false, content: 'Content here', isRoom: false }, { title: 'tab3', active: false, content: 'Content here', isRoom: false } ];
 	var socket = SocketService.getSocket();
@@ -169,6 +170,18 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 	$scope.keyPress = function($event) {
 		if($event.keyCode === 13) {
 			$scope.send();
+		}
+	};
+
+	$scope.sendPM = function(user) {
+		socket.emit("privatemsg", { nick: user, message: $scope.currentPM.PM }, function (wasMessaged) {});
+
+		//Finnum private message convo við þennan user
+		for (var i = 0; i < $scope.privateMessages.length; i++) {
+			if ($scope.privateMessages[i].from === user) {
+				$scope.privateMessages[i].messages.push({ from: SocketService.getUsername(), msg: $scope.currentPM.PM });
+				break;
+			}
 		}
 	};
 }]);
