@@ -155,7 +155,6 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 		}
 		else { //Venjulegt message
 			if(socket) {
-				//console.log("I sent a message to " + $scope.roomName + ": " + $scope.currentMessage);
 				socket.emit("sendmsg", { roomName: $scope.roomName, msg: $scope.currentMessage.message }); //The server will then emit the "updatechat" event, after the message has been accepted.
 				$scope.currentMessage.message = "";
 			}
