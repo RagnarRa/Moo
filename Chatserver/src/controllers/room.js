@@ -1,7 +1,8 @@
 angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams", "SocketService", "$location", function($scope, $routeParams, SocketService, $location) {
 	$scope.roomName = $routeParams.roomName;
-	$scope.currentMessage = "";
-	$scope.privateMessages = null;
+	//$scope.currentMessage = "";
+	$scope.currentMessage = { message: ""}; //Tab býr til nýtt scope, þarf að nota dot syntax til að komast í þetta scope
+	$scope.privateMessages = []; // { from: fromUser, messages: [ { from: fromUser, msg: message }, { from: x, msg: y } ] }
 	$scope.tabs = [ { title: $scope.roomName, active: true, isRoom: true }, { title: 'tab2', active: false, content: 'Content here', isRoom: false }, { title: 'tab3', active: false, content: 'Content here', isRoom: false } ];
 	var socket = SocketService.getSocket();
 
@@ -48,26 +49,53 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 
 		socket.on("recv_privatemsg", function(fromUser, message) {
 			//Athugum hvort við séum með previous skilaboð frá þessum user..
-			for (var i = 0; i < privateMessages.length; i++) {
-				if (privateMessages[i].from === fromUser) {
-					privateMessages[i].messages.push(message);
-					return; 
+			console.log("Fekk PM!");
+			console.log(fromUser + " : " + message);
+			var hasPMFromUser = false, hasTabWithUser = false;
+			//Athugum hvort við séum með message history við þennan notanda.. bætum þá við hana..
+			for (var i = 0; i < $scope.privateMessages.length; i++) {
+				if ($scope.privateMessages[i].from === fromUser) {
+					$scope.privateMessages[i].messages.push({ from: fromUser, msg: message });
+					hasPMFromUser = true;
+					break;
 				}
 			}
 
-			privateMessages.push({ from: fromUser, messages: [message]});
+			if (!hasPMFromUser) {
+				$scope.privateMessages.push({ from: fromUser, messages: [ { from: fromUser, msg: message } ] });
+			}
+
+			//Athugum hvort tab sé til fyrir..
+			for (var i = 0; i < $scope.tabs.length; i++) {
+				if ($scope.tabs[i].title === fromUser) {
+					hasTabWithUser = true;
+					console.log("I have a tab open with that guy");
+					break;
+				}
+			}
+
+			if (!hasTabWithUser) {
+				console.log("I don't have a tab open with that guy");
+				$scope.tabs.push({ title: fromUser, active: false, isRoom: false });
+			}
+
+			console.log("Tabs: ");
+			console.dir($scope.tabs);
+			$scope.$apply();
 		});
 	}
 
 	$scope.send = function() {
-		if ($scope.currentMessage.length > 0 && $scope.currentMessage[0] == '/') { //Skipun 
+		console.log("Current message: " + $scope.currentMessage.message);
+		
+		if ($scope.currentMessage.message.length > 0 && $scope.currentMessage.message[0] == '/') { //Skipun 
 			
-			$scope.currentMessage = $scope.currentMessage.slice(1); // / í burtu
+			$scope.currentMessage.message = $scope.currentMessage.message.slice(1); // / í burtu
 			var regex = /^kick \S+$/; //Athugum hvort þetta sé kick + 1 parameter
 
-			if ($scope.currentMessage.match(regex) !== null) { //Kick
+			if ($scope.currentMessage.message.match(regex) !== null) { //Kick
 				regex = /[^\s]+\S+$/; //Náum í username á notanda sem á að sparka
-				var usernameArray = $scope.currentMessage.match(regex);
+				var usernameArray = $scope.currentMessage.message.match(regex);
 				console.log("Notandi: " + usernameArray[0]);
 				console.log("Room: " + $scope.roomName);
 				socket.emit("kick", { user : usernameArray[0], room : $scope.roomName }, function(wasKicked) { });
@@ -75,19 +103,58 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 
 			regex = /^ban \S+$/; //Athugum hvort ban + 1 parameter
 
-			if ($scope.currentMessage.match(regex) !== null) { //Ban
+			if ($scope.currentMessage.message.match(regex) !== null) { //Ban
 				regex = /[^\s]+\S+$/; //Náum í username á notanda sem á að banna
-				var usernameArray = $scope.currentMessage.match(regex);
+				var usernameArray = $scope.currentMessage.message.match(regex);
 				socket.emit("ban", { user : usernameArray[0], room: $scope.roomName }, function(wasBanned) {});
+			}
+
+			regex = /^msg \S+ .+$/; //Athugum hvort msg + 2 parameters
+
+			if ($scope.currentMessage.message.match(regex) !== null) { //Message
+				regex = /^(msg) (\S+) (.+)$/; //Náum í username á notanda sem á að PM-a
+				var parameters = $scope.currentMessage.message.match(regex); //[1] er msg, [2] er username, [3] er message.... 
+				socket.emit("privatemsg", { nick: parameters[2], message: parameters[3] }, function (wasMessaged) {});
+				console.log("Param 1: " + parameters[1] + " Param 2: " + parameters[2] + " Param 3: " + parameters[3]);
+				var hasPMHistory = false, hasTabWithUser = false;
+
+
+				//Athugum hvort við séum með samræður við notandan.. viljum þá bæta við þær..
+				for (var i = 0; i < $scope.privateMessages.length; i++) {
+					if ($scope.privateMessages[i].from === parameters[2]) { //Ef med PM vid thennan notanda.. 
+						$scope.privateMessages[i].messages.push({ from: SocketService.getUsername(), msg: parameters[3]});
+						hasPMHistory = true;
+						break;
+					}
+				}
+
+				if (!hasPMHistory) {
+                	//from user we're sending to.. a message.. from us.. 
+					$scope.privateMessages.push({ from: parameters[2], messages: { from: SocketService.getUsername(), msg: parameters[3] }});
+				}
+
+				//Athugum hvort tab se opinn fyrir thennan notanda
+
+				for (var i = 0; i < $scope.tabs.length; i++) {
+					if ($scope.tabs[i].title === parameters[2]) { //Tab opinn.. 
+						hasTabWithUser = true;
+						break;
+					}
+				}
+				if (!hasTabWithUser) {
+					$scope.tabs.push({ title: parameters[2], isActive: true, isRoom: false });
+				}
 			}
 		}
 		else { //Venjulegt message
 			if(socket) {
 				//console.log("I sent a message to " + $scope.roomName + ": " + $scope.currentMessage);
-				socket.emit("sendmsg", { roomName: $scope.roomName, msg: $scope.currentMessage }); //The server will then emit the "updatechat" event, after the message has been accepted.
-				$scope.currentMessage = "";
+				socket.emit("sendmsg", { roomName: $scope.roomName, msg: $scope.currentMessage.message }); //The server will then emit the "updatechat" event, after the message has been accepted.
+				$scope.currentMessage.message = "";
 			}
 		}
+
+		$scope.$apply();
 	};
 
 	$scope.leaveRoom = function() {
