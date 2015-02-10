@@ -4,7 +4,7 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 	$scope.currentMessage = { message: ""}; //Tab býr til nýtt scope, þarf að nota dot syntax til að komast í þetta scope
 	$scope.currentPM = { PM: "" };
 	$scope.privateMessages = []; // { from: fromUser, messages: [ { from: fromUser, msg: message }, { from: x, msg: y } ] }
-	$scope.tabs = [ { title: $scope.roomName, active: true, isRoom: true }, { title: 'tab2', active: false, content: 'Content here', isRoom: false }, { title: 'tab3', active: false, content: 'Content here', isRoom: false } ];
+	$scope.tabs = [ { title: $scope.roomName, active: true, isRoom: true } ];
 	var socket = SocketService.getSocket();
 
 	if(socket) {
@@ -69,7 +69,7 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 			}
 
 			//Athugum hvort tab sé til fyrir..
-			for (var i = 0; i < $scope.tabs.length; i++) {
+			for (i = 0; i < $scope.tabs.length; i++) {
 				if ($scope.tabs[i].title === fromUser) {
 					hasTabWithUser = true;
 					console.log("I have a tab open with that guy");
@@ -92,13 +92,13 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 		console.log("Current message: " + $scope.currentMessage.message);
 		
 		if ($scope.currentMessage.message.length > 0 && $scope.currentMessage.message[0] == '/') { //Skipun 
-			
+			var usernameArray; 
 			$scope.currentMessage.message = $scope.currentMessage.message.slice(1); // / í burtu
 			var regex = /^kick \S+$/; //Athugum hvort þetta sé kick + 1 parameter
 
 			if ($scope.currentMessage.message.match(regex) !== null) { //Kick
 				regex = /[^\s]+\S+$/; //Náum í username á notanda sem á að sparka
-				var usernameArray = $scope.currentMessage.message.match(regex);
+				usernameArray = $scope.currentMessage.message.match(regex);
 				console.log("Notandi: " + usernameArray[0]);
 				console.log("Room: " + $scope.roomName);
 				socket.emit("kick", { user : usernameArray[0], room : $scope.roomName }, function(wasKicked) { });
@@ -108,7 +108,7 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 
 			if ($scope.currentMessage.message.match(regex) !== null) { //Ban
 				regex = /[^\s]+\S+$/; //Náum í username á notanda sem á að banna
-				var usernameArray = $scope.currentMessage.message.match(regex);
+				usernameArray = $scope.currentMessage.message.match(regex);
 				socket.emit("ban", { user : usernameArray[0], room: $scope.roomName }, function(wasBanned) {});
 			}
 
@@ -140,7 +140,7 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 
 				//Athugum hvort tab se opinn fyrir thennan notanda
 
-				for (var i = 0; i < $scope.tabs.length; i++) {
+				for (i = 0; i < $scope.tabs.length; i++) {
 					if ($scope.tabs[i].title === parameters[2]) { //Tab opinn.. 
 						hasTabWithUser = true;
 						break;

@@ -38,14 +38,14 @@ angular.module("ChatApp").controller("LoginController", ["$scope", "$location", 
 		else {
 			$location.path("/room/lobby");
 		}
-	}
+	};
 
 	$scope.createRoom = function() {
 		//Býr til herbergið og bætir user við sem op
 		socket.emit("joinroom", { room: $scope.nameOfRoomToCreate, pass: "" }, function(success, errorMessage) {});
 		$location.path("/room/" + $scope.nameOfRoomToCreate);
 		console.log("Room to create: " + $scope.nameOfRoomToCreate);
-	}
+	};
 
 	//Hlustum eftir roomlist
 	if (socket) {
