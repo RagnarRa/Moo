@@ -1,0 +1,10 @@
+npm init, package name med lowercase og ekkert whitespace. Entry point: app.js.
+
+npm install karma --save-dev
+
+npm install bower --save-dev
+
+bower init 
+
+bower install angular --save-dev
+
