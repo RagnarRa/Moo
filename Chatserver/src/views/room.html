@@ -1,33 +1,5 @@
 <div class="container">
-	<h1>Welcome to {{ roomName }}</h1> <!-- 
-	<div class="well">
-		<div class="row">
-			<div class="col-md-9 col-xs-9">
-				<ul style="list-style: none">
-					<li ng-repeat="message in messages">
-						<span>
-							<strong>[{{ message.timestamp | date:"HH:mm:ss" }}]:</strong>
-							<strong>
-								{{ message.nick }}
-							</strong>
-							{{ message.message }}
-						</span>
-					</li>
-				</ul>
-			</div>
-			<div class="col-md-3 col-xs-3">
-				<p>Users</p>
-				<ul>
-					<li ng-repeat="user in users">
-						{{ user }}
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div> 
-	<input ng-model="currentMessage" class="form-control" ng-keypress="keyPress($event)" />
-	<button ng-click="send()">Send!</button>
-	<button ng-click="leaveRoom()">Leave room</button>  -->
+	<h1>Welcome to {{ roomName }}</h1> 
 	<div class="row"> 
 		<div class="col-md-12"> 
 			<div>
@@ -66,24 +38,6 @@
 		      			<div class="well">
 		         			<!-- {{ tab.content }} -->
 							<ul style="list-style: none" ng-repeat="pm in privateMessages" ng-if="pm.from == tab.title">
-								<!-- <li ng-repeat="pm in privateMessages" ng-if="pm.from = tab.title">
-									<span ng-repeat="msg in pm.messages">
-										<strong>
-											{{ msg.from }}
-										</strong>
-										 : {{ msg.msg }}
-									</span>
-								</li> -->
-
-								<!-- Working
-								<li ng-repeat="pm in privateMessages" ng-if="pm.from == tab.title">
-									<span ng-repeat="msg in pm.messages">
-										<strong>
-											{{ msg.from }}
-										</strong>
-									    {{ msg.msg }}
-									</span>
-								</li> -->
 								<li ng-repeat="msg in pm.messages">
 									<strong>{{ msg.from }}</strong> {{ msg.msg }}
 								</li>
@@ -104,6 +58,9 @@
 				</p>
 				<ul>
 					<li>/ban user (have to have op privileges)</li>
+					<li>/unban user (have to have op privileges)</li>
+					<li>/op user (have to have op privileges)</li>
+					<li>/deop user (have to have op privileges)</li>
 					<li>/kick user (have to have op privileges)</li>
 					<li>/msg user message</li>
 				</ul>

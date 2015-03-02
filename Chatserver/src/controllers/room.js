@@ -22,14 +22,22 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 		});
 
 		socket.on("updatechat", function(roomname, messageHistory) {
-			console.log(messageHistory);
-			$scope.messages = messageHistory;
+			console.dir(messageHistory);
+			console.log("Message to room: " + roomname);
+			if (roomname == $scope.roomName) {
+				$scope.messages = messageHistory;
+			}
 			$scope.$apply(); //Events from Socket.IO not visible to angular by default
 		});
 
-		socket.on("updateusers", function(room, users) {
+		socket.on("updateusers", function(room, users, ops) {
 			if(room === $scope.roomName) {
 				$scope.users = users;
+				for (var op in ops) {
+					$scope.users[op] = ops[op];
+				}
+				console.dir(ops);
+				console.dir($scope.users);
 			}
 			$scope.$apply();
 		});
@@ -77,6 +85,9 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 			$scope.$apply();
 		});
 	}
+	else { //Ekki socket
+		$location.path("/");
+	}
 
 	$scope.send = function() {
 		if ($scope.currentMessage.message.length > 0 && $scope.currentMessage.message[0] == '/') { //Skipun 
@@ -96,6 +107,34 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 				regex = /[^\s]+\S+$/; //Náum í username á notanda sem á að banna
 				usernameArray = $scope.currentMessage.message.match(regex);
 				socket.emit("ban", { user : usernameArray[0], room: $scope.roomName }, function(wasBanned) {});
+				//Gerum líka kick, server code hendir ekki op úr op lista við ban skipun, en kick gerir það..
+				socket.emit("kick", { user : usernameArray[0], room: $scope.roomName }, function(wasKicked) {});
+			}
+
+			regex = /^unban \S+$/; //Athugum hvort ban + 1 parameter
+
+			if ($scope.currentMessage.message.match(regex) !== null) { //unban
+				regex = /[^\s]+\S+$/; //Náum í username á notanda sem á að unbanna
+				usernameArray = $scope.currentMessage.message.match(regex);
+				socket.emit("unban", { user : usernameArray[0], room: $scope.roomName }, function(wasUnbanned) {});
+			}
+
+			regex = /^op \S+$/; //Athugum hvort ban + 1 parameter
+
+			if ($scope.currentMessage.message.match(regex) !== null) { //op
+				regex = /[^\s]+\S+$/; //Náum í username á notanda sem á að opa
+				usernameArray = $scope.currentMessage.message.match(regex);
+				console.log("Op: " + usernameArray[0]);
+				socket.emit("op", { user : usernameArray[0], room: $scope.roomName }, function(wasOpped) { });
+			}
+
+			regex = /^deop \S+$/; //Athugum hvort ban + 1 parameter
+
+			if ($scope.currentMessage.message.match(regex) !== null) { //Ban
+				regex = /[^\s]+\S+$/; //Náum í username á notanda sem á að banna
+				usernameArray = $scope.currentMessage.message.match(regex);
+				console.log("Deop: " + usernameArray[0]);
+				socket.emit("deop", { user : usernameArray[0], room: $scope.roomName }, function(wasDeopped) { if (wasDeopped) { console.log("Deopped.."); } else { console.log("Not deopped"); }});
 			}
 
 			regex = /^msg \S+ .+$/; //Athugum hvort msg + 2 parameters
@@ -108,8 +147,10 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 		}
 		else { //Venjulegt message
 			if(socket) {
-				socket.emit("sendmsg", { roomName: $scope.roomName, msg: $scope.currentMessage.message }); //The server will then emit the "updatechat" event, after the message has been accepted.
-				$scope.currentMessage.message = "";
+				if ($scope.currentMessage.message !== "") {
+					socket.emit("sendmsg", { roomName: $scope.roomName, msg: $scope.currentMessage.message }); //The server will then emit the "updatechat" event, after the message has been accepted.
+					$scope.currentMessage.message = "";
+				}
 			}
 		}
 	};
@@ -117,34 +158,44 @@ angular.module("ChatApp").controller("RoomController", ["$scope", "$routeParams"
 	function processSendPMCommand() {
 		var regex = /^(msg) (\S+) (.+)$/; //Náum í username á notanda sem á að PM-a
 		var parameters = $scope.currentMessage.message.match(regex); //[1] er msg, [2] er username, [3] er message.... 
-		socket.emit("privatemsg", { nick: parameters[2], message: parameters[3] }, function (wasMessaged) {});
-		var hasPMHistory = false, hasTabWithUser = false;
-
-
-		//Athugum hvort við séum með samræður við notandan.. viljum þá bæta við þær..
-		for (var i = 0; i < $scope.privateMessages.length; i++) {
-			if ($scope.privateMessages[i].from === parameters[2]) { //Ef med PM vid thennan notanda.. 
-				$scope.privateMessages[i].messages.push({ from: SocketService.getUsername(), msg: parameters[3]});
-				hasPMHistory = true;
-				break;
+		var userExists = false;
+		
+		for (var user in $scope.users) {
+			if (user === parameters[2]) {
+				userExists = true;
 			}
 		}
 
-		if (!hasPMHistory) {
-	    	//from user we're sending to.. a message.. from us.. 
-			$scope.privateMessages.push({ from: parameters[2], messages: [{ from: SocketService.getUsername(), msg: parameters[3] }]});
-		}
+		if (userExists) {
+			socket.emit("privatemsg", { nick: parameters[2], message: parameters[3] }, function (wasMessaged) {});
+			var hasPMHistory = false, hasTabWithUser = false;
 
-		//Athugum hvort tab se opinn fyrir thennan notanda
 
-		for (i = 0; i < $scope.tabs.length; i++) {
-			if ($scope.tabs[i].title === parameters[2]) { //Tab opinn.. 
-				hasTabWithUser = true;
-				break;
+			//Athugum hvort við séum með samræður við notandan.. viljum þá bæta við þær..
+			for (var i = 0; i < $scope.privateMessages.length; i++) {
+				if ($scope.privateMessages[i].from === parameters[2]) { //Ef med PM vid thennan notanda.. 
+					$scope.privateMessages[i].messages.push({ from: SocketService.getUsername(), msg: parameters[3]});
+					hasPMHistory = true;
+					break;
+				}
 			}
-		}
-		if (!hasTabWithUser) {
-			$scope.tabs.push({ title: parameters[2], isActive: false, isRoom: false });
+
+			if (!hasPMHistory) {
+		    	//from user we're sending to.. a message.. from us.. 
+				$scope.privateMessages.push({ from: parameters[2], messages: [{ from: SocketService.getUsername(), msg: parameters[3] }]});
+			}
+
+			//Athugum hvort tab se opinn fyrir thennan notanda
+
+			for (i = 0; i < $scope.tabs.length; i++) {
+				if ($scope.tabs[i].title === parameters[2]) { //Tab opinn.. 
+					hasTabWithUser = true;
+					break;
+				}
+			}
+			if (!hasTabWithUser) {
+				$scope.tabs.push({ title: parameters[2], isActive: false, isRoom: false });
+			}
 		}
 	}
 

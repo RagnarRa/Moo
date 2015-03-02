@@ -3,8 +3,13 @@
 		<div class="col-md-12">
 			<h1>Velkomin á Spjallgrím</h1>
 			<div ng-show="!showRooms">
-				<input type="text" placeholder="Notandanafn" ng-model="username" />
-				<button class="btn btn-default" ng-click="connectToServer()">Connect</button>
+				<form name="connectionForm">
+					<input type="text" placeholder="Notandanafn" ng-model="username" name="username" ng-required="true" ng-pattern="/^\S+$/" />
+					<button class="btn btn-default" ng-click="connectToServer()">Connect</button> 
+					<p ng-show="connectionForm.username.$error.pattern" class="bg-danger">
+						Notandanafn skal vera billaust. Notandanöfn með bilum verða tekin úr umferð. Sem og tómanafnið, það er reserved fyrir admins. 
+					</p>
+				</form>
 			</div>
 			<p class="bg-danger" ng-show="usernameTaken && !showRooms">Notandanafnið sem þú valdir er í notkun. Vinsamlegast veldu annað notandanafn.</p>
 			<div class="room-list" ng-show="showRooms">
@@ -12,8 +17,10 @@
 					<!-- <option ng-repeat="(room, value) in rooms" value="{{room}}">{{room}}</option> -->
 				</select>
 				<button class="btn btn-default" ng-click="joinRoom()">Join room</button>
-				<input type="text" placeholder="Búa til room" ng-model="nameOfRoomToCreate" />
-				<button class="btn btn-default" ng-click="createRoom()">Create room</button>
+				<form name="createRoomForm">
+					<input type="text" placeholder="Búa til room" ng-model="nameOfRoomToCreate" ng-required="true" />
+					<button class="btn btn-default" ng-click="createRoom()">Create room</button>
+				</form>
 			</div>
 		</div> 
 	</div>

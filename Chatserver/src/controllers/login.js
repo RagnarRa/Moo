@@ -11,21 +11,22 @@ angular.module("ChatApp").controller("LoginController", ["$scope", "$location", 
 	socket.emit("rooms");
 
 	$scope.connectToServer = function() {
-		if(socket) {
-			//Callback segir okkur hvort notandanafn var available..
-			socket.emit("adduser", $scope.username, function(available) {
-				if(available) {
-					SocketService.setConnected(socket);
-					SocketService.setUsername($scope.username);
-					//$location.path("/room/lobby"); 
-					socket.emit("rooms"); //Server svarar med thvi ad senda ut roomlist event
-					$scope.showRooms = true; 
-				}
-				else {
-					$scope.usernameTaken = true;
-				}
-				$scope.$apply(); //Events from Socket.IO not visible to angular by default
-			});
+		if ($scope.connectionForm.$valid) {
+			if(socket) {
+				//Callback segir okkur hvort notandanafn var available..
+				socket.emit("adduser", $scope.username, function(available) {
+					if(available) {
+						SocketService.setConnected(socket);
+						SocketService.setUsername($scope.username);
+						socket.emit("rooms"); //Server svarar med thvi ad senda ut roomlist event
+						$scope.showRooms = true; 
+					}
+					else {
+						$scope.usernameTaken = true;
+					}
+					$scope.$apply(); //Events from Socket.IO not visible to angular by default
+				});
+			}
 		}
 	};
 
@@ -40,8 +41,10 @@ angular.module("ChatApp").controller("LoginController", ["$scope", "$location", 
 
 	$scope.createRoom = function() {
 		//Býr til herbergið og bætir user við sem op
-		socket.emit("joinroom", { room: $scope.nameOfRoomToCreate, pass: "" }, function(success, errorMessage) {});
-		$location.path("/room/" + $scope.nameOfRoomToCreate);
+		//socket.emit("joinroom", { room: $scope.nameOfRoomToCreate, pass: "" }, function(success, errorMessage) {});
+		if ($scope.createRoomForm.$valid) {
+			$location.path("/room/" + $scope.nameOfRoomToCreate);
+		}
 	};
 
 	//Hlustum eftir roomlist
