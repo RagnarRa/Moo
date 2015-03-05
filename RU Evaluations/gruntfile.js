@@ -39,13 +39,26 @@ module.exports = function(grunt) {
           'build/chatapp.min.js': ['app.js', 'src/**/*.js']
         } //oll folders undir src.. oll js files.. yfir i chatapp.min.js.. 
       }
-    }
+    },
+	less: {
+		development: {
+			files: {
+				"build/main.css": "css/main.less"
+			}
+		},
+		production: {
+			files: {
+				"build/main.css": "css/main.less"
+			}
+		}
+	}
   });
 
 
   grunt.loadNpmTasks('grunt-contrib-jshint'); 
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-less');
 
   // Default task(s).
-  grunt.registerTask('default', ['jshint', 'uglify' /* more tasks here */]);
+  grunt.registerTask('default', ['jshint', 'uglify', 'less' /* more tasks here */]);
 };
