@@ -4,6 +4,15 @@ var app = angular.module("evaluationApp", ['ngRoute']);
 	$routeProvider.when("/", {
 		templateUrl: "src/Views/login.html",
 		controller: "LoginController"
+	}).when("/admin", {
+		templateUrl: "src/Views/admin.html",
+		controller: "AdminController"
+	}).when("/createeval", {
+		templateUrl: "src/Views/create-eval.html",
+		controller: "CreateEvalController"
+	}).when("/student", {
+		templateUrl: "src/Views/student.html",
+		controller: "StudentController"
 	}).otherwise({ redirectTo: "/" });	
 
 	//Whitelist fyrir cross origin resource loads

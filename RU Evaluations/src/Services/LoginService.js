@@ -1,27 +1,19 @@
-angular.module("evaluationApp").factory("LoginService", ["$http", function($http) {
-	var username = "", token = "";
-	var socket;
+angular.module("evaluationApp").factory("LoginService", ["$http", "UserService", function($http, UserService) {
 	return {
 		logIn: function(username, password) {
 			var objToSend = { "user" : username,
 							  "pass" : password };
 			return $http({ method: "POST",
-						   url: "http://dispatch.hir.is/demo/api/v1/login",
+						   url: "http://dispatch.ru.is/demo/api/v1/login",
 						   data: objToSend }).success(function(data, status, headers, config) {
 						   		console.log("Logged in!");
 						   		console.dir(data);
-						   		token = data.Token;
-						   		username = data.User.Username; 
+						   		UserService.setToken(data.Token);
+						   		UserService.setUsername(data.User.Username);
+						   		console.log("getToken: " + UserService.getToken());
 						   }).error(function(data, status, headers, config) {
 						   		console.log("Log in error!");
 						   });
-
-		},
-		getToken: function() {
-			return token;
-		},
-		getUsername: function() {
-			return username; 
 		}
 	};
 }]);

@@ -9,6 +9,7 @@ module.exports = function(grunt) {
           "src/Services/*.js",
           "src/Directives/*.js",
           "src/Controllers/*.js",
+		  "src/Filters/*.js"
         ],
       },
       options: {

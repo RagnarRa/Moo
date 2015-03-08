@@ -1,0 +1,35 @@
+<div class="row">
+	<div class="col-md-12">
+		<h2>Create a new evaluation template</h2>
+		<button ng-click="createEval()">Go to creation page</button>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<h2>Add an evaluation based on a template</h2>
+		<select ng-model="templateID" ng-options="template.ID as template.Title for template in templates">
+			<!-- 
+			<option ng-repeat="template in templates" value="template.ID">
+				{{ template.Title }}	
+			</option> -->
+		</select>
+		<label for="startDate">Start Date</label>
+		<input type="datetime-local" ng-model="startDate" name="startDate"/>
+		<label for="endDate">End Date</label>
+		<input type="datetime-local" ng-model="endDate" name="endDate" />
+		<button class="btn btn-default" ng-click="addTemplate()">Add template</button>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<h2>Tests</h2>
+		<button class="btn btn-default" ng-click="test()">Run tests</button>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<h2>Evaluation Overview</h2>
+	</div>
+</div>

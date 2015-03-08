@@ -1,0 +1,131 @@
+<div class="row">
+	<div class="col-md-12">
+		{{ evaluation }}
+		<h1>Create an evaluation template</h1>
+		<form name="create-eval-form">
+			<fieldset>
+				<legend>Evaluation info</legend>
+				<div class="form-group">
+					<label for="TitleIS">Title (IS)</label>
+					<input type="text" ng-model="evaluation.Title" name="TitleIS" />
+				</div>
+				<div class="form-group">
+					<label for="TitleEN">Title (EN)</label>
+					<input type="text" ng-model="evaluation.TitleEN" name="TitleEN" />
+				</div>
+				<div class="form-group">
+					<label for = "IntroTextIS">Intro text (IS)</label>
+					<input type="text" ng-model="evaluation.IntroText" name="IntroTextIS" />
+				</div>
+				<div class="form-group">
+					<label for="IntroTextEN">Intro text (EN)</label>
+					<input type="text" ng-model="evaluation.IntroTextEN" name="IntroTextEN" />
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>Course questions</legend>
+				<h3>Text questions</h3>
+				<ul>
+					<li ng-repeat="question in questions.CourseQuestions | TextQuestionFilter track by $index">
+						<label for="questionText">Question text (IS):</label>
+						<input type="text" ng-model="question.Text" name="questionText" />
+						<label for="questionTextEN">Question text (EN):</label>
+						<input type="text" ng-model="question.TextEN" name="questionTextEN" />
+						<label>Image URL:</label>
+						<input type="text" ng-model="question.ImageURL"  />
+						{{ question.Text }}||{{question.TextEN}}||{{question.Index}}
+					</li>
+				</ul>
+				
+				<h3>Single/multiple choice questions</h3>
+				<div ng-repeat="question in questions.CourseQuestions | SingleMultipleQuestionFilter track by $index">
+						<label for="questionText">Question text (IS):</label>
+						<input type="text" ng-model="question.Text" name="questionText" />
+						<label for="questionTextEN">Question text (EN):</label>
+						<input type="text" ng-model="question.TextEN" name="questionTextEN" />
+						<label>Image URL:</label>
+						<input type="text" ng-model="question.ImageURL" />
+						{{ question.Text }}||{{question.TextEN}}||{{question.Index}}
+						<h4>Answers:</h4>
+						<ul>
+							<li ng-repeat="answer in question.Answers track by $index">
+								<label>Answer text (IS):</label>
+								<input type="text" ng-model="answer.Text"  />
+								<label>Answer text (EN):</label>
+								<input type="text" ng-model="answer.TextEN"  /> 
+								<label>Image URL:</label>
+								<input type="text" ng-model="answer.ImageURL"  />
+								<label>Weight:</label>
+								<input type="text" ng-model="answer.Weight"  />
+							</li>
+						</ul>
+						<button class="btn btn-default" ng-click="addAnswer(question.Index, 0)">Add answer</button>
+				</div>
+				<!-- 
+				<ul>
+					<li ng-repeat="question in questions.CourseQuestions | SingleMultipleQuestionFilter track by $index">
+						<label for="questionText">Question text (IS):</label>
+						<input type="text" ng-model="question.Text" name="questionText" />
+						<label for="questionTextEN">Question text (EN):</label>
+						<input type="text" ng-model="question.TextEN" name="questionTextEN" />
+						{{ question.Text }}||{{question.TextEN}}||{{question.Index}}
+						<button class="btn btn-default" ng-click="addAnswer(question.Index)">Add answer</button>
+					</li>
+				</ul> -->
+
+			  	<input type="radio" ng-model="courseQuestionType" value="text">  Text 
+			  	<input type="radio" ng-model="courseQuestionType" value="single"> Single 
+				<input type="radio" ng-model="courseQuestionType" value="multiple"> Multiple 
+
+				<button class="btn btn-default" ng-click="addQuestion(0)">Add course question</button>
+			</fieldset>
+			<fieldset>
+				<legend>Teacher questions</legend>
+				<h3>Text questions</h3>
+				<ul>
+					<li ng-repeat="question in questions.TeacherQuestions | TextQuestionFilter track by $index">
+						<label for="questionText">Question text (IS):</label>
+						<input type="text" ng-model="question.Text" name="questionText" />
+						<label for="questionTextEN">Question text (EN):</label>
+						<input type="text" ng-model="question.TextEN" name="questionTextEN" />
+						<label>Image URL:</label>
+						<input type="text" ng-model="question.ImageURL"  />
+						{{ question.Text }}||{{question.TextEN}}||{{question.Index}}
+					</li>
+				</ul>
+				
+				<h3>Single/multiple choice questions</h3>
+				<div ng-repeat="question in questions.TeacherQuestions | SingleMultipleQuestionFilter track by $index">
+						<label for="questionText">Question text (IS):</label>
+						<input type="text" ng-model="question.Text" name="questionText" />
+						<label for="questionTextEN">Question text (EN):</label>
+						<input type="text" ng-model="question.TextEN" name="questionTextEN" />
+						<label>Image URL:</label>
+						<input type="text" ng-model="question.ImageURL"  />
+						{{ question.Text }}||{{question.TextEN}}||{{question.Index}}
+						<h4>Answers:</h4>
+						<ul>
+							<li ng-repeat="answer in question.Answers track by $index">
+								<label>Question text (IS):</label>
+								<input type="text" ng-model="answer.Text"  />
+								<label>Question text (EN):</label>
+								<input type="text" ng-model="answer.TextEN"  /> 
+								<label>Image URL:</label>
+								<input type="text" ng-model="answer.ImageURL"  />
+								<label>Weight:</label>
+								<input type="text" ng-model="answer.Weight"  />
+							</li>
+						</ul>
+						<button class="btn btn-default" ng-click="addAnswer(question.Index, 1)">Add answer</button>
+				</div>
+
+			  	<input type="radio" ng-model="teacherQuestionType" value="text">  Text 
+			  	<input type="radio" ng-model="teacherQuestionType" value="single"> Single 
+				<input type="radio" ng-model="teacherQuestionType" value="multiple"> Multiple 
+
+				<button class="btn btn-default" ng-click="addQuestion(1)">Add teacher question</button>
+			</fieldset>
+			<button class="btn btn-default" ng-click="createEval(evaluation)">Save evaluation</button>
+		</form>
+	</div>
+</div>
