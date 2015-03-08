@@ -1,1 +1,10 @@
-<div>Hello..</div>
+<h1>{{ evaluation.Title }}</h1>
+<p>{{ evaluation.IntroText }}</p>
+
+<h2>Course Questions</h2>
+<div ng-repeat="question in evaluation.CourseQuestions">
+	<p>{{ question.Text }}</p>
+	{{ $index }}
+	<textarea ng-model="evaluationAnswers[$index].Value" ng-if="question.Type == 'text'"></textarea>||{{ evaluationAnswers[$index].Value }}
+	<!-- <input type="radio" ng-model="courseQuestionType" value="text">  Text  -->
+</div>
