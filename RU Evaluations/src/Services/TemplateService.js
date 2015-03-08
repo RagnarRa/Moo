@@ -103,6 +103,43 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 					'Authorization' : 'Basic ' + token
 				}
 			});
+		},
+		//Courses
+		getTeachersForCourse: function(course, semester) {
+			var token = UserService.getToken();
+			console.log("Using token: " + token);
+			return $http({
+				method: "GET",
+				url: "http://dispatch.ru.is/demo/api/v1/courses/" + course + "/" + semester + "/teachers",
+				data: null,
+				headers: {
+					'Authorization' : 'Basic ' + token
+				}
+			});
+		},
+		getEvaluationInCourseByID: function(course, semester, evalID) {
+			var token = UserService.getToken();
+			console.log("Using token: " + token);
+			return $http({
+				method: "GET",
+				url: "http://dispatch.ru.is/demo/api/v1/courses/" + course + "/" + semester + "/evaluations/" + evalID,
+				data: null,
+				headers: {
+					'Authorization' : 'Basic ' + token
+				}
+			});
+		},
+		saveAnswersToEvaluationInCourse: function(course, semester, evalID, evaluationAnswers) {
+			var token = UserService.getToken();
+			console.log("Using token: " + token);
+			return $http({
+				method: "POST",
+				url: "http://dispatch.ru.is/demo/api/v1/courses/" + course + "/" + semester + "/evaluations/" + evalID,
+				data: evaluationAnswers,
+				headers: {
+					'Authorization' : 'Basic ' + token
+				}
+			});
 		}
 	};
 }]);
