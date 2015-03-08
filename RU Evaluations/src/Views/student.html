@@ -1,5 +1,7 @@
 <h2>Welcome student, to your evaluations!</h2>
 
 <ul>
-	<li ng-repeat="eval in evaluations">{{ eval.CourseName }} - {{ eval.TemplateName }}</li>
+	<li ng-repeat="eval in evaluations">
+		<a ng-href="/#/answereval/{{ eval.CourseID }}/{{ eval.Semester }}/{{ eval.ID }}">{{ eval.CourseName }} - {{ eval.TemplateName }}</a> 
+	</li>
 </ul>

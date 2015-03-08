@@ -117,7 +117,7 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 				}
 			});
 		},
-		getEvaluationInCourseByID: function(course, semester, evalID) {
+		getEvaluationForCourseByEvalID: function(course, semester, evalID) {
 			var token = UserService.getToken();
 			console.log("Using token: " + token);
 			return $http({
