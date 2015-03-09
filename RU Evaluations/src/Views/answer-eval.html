@@ -1,6 +1,6 @@
 <h1>{{ evaluation.Title }}</h1>
 <p>{{ evaluation.IntroText }}</p>
-
+<!-- 
 <h2>Course Questions</h2>
 <div ng-repeat="question in evaluation.CourseQuestions">
 	<p>{{ question.Text }}</p>
@@ -14,7 +14,7 @@
 
 ||Jæja.. hvað eru margir í evaluationAnswers? {{ evaluation.CourseQuestions.length }}||
 
-<!-- Finna index: ((Teacher Index + 1) * CourseQuestions.length (3) + QuestionIndex)  -->
+
 <div ng-repeat="teacher in teachers">
 	<h2>Kennari: {{ teacher.FullName }}</h2>
 	<div ng-repeat="question in evaluation.TeacherQuestions">
@@ -23,10 +23,34 @@
 		{{ $parent.$index }}<input type="radio" ng-model="evaluationAnswers[$parent.$index].Value" value="{{ answer.Weight }}"> {{ answer.Text }}
 		</div>
 	</div>
-</div>
+</div> -->
 
-<h2>New</h2>
-<div ng-repeat="question in evalAnswers">
-	<p ng-if="question.Type='TeacherQuestion'">{{ evaluation.TeacherQuestions[question.QuestionIndex].Text }}</p>
-	<p ng-if="question.Type='CourseQuestion'">{{ evaluation.CourseQuestions[question.QuestionIndex].Text }}</p>
-</div>
+
+<form name="testForm">
+	Course answers: {{ courseAnswers }}
+	<div ng-repeat="question in evaluation.CourseQuestions">
+		<p>{{ question.Text }}</p>
+		<input type="hidden" ng-model="teacherAnswers[teacher.SSN][$index].QuestionID" ng-init="teacherAnswers[teacher.SSN][$index].QuestionID=question.ID"/>
+		<textarea ng-model="courseAnswers[$index].Value" ng-if="question.Type == 'text'"></textarea>
+		<div ng-repeat="answer in question.Answers">
+			<input type="radio" ng-model="courseAnswers[$parent.$index].Value" value="{{ answer.Weight }}"> {{ answer.Text }}
+		</div>
+	</div>
+
+	Teacher answers: {{ teacherAnswers }}
+	<div ng-repeat="teacher in teachers">
+		<h2>Kennari: {{ teacher.FullName }}</h2>
+		Answers: {{ teacherAnswers[teacher.SSN] }}
+		<div ng-repeat="question in evaluation.TeacherQuestions">
+			QuestionID: {{ teacherAnswers[teacher.SSN][$index].QuestionID }}
+			<!-- Question ID... -->
+			<input type="hidden" ng-model="teacherAnswers[teacher.SSN][$index].QuestionID" ng-init="teacherAnswers[teacher.SSN][$index].QuestionID=question.ID"/>
+			<textarea ng-model="teacherAnswers[teacher.SSN][$index].Value" ng-if="question.Type == 'text'"></textarea>
+			<div ng-repeat="answer in question.Answers">
+				<input type="radio" ng-model="teacherAnswers[teacher.SSN][$parent.$index].Value" value="{{ answer.Weight }}"> {{ answer.Text }}
+			</div>
+		</div>
+	</div>
+
+	<button class="btn btn-default" ng-click="saveEval()">Submit</button>
+</form>

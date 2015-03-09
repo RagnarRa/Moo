@@ -2,7 +2,8 @@ angular.module("evaluationApp").controller("AnswerEvalController", ["$scope", "$
 	$scope.evaluation = {};
 	$scope.evaluationAnswers = []; 
 	$scope.teachers = [];
-	$scope.evalAnswers = []; 
+	$scope.courseAnswers = [];
+	$scope.teacherAnswers = {};
 	var courseID = $routeParams.courseID, semester = $routeParams.semester, evalID = $routeParams.evalID;
 	console.log("Course ID " + courseID + ", semester: " + semester + ", evalID: " + evalID); 
 
@@ -17,24 +18,27 @@ angular.module("evaluationApp").controller("AnswerEvalController", ["$scope", "$
 			console.log("RECEIVED TEACHERS: ");
 			console.dir(data);
 			$scope.teachers = data; 
-			//Buum til gagnagrindina
+
+			for (var i = 0; i < $scope.teachers.length; i++) {
+				$scope.teacherAnswers[$scope.teachers[i].SSN] = [];
+			}
 
 			/*
 			for (var question in $scope.evaluation.CourseQuestions) {
 				console.log("Question: ");
 				console.dir(question);
 				$scope.evalAnswers.push({ "QuestionID" : question.ID, "Value" : ""});
-			} */
+			} 
 
 			for (var i = 0; i < $scope.evaluation.CourseQuestions.length; i++) {
 				$scope.evalAnswers.push({ "QuestionID" : $scope.evaluation.CourseQuestions[i].ID, "Value" : "", "QuestionIndex" : i, "Type" : "CourseQuestion"});
 			}
-			/*
+		
 			for (var teacher in $scope.teachers) {
 				for (question in $scope.evaluation.TeacherQuestions) {
 					$scope.evalAnswers.push({ "QuestionID" : question.ID, "TeacherSSN" : teacher.SSN, "Value" : ""});
 				}
-			}*/
+			}
 
 			for (i = 0; i < $scope.teachers.length; i++) {
 				for (var j = 0; j < $scope.evaluation.TeacherQuestions.length; j++) {
@@ -43,7 +47,12 @@ angular.module("evaluationApp").controller("AnswerEvalController", ["$scope", "$
 			}
 
 			console.log("GAGNAGRIND: ");
-			console.dir($scope.evalAnswers);
+			console.dir($scope.evalAnswers); */
 		});
 	});
+
+
+	$scope.saveEval = function() {
+		
+	};
 }]);
