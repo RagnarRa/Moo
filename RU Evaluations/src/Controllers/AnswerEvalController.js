@@ -53,10 +53,13 @@ angular.module("evaluationApp").controller("AnswerEvalController", ["$scope", "$
 
 
 	$scope.saveEval = function() {
-		var allAnswers = $scope.courseAnswers;
+		var allAnswers = [];
+		for (var i = 0; i < $scope.courseAnswers.length; i++) {
+			allAnswers.push({ "QuestionID" : $scope.courseAnswers[i].QuestionID, "Value" : $scope.courseAnswers[i].Value });
+		}
 
 		for (var SSN in $scope.teacherAnswers) {
-			for (var i = 0; i < $scope.teacherAnswers[SSN].length; i++) {
+			for (i = 0; i < $scope.teacherAnswers[SSN].length; i++) {
 				allAnswers.push({ "TeacherSSN" : SSN, "QuestionID" : $scope.teacherAnswers[SSN][i].QuestionID, "Value" : $scope.teacherAnswers[SSN][i].Value });
 			}
 		}

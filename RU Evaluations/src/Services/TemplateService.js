@@ -1,5 +1,6 @@
 angular.module("evaluationApp").factory("TemplateService", ["$http", "UserService", function($http, UserService) {
 	//url: "http://dispatch.ru.is/demo/api/v1/evaluationtemplates
+	var backendUrl = 'http://dispatch.ru.is/demo/api/v1/';
 	return {
 		//Templates
 		createTemplate : function(template) {
@@ -7,7 +8,7 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 			console.log("Using token: " + token);
 			return $http({
 				method: "POST",
-				url: "http://dispatch.ru.is/demo/api/v1/evaluationtemplates",
+				url: backendUrl + "evaluationtemplates",
 				data: template,
 				headers: {
 					'Authorization' : 'Basic ' + token
@@ -19,7 +20,7 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 			console.log("Using token: " + token);
 			return $http({
 				method: "GET",
-				url: "http://dispatch.ru.is/demo/api/v1/evaluationtemplates",
+				url: backendUrl + "evaluationtemplates",
 				data: null,
 				headers: {
 					'Authorization' : 'Basic ' + token
@@ -31,7 +32,7 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 			console.log("Using token: " + token);
 			return $http({
 				method: "GET",
-				url: "http://dispatch.ru.is/demo/api/v1/evaluationtemplates/" + ID,
+				url: backendUrl + "evaluationtemplates/" + ID,
 				data: null,
 				headers: {
 					'Authorization' : 'Basic ' + token
@@ -44,7 +45,7 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 			console.log("Using token: " + token);
 			return $http({
 				method: "POST",
-				url: "http://dispatch.ru.is/demo/api/v1/evaluations",
+				url: backendUrl + "evaluations",
 				data: {
 					"TemplateID" : tID,
 					"StartDate" : start,
@@ -60,7 +61,7 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 			console.log("Using token: " + token);
 			return $http({
 				method: "GET",
-				url: "http://dispatch.ru.is/demo/api/v1/evaluations",
+				url: backendUrl + "evaluations",
 				data: null,
 				headers: {
 					'Authorization' : 'Basic ' + token
@@ -72,7 +73,7 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 			console.log("Using token: " + token);
 			return $http({
 				method: "GET",
-				url: "http://dispatch.ru.is/demo/api/v1/evaluations/" + ID,
+				url: backendUrl + "evaluations/" + ID,
 				data: null,
 				headers: {
 					'Authorization' : 'Basic ' + token
@@ -85,7 +86,7 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 			console.log("Using token: " + token);
 			return $http({
 				method: "GET",
-				url: "http://dispatch.ru.is/demo/api/v1/my/courses",
+				url: backendUrl + "my/courses",
 				data: null,
 				headers: {
 					'Authorization' : 'Basic ' + token
@@ -97,7 +98,7 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 			console.log("Using token: " + token);
 			return $http({
 				method: "GET",
-				url: "http://dispatch.ru.is/demo/api/v1/my/evaluations",
+				url: backendUrl + "my/evaluations",
 				data: null,
 				headers: {
 					'Authorization' : 'Basic ' + token
@@ -110,7 +111,7 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 			console.log("Using token: " + token);
 			return $http({
 				method: "GET",
-				url: "http://dispatch.ru.is/demo/api/v1/courses/" + course + "/" + semester + "/teachers",
+				url: backendUrl + "courses/" + course + "/" + semester + "/teachers",
 				data: null,
 				headers: {
 					'Authorization' : 'Basic ' + token
@@ -122,7 +123,7 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 			console.log("Using token: " + token);
 			return $http({
 				method: "GET",
-				url: "http://dispatch.ru.is/demo/api/v1/courses/" + course + "/" + semester + "/evaluations/" + evalID,
+				url: backendUrl + "courses/" + course + "/" + semester + "/evaluations/" + evalID,
 				data: null,
 				headers: {
 					'Authorization' : 'Basic ' + token
@@ -134,7 +135,7 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 			console.log("Using token: " + token);
 			return $http({
 				method: "POST",
-				url: "http://dispatch.ru.is/demo/api/v1/courses/" + course + "/" + semester + "/evaluations/" + evalID,
+				url: backendUrl + "courses/" + course + "/" + semester + "/evaluations/" + evalID,
 				data: evaluationAnswers,
 				headers: {
 					'Authorization' : 'Basic ' + token

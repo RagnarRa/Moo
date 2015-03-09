@@ -1,5 +1,11 @@
 angular.module("evaluationApp").controller("AdminController", ["$scope", "$location", "$filter", "UserService", "TemplateService", function($scope, $location, $filter, UserService, TemplateService) {
 	$scope.templates = [];
+	
+	TemplateService.getEvaluationByID(6).success(function(data) {
+		console.log("Saved evaluation..");
+		console.log(data);
+	});
+
 	TemplateService.getTemplates().success(function(data) {
 		$scope.templates = data; 
 	}).error(function(data, status, headers, config) {
