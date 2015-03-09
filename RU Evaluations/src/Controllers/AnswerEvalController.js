@@ -27,7 +27,7 @@ angular.module("evaluationApp").controller("AnswerEvalController", ["$scope", "$
 			} */
 
 			for (var i = 0; i < $scope.evaluation.CourseQuestions.length; i++) {
-				$scope.evalAnswers.push({ "QuestionID" : $scope.evaluation.CourseQuestions[i].ID, "Value" : ""});
+				$scope.evalAnswers.push({ "QuestionID" : $scope.evaluation.CourseQuestions[i].ID, "Value" : "", "QuestionIndex" : i, "Type" : "CourseQuestion"});
 			}
 			/*
 			for (var teacher in $scope.teachers) {
@@ -38,7 +38,7 @@ angular.module("evaluationApp").controller("AnswerEvalController", ["$scope", "$
 
 			for (i = 0; i < $scope.teachers.length; i++) {
 				for (var j = 0; j < $scope.evaluation.TeacherQuestions.length; j++) {
-					$scope.evalAnswers.push({"QuestionID" : $scope.evaluation.TeacherQuestions[j].ID, "TeacherSSN" : $scope.teachers[i].SSN, "Value" : ""});
+					$scope.evalAnswers.push({"QuestionID" : $scope.evaluation.TeacherQuestions[j].ID, "TeacherSSN" : $scope.teachers[i].SSN, "Value" : "", "QuestionIndex" : j, "Type" : "TeacherQuestion", "TeacherIndex" : i});
 				}
 			}
 

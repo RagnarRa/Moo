@@ -24,3 +24,9 @@
 		</div>
 	</div>
 </div>
+
+<h2>New</h2>
+<div ng-repeat="question in evalAnswers">
+	<p ng-if="question.Type='TeacherQuestion'">{{ evaluation.TeacherQuestions[question.QuestionIndex].Text }}</p>
+	<p ng-if="question.Type='CourseQuestion'">{{ evaluation.CourseQuestions[question.QuestionIndex].Text }}</p>
+</div>
