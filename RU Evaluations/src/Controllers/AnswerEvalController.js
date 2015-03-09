@@ -53,6 +53,20 @@ angular.module("evaluationApp").controller("AnswerEvalController", ["$scope", "$
 
 
 	$scope.saveEval = function() {
-		
+		var allAnswers = $scope.courseAnswers;
+
+		for (var SSN in $scope.teacherAnswers) {
+			for (var i = 0; i < $scope.teacherAnswers[SSN].length; i++) {
+				allAnswers.push({ "TeacherSSN" : SSN, "QuestionID" : $scope.teacherAnswers[SSN][i].QuestionID, "Value" : $scope.teacherAnswers[SSN][i].Value });
+			}
+		}
+
+		console.log("All answers");
+		console.dir(allAnswers); 
+
+		TemplateService.saveAnswersToEvaluationInCourse(courseID, semester, evalID, allAnswers).success(function(data) {
+			console.log("Answers to evaluation successfully saved..");
+			$location.path("/student");
+		});
 	};
 }]);
