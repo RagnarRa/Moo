@@ -3,10 +3,13 @@ describe('LoginController', function(){
   	beforeEach(module('evaluationApp'));
 
   	
-	var ctrl, scope;
+	var ctrl, scope, $httpBackend, authRequestHandler, UserService;
 	// inject the $controller and $rootScope services
 	// in the beforeEach block
-	beforeEach(inject(function($controller, $rootScope) {
+	beforeEach(inject(function($controller, $rootScope, _UserService_) {
+		//spyOn($location, 'path');
+
+		UserService = _UserService_;
 		// Create a new scope that's a child of the $rootScope
 		scope = $rootScope.$new();
 		// Create the controller
@@ -15,8 +18,46 @@ describe('LoginController', function(){
 		});
 	})); 
 
-	  it('should have a username and a token defined', inject(function($controller) {
-	    expect(scope.username).toBeDefined();
-	    expect(scope.token).toBeDefined();
-	  }));
+
+	beforeEach(inject(function($injector) {
+		 //UserService = $injector.get("UserService");
+	     // Set up the mock http service responses
+	     $httpBackend = $injector.get('$httpBackend');
+	     // backend definition common for all tests
+	     authRequestHandler = $httpBackend.when('POST', 'http://dispatch.ru.is/demo/api/v1/login')
+	                            .respond({"Token" : "abcd", "User" : { "Username" : "demo" }}, null); //.respond(data, headers);
+	     /*
+	     // Get hold of a scope (i.e. the root scope)
+	     $rootScope = $injector.get('$rootScope');
+	     // The $controller service is used to create instances of controllers
+	     var $controller = $injector.get('$controller');
+
+	     createController = function() {
+	       return $controller('MyController', {'$scope' : $rootScope });
+	     }; */
+   	}));
+
+
+   afterEach(function() {
+     $httpBackend.verifyNoOutstandingExpectation();
+     $httpBackend.verifyNoOutstandingRequest();
+   });
+
+  it('should have a username and a token defined', inject(function($controller) {
+    expect(scope.username).toBeDefined();
+    expect(scope.token).toBeDefined();
+  }));
+
+  it('should post to the login Url', function() {
+     $httpBackend.expectPOST('http://dispatch.ru.is/demo/api/v1/login');
+     scope.logIn();
+     $httpBackend.flush(); //Take this otherwise async call, make it "reply"
+   });
+
+  it("should set the token to abcd and username to demo", function() {
+  	scope.logIn();
+  	$httpBackend.flush();
+  	expect(UserService.getToken()).toBe("abcd");
+  	expect(UserService.getUsername()).toBe("demo");
+  });
 }); 
