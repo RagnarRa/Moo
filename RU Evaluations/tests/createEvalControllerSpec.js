@@ -1,4 +1,4 @@
-describe('LoginController', function(){
+describe('CreateEvalController', function(){
   	//Load-um alltaf evaluationApp module, inject-um $controller service i test fallid okkar, og notum hann til ad bua til instance af LoginController
   	beforeEach(module('evaluationApp'));
 
@@ -12,8 +12,9 @@ describe('LoginController', function(){
 		UserService = _UserService_;
 		// Create a new scope that's a child of the $rootScope
 		scope = $rootScope.$new();
+
 		// Create the controller
-		ctrl = $controller('LoginController', {
+		ctrl = $controller('CreateEvalController', {
 		  $scope: scope
 		});
 	})); 
@@ -24,17 +25,8 @@ describe('LoginController', function(){
 	     // Set up the mock http service responses
 	     $httpBackend = $injector.get('$httpBackend');
 	     // backend definition common for all tests
-	     authRequestHandler = $httpBackend.when('POST', 'http://dispatch.ru.is/demo/api/v1/login')
-	                            .respond({"Token" : "abcd", "User" : { "Username" : "demo" }}, null); //.respond(data, headers);
-	     /*
-	     // Get hold of a scope (i.e. the root scope)
-	     $rootScope = $injector.get('$rootScope');
-	     // The $controller service is used to create instances of controllers
-	     var $controller = $injector.get('$controller');
-
-	     createController = function() {
-	       return $controller('MyController', {'$scope' : $rootScope });
-	     }; */
+	     authRequestHandler = $httpBackend.when('POST', 'http://dispatch.ru.is/demo/api/v1/evaluationtemplates')
+	                            .respond(null, null); //.respond(data, headers);
    	}));
 
 
@@ -43,6 +35,12 @@ describe('LoginController', function(){
      $httpBackend.verifyNoOutstandingRequest();
    });
 
+  it("should add question to array", function() {
+  	//Populate the scope with fake data
+	scope.courseQuestionType = "text";
+	expect(true).toBe(true);
+  });
+   /*
   it('should have a username and a token defined', inject(function($controller) {
     expect(scope.username).toBeDefined();
     expect(scope.token).toBeDefined();
@@ -75,5 +73,5 @@ describe('LoginController', function(){
 	scope.logIn();
 	$httpBackend.flush();
 	expect(location.path).toHaveBeenCalledWith('/admin');	                            
-  }); 
+  }); */
 }); 
