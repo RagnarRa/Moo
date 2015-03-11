@@ -3,17 +3,20 @@ describe('LoginController', function(){
   	beforeEach(module('evaluationApp'));
 
   	
-	var ctrl, scope, $httpBackend, authRequestHandler, UserService, location;
+	var ctrl, scope, $httpBackend, authRequestHandler, UserService, location, httpData;
 	// inject the $controller and $rootScope services
 	// in the beforeEach block
 	beforeEach(inject(function($controller, $rootScope, _UserService_, $location) {
+		httpData = {"Token" : "abcd", "User" : { "Username" : "demo" }};
+
+		location = $location;
+
 		UserService = _UserService_;
 		// Create a new scope that's a child of the $rootScope
 		scope = $rootScope.$new();
 		// Create the controller
 		ctrl = $controller('LoginController', {
-		  $scope: scope,
-		  location: $location
+		  $scope: scope
 		});
 	})); 
 
@@ -59,4 +62,20 @@ describe('LoginController', function(){
   	expect(UserService.getToken()).toBe("abcd");
   	expect(UserService.getUsername()).toBe("demo");
   });
+
+  it("should call student when user is not admin", function() {
+  	spyOn(location, 'path');    
+  	scope.logIn();
+  	$httpBackend.flush();
+  	expect(location.path).toHaveBeenCalledWith('/student');
+  });
+  /*
+  it("should call admin when user is admin", function() {
+	authRequestHandler = $httpBackend.when('POST', 'http://dispatch.ru.is/demo/api/v1/login')
+	                            .respond({"Token" : "abcd", "User" : { "Username" : "admin", "Role" : "admin" }}, null);
+	spyOn(location, 'path');
+	scope.logIn();
+	$httpBackend.flush();
+	expect(location.path).toHaveBeenCalledWith('/admin');	                            
+  }); */
 }); 
