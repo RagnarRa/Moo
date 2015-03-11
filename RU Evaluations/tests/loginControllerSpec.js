@@ -3,18 +3,17 @@ describe('LoginController', function(){
   	beforeEach(module('evaluationApp'));
 
   	
-	var ctrl, scope, $httpBackend, authRequestHandler, UserService;
+	var ctrl, scope, $httpBackend, authRequestHandler, UserService, location;
 	// inject the $controller and $rootScope services
 	// in the beforeEach block
-	beforeEach(inject(function($controller, $rootScope, _UserService_) {
-		//spyOn($location, 'path');
-
+	beforeEach(inject(function($controller, $rootScope, _UserService_, $location) {
 		UserService = _UserService_;
 		// Create a new scope that's a child of the $rootScope
 		scope = $rootScope.$new();
 		// Create the controller
 		ctrl = $controller('LoginController', {
-		  $scope: scope
+		  $scope: scope,
+		  location: $location
 		});
 	})); 
 
