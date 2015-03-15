@@ -35,43 +35,95 @@ describe('CreateEvalController', function(){
      $httpBackend.verifyNoOutstandingRequest();
    });
 
-  it("should add question to array", function() {
+  it("expect the controller's properties to be defined", function() {
   	//Populate the scope with fake data
 	scope.courseQuestionType = "text";
-	expect(true).toBe(true);
+	expect(scope.questions).toBeDefined();
+	expect(scope.questions.CourseQuestions).toBeDefined();
+	expect(scope.questions.TeacherQuestions).toBeDefined();
+	expect(scope.teacherQuestionType).toBeDefined();
+	expect(scope.teacherQuestionType).toBeDefined();
   });
-   /*
-  it('should have a username and a token defined', inject(function($controller) {
-    expect(scope.username).toBeDefined();
-    expect(scope.token).toBeDefined();
-  }));
 
-  it('should post to the login Url', function() {
-     $httpBackend.expectPOST('http://dispatch.ru.is/demo/api/v1/login');
-     scope.logIn();
-     $httpBackend.flush(); //Take this otherwise async call, make it "reply"
-   });
-
-  it("should set the token to abcd and username to demo", function() {
-  	scope.logIn();
+  it("should call location.path with admin after creating an evaluation", function() {
+  	spyOn(location, 'path'); 
+  	var testEval = { "CourseQuestions" : [], "TeacherQuestions" : [] };  
+  	scope.createEval(testEval);
   	$httpBackend.flush();
-  	expect(UserService.getToken()).toBe("abcd");
-  	expect(UserService.getUsername()).toBe("demo");
+  	expect(location.path).toHaveBeenCalledWith('/admin');
   });
 
-  it("should call student when user is not admin", function() {
-  	spyOn(location, 'path');    
-  	scope.logIn();
-  	$httpBackend.flush();
-  	expect(location.path).toHaveBeenCalledWith('/student');
+  describe("CourseQuestions", function() {
+  	it("should add question to array with correct index", function() {
+	  	//Populate the scope with fake data
+		scope.courseQuestionType = "text";
+		scope.addQuestion(0);
+		expect(scope.questions.CourseQuestions[0].Index).toBe(0);
+		scope.addQuestion(0);
+		expect(scope.questions.CourseQuestions[1].Index).toBe(1);
+  	});
+
+  	it("should have type 'text' when courseQuestionType is text", function() {
+  		scope.courseQuestionType = "text";
+		scope.addQuestion(0);
+		expect(scope.questions.CourseQuestions[0].Type).toBe("text");
+  	});
+
+  	it("should have type 'single' when courseQuestionType is single", function() {
+  		scope.courseQuestionType = "single";
+		scope.addQuestion(0);
+		expect(scope.questions.CourseQuestions[0].Type).toBe("single");
+  	});
+
+  	it("should have type 'multiple' when courseQuestionType is multiple", function() {
+  		scope.courseQuestionType = "multiple";
+		scope.addQuestion(0);
+		expect(scope.questions.CourseQuestions[0].Type).toBe("multiple");
+  	});
   });
-  
-  it("should call admin when user is admin", function() {
-	authRequestHandler
-	 	.respond({"Token" : "abcd", "User" : { "Username" : "admin", "Role" : "admin" }}, null);
-	spyOn(location, 'path');
-	scope.logIn();
-	$httpBackend.flush();
-	expect(location.path).toHaveBeenCalledWith('/admin');	                            
-  }); */
+
+  describe("TeacherQuestions", function() {
+  	it("should add question to array with correct index", function() {
+	  	//Populate the scope with fake data
+		scope.teacherQuestionType = "text";
+		scope.addQuestion(1);
+		expect(scope.questions.TeacherQuestions[0].Index).toBe(0);
+		scope.addQuestion(1);
+		expect(scope.questions.TeacherQuestions[1].Index).toBe(1);
+  	});
+
+  	it("should have type 'text' when teacherQuestionType is text", function() {
+  		scope.teacherQuestionType = "text";
+		scope.addQuestion(1);
+		expect(scope.questions.TeacherQuestions[0].Type).toBe("text");
+  	});
+
+  	it("should have type 'single' when teacherQuestionType is single", function() {
+  		scope.teacherQuestionType = "single";
+		scope.addQuestion(1);
+		expect(scope.questions.TeacherQuestions[0].Type).toBe("single");
+  	});
+
+  	it("should have type 'multiple' when teacherQuestionType is multiple", function() {
+  		scope.teacherQuestionType = "multiple";
+		scope.addQuestion(1);
+		expect(scope.questions.TeacherQuestions[0].Type).toBe("multiple");
+  	});
+  });  
+
+  describe("CourseAnswers", function() {
+  	it("should add an answer to the array", function() {
+  		scope.addQuestion(0);
+		scope.addAnswer(0, 0);
+		expect(scope.questions.CourseQuestions[0]["Answers"].length).toBe(1);
+  	});
+  });
+
+  describe("TeacherAnswers", function() {
+  	it("should add an answer to the array", function() {
+  		scope.addQuestion(1);
+		scope.addAnswer(0, 1);
+		expect(scope.questions.TeacherQuestions[0]["Answers"].length).toBe(1);
+  	});
+  });
 }); 
