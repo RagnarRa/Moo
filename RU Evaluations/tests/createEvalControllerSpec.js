@@ -63,7 +63,6 @@ describe('CreateEvalController', function(){
         expect(location.path).not.toHaveBeenCalledWith('/admin');
     });
 
-
   describe("CourseQuestions", function() {
   	it("should add question to array with correct index", function() {
 	  	//Populate the scope with fake data

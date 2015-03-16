@@ -1,10 +1,15 @@
 angular.module("evaluationApp").controller("AdminController", ["$scope", "$location", "$filter", "UserService", "TemplateService", function($scope, $location, $filter, UserService, TemplateService) {
 	$scope.templates = [];
-	
-	TemplateService.getEvaluationByID(6).success(function(data) {
-		console.log("Saved evaluation..");
-		console.log(data);
-	});
+    $scope.successMsg = "";
+    //todo: make datetieme show without millisecconds
+    $scope.startDate = new Date();
+    $scope.endDate = new Date();
+    $scope.endDate.setDate($scope.endDate.getDate() + 1);
+    /*todo: delete this
+        TemplateService.getEvaluationByID(6).success(function(data) {
+        console.log("Saved evaluation..");
+        console.log(data);
+    });*/
 
 	TemplateService.getTemplates().success(function(data) {
 		$scope.templates = data; 
@@ -17,6 +22,7 @@ angular.module("evaluationApp").controller("AdminController", ["$scope", "$locat
 		$location.path("/createeval");
 	};
 
+    //opens an evaluation for students
 	$scope.addTemplate = function() {
 		var startDate = $filter('date')($scope.startDate, 'yyyy-MM-ddTHH:mm:ss.sssZ', 'GMT');
 		var endDate = $filter('date')($scope.endDate, 'yyyy-MM-ddTHH:mm:ss.sssZ', 'GMT');
@@ -24,14 +30,20 @@ angular.module("evaluationApp").controller("AdminController", ["$scope", "$locat
 		console.log("Start date formatted: " + startDate);
 		console.log("End date formatted: " + endDate);
 
+        //opens an evaluation for students
 		TemplateService.addEvaluation($scope.templateID, startDate, endDate).success(function() {
 			console.log("Successfully added a template..");
+            $scope.successMsg = "Evaluations successfully added";
+
 		}).error(function(data, status, headers, config) {
 			console.log("Login error, status: " + status + ", Headers:");
 			console.log(headers);
+            $scope.successMsg = "Error, unable to add evaluation";
+
 		}); 
 	};
 
+	/* todo: delete me
 	$scope.test = function() {
 		var obj = null;
 		TemplateService.getEvaluations().success(function(data) {
@@ -49,5 +61,5 @@ angular.module("evaluationApp").controller("AdminController", ["$scope", "$locat
 			console.log("Evaluation with ID 50");
 			console.log(data);
 		});
-	};
+	};*/
 }]);
