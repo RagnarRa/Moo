@@ -53,6 +53,7 @@ angular.module("evaluationApp").controller("CreateEvalController", ["$scope", "$
 		}).error(function(data, status, headers, config) {
 			console.log("Template creation error, status: " + status + ", Headers:");
 			console.log(headers);
+
 		});
 	};
 }]);
