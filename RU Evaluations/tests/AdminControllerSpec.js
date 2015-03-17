@@ -1,14 +1,12 @@
 describe('AdminController', function() {
     beforeEach(module('evaluationApp'));
 
-    var authRequestHandler, ctrl, scope, location, filter, UserService, templateService, $httpBackend, authRequestHandler, backendUrl;
+    var ctrl, scope, location, templateService, $httpBackend, authRequestHandler, backendUrl;
 
-    beforeEach(inject(function ($controller, $rootScope, $location, $filter, _UserService_, _TemplateService_) {
+    beforeEach(inject(function ($controller, $rootScope, $location, _TemplateService_) {
 
         scope           = $rootScope.$new();
         location        = $location;
-        filter          = $filter;
-        UserService     = _UserService_;
         templateService = _TemplateService_;
         backendUrl      = 'http://dispatch.ru.is/demo/api/v1/';
 
