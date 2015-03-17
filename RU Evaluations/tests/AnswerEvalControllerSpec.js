@@ -2,7 +2,7 @@ describe('AnswerEvalController', function(){
 	//Load-um alltaf evaluationApp module, inject-um $controller service i test fallid okkar, og notum hann til ad bua til instance af LoginController
 	beforeEach(module('evaluationApp'));
 
-	var ctr, scope, $httpBackend, authRequestHandler, UserService, location;
+	var ctrl, scope, $httpBackend, UserService, location;
 
 	beforeEach(inject(function($controller, $rootScope, _UserService_, $location) {
 		location = $location;
