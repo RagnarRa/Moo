@@ -1,0 +1,5 @@
+<p>{{ question.Text }}</p>
+<textarea ng-model="courseAnswers[$index].Value" ng-if="question.Type == 'text'"></textarea>
+<div ng-repeat="answer in question.Answers">
+	<input type="radio" ng-model="courseAnswers[$parent.$index].Value" value="{{ answer.Weight }}"> {{ answer.Text }}
+</div>

@@ -2,9 +2,10 @@ angular.module("evaluationApp").controller("AdminController", ["$scope", "$locat
 	$scope.templates = [];
     $scope.successMsg = "";
     //todo: make datetieme show without millisecconds
+    /*
     $scope.startDate = new Date();
     $scope.endDate = new Date();
-    $scope.endDate.setDate($scope.endDate.getDate() + 1);
+    $scope.endDate.setDate($scope.endDate.getDate() + 1); */
     /*todo: delete this
         TemplateService.getEvaluationByID(6).success(function(data) {
         console.log("Saved evaluation..");
