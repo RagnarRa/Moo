@@ -3,7 +3,7 @@
 		{{ evaluation }}
 		<h1>Create an evaluation template</h1>
 		<form name="create-eval-form">
-			<fieldset>
+			<fieldset class="tQuest">
 				<legend>Evaluation info</legend>
 				<div class="form-group">
 					<label for="TitleIS">Title (IS)</label>
@@ -19,7 +19,7 @@
 				</div>
 				<div class="form-group">
 					<label for="IntroTextEN">Intro text (EN)</label>
-					<input type="text" ng-model="evaluation.IntroTextEN" name="IntroTextEN" />
+					<input type="text"  ng-model="evaluation.IntroTextEN" name="IntroTextEN" />
 				</div>
 			</fieldset>
 			<fieldset>
@@ -73,7 +73,7 @@
 					</li>
 				</ul> -->
 
-			  	<input type="radio" ng-model="courseQuestionType" value="text">  Text 
+			  	<input type="radio" ng-model="courseQuestionType" value="text">  Text
 			  	<input type="radio" ng-model="courseQuestionType" value="single"> Single 
 				<input type="radio" ng-model="courseQuestionType" value="multiple"> Multiple 
 
@@ -119,13 +119,14 @@
 						<button class="btn btn-default" ng-click="addAnswer(question.Index, 1)">Add answer</button>
 				</div>
 
-			  	<input type="radio" ng-model="teacherQuestionType" value="text">  Text 
+			  	<input type="radio" ng-model="teacherQuestionType" value="text">  Text
 			  	<input type="radio" ng-model="teacherQuestionType" value="single"> Single 
 				<input type="radio" ng-model="teacherQuestionType" value="multiple"> Multiple 
 
 				<button class="btn btn-default" ng-click="addQuestion(1)">Add teacher question</button>
 			</fieldset>
-			<button class="btn btn-default" ng-click="createEval(evaluation)">Save evaluation</button>
+            <div class="errorMsg" ng-show="errorMsg.length" ng-bind="errorMsg"></div>
+			<button class="btn btn-default" ng-disabled="!validateSubmitButton(evaluation)" ng-click="createEval(evaluation)">Save evaluation</button>
 		</form>
 	</div>
 </div>

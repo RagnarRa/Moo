@@ -1,3 +1,24 @@
+/*.tQuest>div>input{
+  width: 300px;
+}
+.tQuest>div>label{
+  width: 100px;
+}*/
+.tQuest > div > input {
+  width: 300px;
+}
+.tQuest > div > label {
+  width: 100px;
+}
+.errorMsg {
+  font-size: 14px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 2px solid darkred;
+  padding: 5px 5px;
+  background-color: #FFDDD9;
+  border-radius: 7px;
+}
 .login {
   border: 1px solid red;
 }

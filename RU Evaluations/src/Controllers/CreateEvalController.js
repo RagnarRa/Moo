@@ -1,7 +1,7 @@
 angular.module("evaluationApp").controller("CreateEvalController", ["$scope", "$location", "UserService", "TemplateService", function($scope, $location, UserService, TemplateService) {	
 	$scope.questions = { "CourseQuestions" : [], "TeacherQuestions" : []};
-	$scope.courseQuestionType = "";
-	$scope.teacherQuestionType= "";
+	$scope.courseQuestionType = "text";
+	$scope.teacherQuestionType= "text";
 
 	//types: Course question (0), Teacher Question (1)
 	$scope.addQuestion = function(type) {
@@ -53,7 +53,53 @@ angular.module("evaluationApp").controller("CreateEvalController", ["$scope", "$
 		}).error(function(data, status, headers, config) {
 			console.log("Template creation error, status: " + status + ", Headers:");
 			console.log(headers);
-
 		});
 	};
+
+    $scope.isText = function(text){
+        if (text === undefined || text.length < 1){
+            return false;
+        }
+        return true;
+    };
+
+    $scope.validateSubmitButton = function(evaluation){
+        var i;
+
+        if (evaluation === undefined){
+            return false;
+        }
+
+        if( ( !$scope.isText(evaluation.Title)       ) ||
+            ( !$scope.isText(evaluation.IntroText)   ) ||
+            ( !$scope.isText(evaluation.TitleEN)     ) ||
+            ( !$scope.isText(evaluation.IntroTextEN) ) ){
+            return false;  //Title, TitleEN, IntroText and IntroTextEN required
+        }
+        //now the sub-questions
+        else if ( $scope.questions.CourseQuestions === undefined ||
+            $scope.questions.CourseQuestions.length < 1){
+            return false; //you have no use for a course template without any questions
+        }
+
+        for(i = 0; i < $scope.questions.CourseQuestions.length ; i++){
+            if( ( !$scope.isText($scope.questions.CourseQuestions[i].Text)   ) ||
+                ( !$scope.isText($scope.questions.CourseQuestions[i].TextEN) )  ){
+                return false;  //Every question needs to have a Text and TextEN
+            }
+        }
+
+        if($scope.questions.TeacherQuestions !== undefined && $scope.questions.TeacherQuestions.length > 0)
+        {
+            //because we have some teacher questions we need to validate them
+            for(i = 0; i < $scope.questions.TeacherQuestions.length ; i++){
+                if( ( !$scope.isText($scope.questions.TeacherQuestions[i].Text)   ) ||
+                    ( !$scope.isText($scope.questions.TeacherQuestions[i].TextEN) )  ){
+                    return false;  //Every question needs to have a Text and TextEN
+                }
+            }
+        }
+
+        return true;
+    };
 }]);
