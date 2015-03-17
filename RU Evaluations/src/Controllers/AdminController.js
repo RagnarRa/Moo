@@ -1,6 +1,6 @@
 angular.module("evaluationApp").controller("AdminController", ["$scope", "$location", "$filter", "UserService", "TemplateService", function($scope, $location, $filter, UserService, TemplateService) {
 	$scope.templates = [];
-    $scope.successMsg = "";
+    $scope.resultMsg = "";
     //todo: make datetieme show without millisecconds
     $scope.startDate = new Date();
     $scope.endDate = new Date();
@@ -16,6 +16,7 @@ angular.module("evaluationApp").controller("AdminController", ["$scope", "$locat
 	}).error(function(data, status, headers, config) {
 			console.log("Get templates error, status: " + status + ", Headers:");
 			console.log(headers);
+            $scope.resultMsg = "Error, could not fetch any templates";
 		});
 
 	$scope.createEval = function() {
@@ -33,12 +34,12 @@ angular.module("evaluationApp").controller("AdminController", ["$scope", "$locat
         //opens an evaluation for students
 		TemplateService.addEvaluation($scope.templateID, startDate, endDate).success(function() {
 			console.log("Successfully added a template..");
-            $scope.successMsg = "Evaluations successfully added";
+            $scope.resultMsg = "Evaluations successfully added";
 
 		}).error(function(data, status, headers, config) {
 			console.log("Login error, status: " + status + ", Headers:");
 			console.log(headers);
-            $scope.successMsg = "Error, unable to add evaluation";
+            $scope.resultMsg = "Error, unable to add evaluation";
 
 		}); 
 	};
