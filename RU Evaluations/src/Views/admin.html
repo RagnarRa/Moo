@@ -32,6 +32,22 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<h2>Evaluation Overview</h2>
+		<h2>Evaluation Results</h2>
+		<!-- 
+		<ul>
+			<li ng-repeat="eval in evaluations">
+				<a ng-href="/#/answereval/{{ eval.CourseID }}/{{ eval.Semester }}/{{ eval.ID }}">{{ eval.TemplateTitle }} - {{ eval.Status }}</a> : {{ eval.StartDate | date : 'longDate' : 'GMT' }} - {{ eval.EndDate | date : 'longDate' : 'GMT'}} 
+			</li>
+		</ul> -->
+
+		<select ng-model="evalID" ng-options="eval.ID as (eval.TemplateTitle + ' - ' + eval.Status + ' : ' + (eval.StartDate | date : 'longDate' : 'GMT') + ' - ' + (eval.EndDate | date : 'longDate' : 'GMT')) for eval in evaluations">
+		</select>
+		<button class="btn btn-default" ng-click="getEvaluationResults()">Get links for course results</button>
+
+		<ul>
+			<li ng-repeat="course in courses">
+				<a ng-href="/#/evalresults/{{ course.CourseID }}/{{ course.Semester }}/{{ evalID }}">{{ course.CourseName }}</a>
+			</li>
+		</ul>
 	</div>
 </div>
