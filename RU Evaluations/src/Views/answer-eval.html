@@ -1,30 +1,5 @@
 <h1>{{ evaluation.Title }}</h1>
 <p>{{ evaluation.IntroText }}</p>
-<!-- 
-<h2>Course Questions</h2>
-<div ng-repeat="question in evaluation.CourseQuestions">
-	<p>{{ question.Text }}</p>
-	Index: {{ $index }}
-	<textarea ng-model="evaluationAnswers[$index].Value" ng-if="question.Type == 'text'"></textarea>
-	<div ng-repeat="answer in question.Answers">
-	{{ $parent.$index }}<input type="radio" ng-model="evaluationAnswers[$parent.$index].Value" value="{{ answer.Weight }}"> {{ answer.Text }}
-	</div>
-	||evaluationAnswers[{{ $index }}].Value = {{ evaluationAnswers[$index].Value }}||
-</div>
-
-||Jæja.. hvað eru margir í evaluationAnswers? {{ evaluation.CourseQuestions.length }}||
-
-
-<div ng-repeat="teacher in teachers">
-	<h2>Kennari: {{ teacher.FullName }}</h2>
-	<div ng-repeat="question in evaluation.TeacherQuestions">
-		<textarea ng-model="evaluationAnswers[$index].Value" ng-if="question.Type == 'text'"></textarea>
-		<div ng-repeat="answer in question.Answers">
-		{{ $parent.$index }}<input type="radio" ng-model="evaluationAnswers[$parent.$index].Value" value="{{ answer.Weight }}"> {{ answer.Text }}
-		</div>
-	</div>
-</div> -->
-
 
 <form name="testForm">
 	Course answers: {{ courseAnswers }}
