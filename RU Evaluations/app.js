@@ -16,6 +16,9 @@ var app = angular.module("evaluationApp", ['ngRoute']);
 	}).when("/answereval/:courseID/:semester/:evalID", { 
 		templateUrl: "src/Views/answer-eval.html",
 		controller: "AnswerEvalController"
+	}).when("/evalresults/:courseID/:semester/:evalID", { 
+		templateUrl: "src/Views/eval-results.html",
+		controller: "EvalResultsController"
 	}).otherwise({ redirectTo: "/" });	
 
 	//Whitelist fyrir cross origin resource loads

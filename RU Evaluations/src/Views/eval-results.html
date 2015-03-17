@@ -1,0 +1,8 @@
+<h1>{{ templateTitle }} - {{ courseName }}</h1>
+
+<div ng-repeat="question in courseEvaluationResult.Questions">
+	<h2>{{ question.Text }}</h2>
+	<ul class="list-group">
+		<li class="list-group-item" ng-repeat="answer in question.TextResults track by $index" ng-if="answer != null">{{ answer }}</li>
+	</ul>
+</div>
