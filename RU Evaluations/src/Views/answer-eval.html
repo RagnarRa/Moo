@@ -2,7 +2,7 @@
 <p>{{ evaluation.IntroText }}</p>
 
 <form name="testForm">
-	Course answers: {{ courseAnswers }}
+	<!-- Course answers: {{ courseAnswers }} -->
 	<!-- 
 	<div ng-repeat="question in evaluation.CourseQuestions" ng-init="courseAnswers[$index].QuestionID=question.ID">
 		<p>{{ question.Text }}</p>
@@ -16,7 +16,8 @@
 		<evaluation-question type="course"></evaluation-question>
 	</div>
 
-	Teacher answers: {{ teacherAnswers }}
+	<!-- Teacher answers: {{ teacherAnswers }} -->
+
 	<!-- 
 	<div ng-repeat="teacher in teachers">
 		<h2>Kennari: {{ teacher.FullName }}</h2>
@@ -33,7 +34,7 @@
 
 	<div ng-repeat="teacher in teachers">
 		<h2>Kennari: {{ teacher.FullName }}</h2>
-		Answers: {{ teacherAnswers[teacher.SSN] }}
+		<!-- Answers: {{ teacherAnswers[teacher.SSN] }} -->
 		<div ng-repeat="question in evaluation.TeacherQuestions" ng-init="teacherAnswers[teacher.SSN][$index].QuestionID=question.ID">
 			<evaluation-question type="teacher"></evaluation-question>
 		</div>
