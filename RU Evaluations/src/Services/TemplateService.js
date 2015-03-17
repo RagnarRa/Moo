@@ -39,7 +39,7 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 				}
 			});
 		},
-		//Evaluations
+		////opens an evaluation for students
 		addEvaluation : function(tID, start, end) {
 			var token = UserService.getToken();
 			console.log("Using token: " + token);

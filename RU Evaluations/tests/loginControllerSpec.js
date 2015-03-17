@@ -67,7 +67,15 @@ describe('LoginController', function(){
   	$httpBackend.flush();
   	expect(location.path).toHaveBeenCalledWith('/student');
   });
-  
+
+    it("should NOT call student", function() {
+        authRequestHandler.respond(401, '');
+        spyOn(location, 'path');
+        scope.logIn();
+        $httpBackend.flush();
+        expect(location.path).not.toHaveBeenCalledWith('/student');
+    });
+
   it("should call admin when user is admin", function() {
 	authRequestHandler
 	 	.respond({"Token" : "abcd", "User" : { "Username" : "admin", "Role" : "admin" }}, null);
@@ -75,5 +83,13 @@ describe('LoginController', function(){
 	scope.logIn();
 	$httpBackend.flush();
 	expect(location.path).toHaveBeenCalledWith('/admin');	                            
-  }); 
+  });
+  it("should call admin when user is admin", function() {
+      authRequestHandler
+          .respond({"Token" : "abcd", "User" : { "Username" : "admin", "Role" : "admin" }}, null);
+      spyOn(location, 'path');
+      scope.logIn();
+      $httpBackend.flush();
+      expect(location.path).toHaveBeenCalledWith('/admin');
+  });
 }); 

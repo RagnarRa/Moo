@@ -53,6 +53,16 @@ describe('CreateEvalController', function(){
   	expect(location.path).toHaveBeenCalledWith('/admin');
   });
 
+
+    it('should NOT call location.path with admin after creating an evaluation', function() {
+        authRequestHandler.respond(401, '');
+        spyOn(location, 'path');
+        var testEval = { "CourseQuestions" : [], "TeacherQuestions" : [] };
+        scope.createEval(testEval);
+        $httpBackend.flush();
+        expect(location.path).not.toHaveBeenCalledWith('/admin');
+    });
+
   describe("CourseQuestions", function() {
   	it("should add question to array with correct index", function() {
 	  	//Populate the scope with fake data

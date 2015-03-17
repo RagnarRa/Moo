@@ -40,4 +40,11 @@ describe('StudentController', function(){
   	//Populate the scope with fake data
   	expect(scope.evaluations[0]).toBe("data");
   });
+
+  it("does NOT get back data and set the evaluations thing to said data", function() {
+      authRequestHandler.respond(401, '');
+      $httpBackend.flush();
+      //Populate the scope with fake data
+      expect(scope.evaluations).not.toBeDefined();
+  });
 }); 
