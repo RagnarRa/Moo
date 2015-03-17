@@ -39,7 +39,10 @@ describe('AnswerEvalController', function(){
 		$httpBackend.when('POST', 'http://dispatch.ru.is/demo/api/v1/courses/T-427-WEPO/20151/evaluations/1')
 			.respond(null, null);
 		spyOn(location, 'path');
-		
+
+		scope.courseAnswers = [{ "QuestionID" : 1, "Value" : 1}];
+		scope.teacherAnswers = {"SSN" : "1234"};
+
 		scope.saveEval();
 		$httpBackend.flush();
 		expect(location.path).toHaveBeenCalledWith('/student');
