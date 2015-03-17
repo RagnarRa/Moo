@@ -22,32 +22,6 @@ angular.module("evaluationApp").controller("AnswerEvalController", ["$scope", "$
 			for (var i = 0; i < $scope.teachers.length; i++) {
 				$scope.teacherAnswers[$scope.teachers[i].SSN] = [];
 			}
-
-			/*
-			for (var question in $scope.evaluation.CourseQuestions) {
-				console.log("Question: ");
-				console.dir(question);
-				$scope.evalAnswers.push({ "QuestionID" : question.ID, "Value" : ""});
-			} 
-
-			for (var i = 0; i < $scope.evaluation.CourseQuestions.length; i++) {
-				$scope.evalAnswers.push({ "QuestionID" : $scope.evaluation.CourseQuestions[i].ID, "Value" : "", "QuestionIndex" : i, "Type" : "CourseQuestion"});
-			}
-		
-			for (var teacher in $scope.teachers) {
-				for (question in $scope.evaluation.TeacherQuestions) {
-					$scope.evalAnswers.push({ "QuestionID" : question.ID, "TeacherSSN" : teacher.SSN, "Value" : ""});
-				}
-			}
-
-			for (i = 0; i < $scope.teachers.length; i++) {
-				for (var j = 0; j < $scope.evaluation.TeacherQuestions.length; j++) {
-					$scope.evalAnswers.push({"QuestionID" : $scope.evaluation.TeacherQuestions[j].ID, "TeacherSSN" : $scope.teachers[i].SSN, "Value" : "", "QuestionIndex" : j, "Type" : "TeacherQuestion", "TeacherIndex" : i});
-				}
-			}
-
-			console.log("GAGNAGRIND: ");
-			console.dir($scope.evalAnswers); */
 		});
 	});
 
