@@ -24,9 +24,9 @@ describe('AnswerEvalController', function(){
 		// Set up the mock http service responses
 		$httpBackend = $injector.get('$httpBackend');
 		// backend definition common for all tests
-		$httpBackend.when('GET', 'http://dispatch.ru.is/demo/api/v1/courses/T-427-WEPO/20151/evaluations/1')
+		$httpBackend.when('GET', 'http://dispatch.ru.is/h11/api/v1/courses/T-427-WEPO/20151/evaluations/1')
 			.respond('evaluation', null);
-		$httpBackend.when('GET', 'http://dispatch.ru.is/demo/api/v1/courses/T-427-WEPO/20151/teachers')
+		$httpBackend.when('GET', 'http://dispatch.ru.is/h11/api/v1/courses/T-427-WEPO/20151/teachers')
 			.respond('teachers', null);
 	}));
 
@@ -36,7 +36,7 @@ describe('AnswerEvalController', function(){
 	});
 
 	it("should call location.path with student after answering an evaluation", function() {
-		$httpBackend.when('POST', 'http://dispatch.ru.is/demo/api/v1/courses/T-427-WEPO/20151/evaluations/1')
+		$httpBackend.when('POST', 'http://dispatch.ru.is/h11/api/v1/courses/T-427-WEPO/20151/evaluations/1')
 			.respond(null, null);
 		spyOn(location, 'path');
 

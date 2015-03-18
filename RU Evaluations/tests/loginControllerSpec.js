@@ -24,7 +24,7 @@ describe('LoginController', function(){
 	     // Set up the mock http service responses
 	     $httpBackend = $injector.get('$httpBackend');
 	     // backend definition common for all tests
-	     authRequestHandler = $httpBackend.when('POST', 'http://dispatch.ru.is/demo/api/v1/login')
+	     authRequestHandler = $httpBackend.when('POST', 'http://dispatch.ru.is/h11/api/v1/login')
 	                            .respond({"Token" : "abcd", "User" : { "Username" : "demo" }}, null); //.respond(data, headers);
 	     /*
 	     // Get hold of a scope (i.e. the root scope)
@@ -49,7 +49,7 @@ describe('LoginController', function(){
   }));
 
   it('should post to the login Url', function() {
-     $httpBackend.expectPOST('http://dispatch.ru.is/demo/api/v1/login');
+     $httpBackend.expectPOST('http://dispatch.ru.is/h11/api/v1/login');
      scope.logIn();
      $httpBackend.flush(); //Take this otherwise async call, make it "reply"
    });

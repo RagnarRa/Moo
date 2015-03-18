@@ -8,7 +8,7 @@ describe('AdminController', function() {
         scope           = $rootScope.$new();
         location        = $location;
         templateService = _TemplateService_;
-        backendUrl      = 'http://dispatch.ru.is/demo/api/v1/';
+        backendUrl      = 'http://dispatch.ru.is/h11/api/v1/';
 
         // Create the controller
         ctrl = $controller('AdminController', {

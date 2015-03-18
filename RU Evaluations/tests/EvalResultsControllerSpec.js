@@ -4,7 +4,7 @@ describe('EvalResultsController', function() {
 	var ctrl, scope, $httpBackend, UserService, location;
 
 	beforeEach(inject(function($controller, $rootScope) {
-		backendUrl = 'http://dispatch.ru.is/demo/api/v1/';
+		backendUrl = 'http://dispatch.ru.is/h11/api/v1/';
 
 		// Create a new scope that's a child of the $rootScope
 		scope = $rootScope.$new();
@@ -22,9 +22,9 @@ describe('EvalResultsController', function() {
 		// Set up the mock http service responses
 		$httpBackend = $injector.get('$httpBackend');
 		// backend definition common for all tests
-		$httpBackend.when('GET', 'http://dispatch.ru.is/demo/api/v1/courses/T-427-WEPO/20151/evaluations/1')
+		$httpBackend.when('GET', 'http://dispatch.ru.is/h11/api/v1/courses/T-427-WEPO/20151/evaluations/1')
 			.respond({'TemplateTitle' : "", 'Courses' : []}, null);
-		$httpBackend.when('GET', 'http://dispatch.ru.is/demo/api/v1/courses/T-427-WEPO/20151/teachers')
+		$httpBackend.when('GET', 'http://dispatch.ru.is/h11/api/v1/courses/T-427-WEPO/20151/teachers')
 			.respond('teachers', null);
 		$httpBackend.when('GET', backendUrl + 'evaluations/1')
         	.respond({'TemplateTitle' : "", 'Courses' : []}, null);
