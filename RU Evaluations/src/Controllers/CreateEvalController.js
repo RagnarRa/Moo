@@ -80,7 +80,7 @@ angular.module("evaluationApp").controller("CreateEvalController", ["$scope", "$
         if (arr.Answers === undefined){
             return true;  //it's valid to have no answers
         }
-        //todo: do we need to check arr.Weight
+
         for(i = 0; i < arr.Answers.length; i++){
             if( ( !$scope.isText(arr.Answers[i].Text)   ) ||
                 ( !$scope.isText(arr.Answers[i].TextEN) )){
