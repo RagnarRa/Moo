@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-12">
-		{{ evaluation }}
+
 		<h1>Create an evaluation template</h1>
 		<form name="create-eval-form">
 			<fieldset class="tQuest">
@@ -22,7 +22,7 @@
 					<input type="text"  ng-model="evaluation.IntroTextEN" name="IntroTextEN" />
 				</div>
 			</fieldset>
-			<fieldset>
+			<fieldset class="TextSingle">
 				<legend>Course questions</legend>
 				<h3>Text questions</h3>
 				<ul>
@@ -33,7 +33,6 @@
 						<input type="text" ng-model="question.TextEN" name="questionTextEN" />
 						<label>Image URL:</label>
 						<input type="text" ng-model="question.ImageURL"  />
-						{{ question.Text }}||{{question.TextEN}}||{{question.Index}}
 					</li>
 				</ul>
 				
@@ -45,7 +44,7 @@
 						<input type="text" ng-model="question.TextEN" name="questionTextEN" />
 						<label>Image URL:</label>
 						<input type="text" ng-model="question.ImageURL" />
-						{{ question.Text }}||{{question.TextEN}}||{{question.Index}}
+
 						<h4>Answers:</h4>
 						<ul>
 							<li ng-repeat="answer in question.Answers track by $index">
@@ -79,7 +78,7 @@
 
 				<button class="btn btn-default" ng-click="addQuestion(0)">Add course question</button>
 			</fieldset>
-			<fieldset>
+            <fieldset class="TextSingle">
 				<legend>Teacher questions</legend>
 				<h3>Text questions</h3>
 				<ul>
@@ -90,7 +89,7 @@
 						<input type="text" ng-model="question.TextEN" name="questionTextEN" />
 						<label>Image URL:</label>
 						<input type="text" ng-model="question.ImageURL"  />
-						{{ question.Text }}||{{question.TextEN}}||{{question.Index}}
+
 					</li>
 				</ul>
 				

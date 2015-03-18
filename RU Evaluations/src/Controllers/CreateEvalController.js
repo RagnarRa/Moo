@@ -99,7 +99,7 @@ angular.module("evaluationApp").controller("CreateEvalController", ["$scope", "$
                 }
             }
         }
-
         return true;
     };
+
 }]);

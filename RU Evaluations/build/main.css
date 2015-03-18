@@ -1,8 +1,47 @@
 .tQuest > div > input {
-  width: 300px;
+  width: 85%;
 }
 .tQuest > div > label {
   width: 100px;
+}
+.TextSingle > ul {
+  list-style-type: none;
+}
+.TextSingle > ul > li {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted black;
+}
+.TextSingle > ul > li > input {
+  width: 70%;
+}
+.TextSingle > ul > li > label {
+  width: 150px;
+}
+.TextSingle > div {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted black;
+}
+.TextSingle > div > input {
+  width: 70%;
+}
+.TextSingle > div > label {
+  width: 150px;
+}
+.TextSingle > div > ul {
+  list-style-type: none;
+}
+.TextSingle > div > ul > li {
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted black;
+}
+.TextSingle > div > ul > li > input {
+  width: 70%;
+}
+.TextSingle > div > ul > li > label {
+  width: 150px;
 }
 .errorMsg {
   font-size: 14px;
