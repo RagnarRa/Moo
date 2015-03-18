@@ -24,6 +24,8 @@ describe('AdminController', function() {
             // backend definition common for all tests
             authRequestHandler = $httpBackend.when('GET', backendUrl + 'evaluationtemplates')
                 .respond(null, null); //.respond(data, headers);
+            $httpBackend.when('GET', backendUrl + 'evaluations')
+                .respond(null, null); //.respond(data, headers);
         }));
 
         afterEach(function () {
@@ -32,7 +34,6 @@ describe('AdminController', function() {
         });
 
         it("*should call /createeval ", function () {
-            authRequestHandler = $httpBackend.when('GET', backendUrl + 'evaluationtemplates')
             spyOn(location, 'path');
             scope.createEval();
             $httpBackend.flush();
