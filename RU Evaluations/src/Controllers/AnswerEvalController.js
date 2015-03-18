@@ -25,7 +25,6 @@ angular.module("evaluationApp").controller("AnswerEvalController", ["$scope", "$
 		});
 	});
 
-
 	$scope.saveEval = function() {
 		var allAnswers = [];
 		for (var i = 0; i < $scope.courseAnswers.length; i++) {
@@ -46,4 +45,24 @@ angular.module("evaluationApp").controller("AnswerEvalController", ["$scope", "$
 			$location.path("/student");
 		});
 	};
+
+    $scope.validateSubmitButton = function(){
+
+        //we want to allow only one question answered, and it does
+        //not matter whether itðs a courseAnswer or a teacherAnswer
+        //if (text === undefined || text.length < 1){
+        for (var i = 0; i < $scope.courseAnswers.length; i++) {
+            if ( ($scope.courseAnswers[i].Value !== undefined ) && ($scope.courseAnswers[i].Value.length > 0) ){
+                return true;
+            }
+        }
+       for (var SSN in $scope.teacherAnswers) {
+            for (i = 0; i < $scope.teacherAnswers[SSN].length; i++) {
+                if (($scope.teacherAnswers[SSN][i].Value !== undefined) && ( $scope.teacherAnswers[SSN][i].Value.length > 0) ){
+                    return true;
+                }
+            }
+        }
+        return false;
+    };
 }]);
