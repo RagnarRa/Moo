@@ -35,3 +35,15 @@
 		</ul>
 	</div>
 </div>
+
+
+<h4>Grafið hér fyrir neðan sínir 2 súlur fyrir hverja textaspurningu. Vinstri súlan táknar hlutfall nemenda sem svöruðu spurningunni, og hægri súlan hlutfall nemenda sem svöruðu henni ekki.</h4> 
+
+<canvas id="bar" class="chart chart-bar" data="data"
+  labels="labels"></canvas> 
+
+<div class="bg-info">
+	<ol>
+		<li ng-repeat="question in statsForTextQuestions">{{ question.Text }}</li>
+	</ol>
+</div>

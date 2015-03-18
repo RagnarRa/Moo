@@ -1,5 +1,4 @@
 angular.module("evaluationApp").factory("TemplateService", ["$http", "UserService", function($http, UserService) {
-	//url: "http://dispatch.ru.is/demo/api/v1/evaluationtemplates
 	var backendUrl = 'http://dispatch.ru.is/h11/api/v1/';
 	return {
 		//Templates
@@ -27,6 +26,7 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 				}
 			});
 		},
+		/*todo: not used
 		getTemplateByID : function(ID) {
 			var token = UserService.getToken();
 			console.log("Using token: " + token);
@@ -38,7 +38,7 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 					'Authorization' : 'Basic ' + token
 				}
 			});
-		},
+		},*/
 		////opens an evaluation for students
 		addEvaluation : function(tID, start, end) {
 			var token = UserService.getToken();
@@ -80,7 +80,7 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 				}
 			});
 		},
-		//My
+		/* todo: not used
 		getCoursesForStudent: function() {
 			var token = UserService.getToken();
 			console.log("Using token: " + token);
@@ -92,7 +92,7 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 					'Authorization' : 'Basic ' + token
 				}
 			});
-		},
+		},*/
 		getEvaluationsForStudent: function() {
 			var token = UserService.getToken();
 			console.log("Using token: " + token);

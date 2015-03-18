@@ -1,4 +1,4 @@
-var app = angular.module("evaluationApp", ['ngRoute']);
+var app = angular.module("evaluationApp", ['ngRoute', 'chart.js']);
  
  app.config(['$routeProvider', '$sceDelegateProvider', function($routeProvider, $sceDelegateProvider) {
 	$routeProvider.when("/", {
