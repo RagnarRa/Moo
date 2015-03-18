@@ -1,8 +1,37 @@
 <h1>{{ templateTitle }} - {{ courseName }}</h1>
 
+<p class="bg-warning">
+	Athuga: Í samráði við Daníel Brand birtum við ekki neina tölfræði hér fyrir single choice spurningar þar sem "count" eigindið fyrir hvert svar úr þeim er aldrei uppfært í API-inu. Það sama gildir um multiple selections nema það að vista svör við þeim er ekki stutt í API-inu eins og er. 
+</p>
+
+<!-- 
 <div ng-repeat="question in courseEvaluationResult.Questions">
 	<h2>{{ question.Text }}</h2>
+	<p ng-if="question.Type!='text'" class="bg-warning">Single choice spurning.. ekkert til að birta (sjá warning efst).</p>
 	<ul class="list-group">
 		<li class="list-group-item" ng-repeat="answer in question.TextResults track by $index" ng-if="answer != null">{{ answer }}</li>
 	</ul>
+</div> -->
+
+<h2>Course Questions</h2>
+
+<div ng-repeat="question in courseQuestions">
+	<h4>{{ question.Text }}</h4>
+	<p ng-if="question.Type!='text'" class="bg-warning">Single choice spurning.. ekkert til að birta (sjá warning efst).</p>
+	<ul class="list-group">
+		<li class="list-group-item" ng-repeat="answer in question.TextResults track by $index" ng-if="answer != null">{{ answer }}</li>
+	</ul>
+</div>
+
+<h2>Teacher Questions</h2>
+
+<div ng-repeat="teacherQuestionSet in teacherQuestions">
+	<h3>{{ teacherQuestionSet.TeacherName }}</h3>
+	<div ng-repeat="question in teacherQuestionSet.Questions">
+		<h4>{{ question.Text }}</h4>
+		<p ng-if="question.Type!='text'" class="bg-warning">Single choice spurning.. ekkert til að birta (sjá warning efst).</p>
+		<ul class="list-group">
+			<li class="list-group-item" ng-repeat="answer in question.TextResults track by $index" ng-if="answer != null">{{ answer }}</li>
+		</ul>
+	</div>
 </div>
