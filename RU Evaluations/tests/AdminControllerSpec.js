@@ -31,9 +31,9 @@ describe('AdminController', function() {
             $httpBackend.verifyNoOutstandingRequest();
         });
 
-        it("should call /createeval ", function () {
+        it("*should call /createeval ", function () {
+            authRequestHandler = $httpBackend.when('GET', backendUrl + 'evaluationtemplates')
             spyOn(location, 'path');
-
             scope.createEval();
             $httpBackend.flush();
             expect(location.path).toHaveBeenCalledWith('/createeval');
