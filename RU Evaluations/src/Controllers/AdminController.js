@@ -3,6 +3,11 @@ angular.module("evaluationApp").controller("AdminController", ["$scope", "$locat
     $scope.resultMsg = "";
     $scope.evaluations = []; 
     $scope.courses = [];
+    $scope.errorMsg = "";
+    $scope.startDate = new Date();
+    $scope.endDate = new Date();
+    $scope.startDate.setDate($scope.startDate.getDate() - 1);
+    $scope.endDate.setDate($scope.endDate.getDate() + 1);
 
 	TemplateService.getTemplates().success(function(data) {
 		$scope.templates = data; 
@@ -22,6 +27,7 @@ angular.module("evaluationApp").controller("AdminController", ["$scope", "$locat
 
     //opens an evaluation for students
 	$scope.addTemplate = function() {
+        $scope.resultMsg = $scope.errorMsg = "";
 		var startDate = $filter('date')($scope.startDate, 'yyyy-MM-ddTHH:mm:ss.sssZ', 'GMT');
 		var endDate = $filter('date')($scope.endDate, 'yyyy-MM-ddTHH:mm:ss.sssZ', 'GMT');
 
@@ -29,10 +35,13 @@ angular.module("evaluationApp").controller("AdminController", ["$scope", "$locat
 		TemplateService.addEvaluation($scope.templateID, startDate, endDate).success(function() {
             $scope.resultMsg = "Evaluations successfully added";
 
+
 		}).error(function(data, status, headers, config) {
 			console.log("Login error, status: " + status + ", Headers:");
 			console.log(headers);
-            $scope.resultMsg = "Error, unable to add evaluation";
+
+            $scope.errorMsg = "Error, unable to add evaluation";
+
 
 		}); 
 	};

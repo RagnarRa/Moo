@@ -19,6 +19,8 @@
 		<label for="endDate">End Date</label>
 		<input type="datetime-local" ng-model="endDate" name="endDate" />
 		<button class="btn btn-default" ng-click="addTemplate()">Add template</button>
+        <div class="errorMsg" ng-show="errorMsg.length" ng-bind="errorMsg"></div>
+        <div class="bg-info" ng-show="resultMsg.length" ng-bind="resultMsg"></div>
 	</div>
 </div>
 <div ng-bind="successMsg"></div>

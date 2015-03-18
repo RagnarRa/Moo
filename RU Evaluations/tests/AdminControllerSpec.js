@@ -70,7 +70,7 @@ describe('AdminController', function() {
             scope.templateID = 1;
             scope.addTemplate();
             $httpBackend.flush();
-            expect(scope.resultMsg).toBe('Error, unable to add evaluation');
+            expect(scope.errorMsg).toBe('Error, unable to add evaluation');
         });
     });
 
