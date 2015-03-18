@@ -47,4 +47,43 @@ describe('AnswerEvalController', function(){
 		$httpBackend.flush();
 		expect(location.path).toHaveBeenCalledWith('/student');
 	});
+
+    describe('validateSubmitButton ', function(){
+
+        it("should validate if there is a value in any teacherAnswer or any courseAnswer", function(){
+            scope.courseAnswers = [{ "QuestionID" : 1, "Value" : "1"}];
+            scope.teacherAnswers = {"1111111111" : [{Value :"bull"}]};
+            expect(scope.validateSubmitButton()).toBe(true);
+            $httpBackend.flush();
+        });
+
+        it("should fail if teacherAnswer and courseAnswer are both missing", function(){
+            expect(scope.validateSubmitButton()).toBe(false);
+            $httpBackend.flush();
+        });
+
+        it("should validate if there is a value in courseAnswer", function(){
+            scope.courseAnswers = [{ "QuestionID" : 1, "Value" : "1"}];
+            expect(scope.validateSubmitButton()).toBe(true);
+            $httpBackend.flush();
+        });
+
+        it("should fail to validate if there is a empty value in courseAnswers", function(){
+            scope.courseAnswers = [{ "QuestionID" : 1, "Value" : ""}];
+            expect(scope.validateSubmitButton()).toBe(false);
+            $httpBackend.flush();
+        });
+
+        it("should validate if there is a value in teacherAnswers", function(){
+            scope.teacherAnswers = {"1111111111" : [{Value :"bull"}]}
+            expect(scope.validateSubmitButton()).toBe(true);
+            $httpBackend.flush();
+        });
+        it("should fail to validate if there is a empty value in teacherAnswers", function(){
+            scope.teacherAnswers = {"1111111111" : [{Value :""}]}
+            expect(scope.validateSubmitButton()).toBe(false);
+            $httpBackend.flush();
+        });
+    });
+
 });
