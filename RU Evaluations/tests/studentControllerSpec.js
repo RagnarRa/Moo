@@ -25,7 +25,7 @@ describe('StudentController', function(){
 	     // Set up the mock http service responses
 	     $httpBackend = $injector.get('$httpBackend');
 	     // backend definition common for all tests
-	     authRequestHandler = $httpBackend.when('GET', 'http://dispatch.ru.is/demo/api/v1/my/evaluations')
+	     authRequestHandler = $httpBackend.when('GET', 'http://dispatch.ru.is/h11/api/v1/my/evaluations')
 	                            .respond(["data"], null); //.respond(data, headers);
    	}));
 

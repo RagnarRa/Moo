@@ -25,7 +25,7 @@ describe('CreateEvalController', function(){
 	     // Set up the mock http service responses
 	     $httpBackend = $injector.get('$httpBackend');
 	     // backend definition common for all tests
-	     authRequestHandler = $httpBackend.when('POST', 'http://dispatch.ru.is/demo/api/v1/evaluationtemplates')
+	     authRequestHandler = $httpBackend.when('POST', 'http://dispatch.ru.is/h11/api/v1/evaluationtemplates')
 	                            .respond(null, null); //.respond(data, headers);
    	}));
 
