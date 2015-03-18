@@ -56,14 +56,31 @@ angular.module("evaluationApp").controller("CreateEvalController", ["$scope", "$
 		});
 	};
 
+    //removes an element with a specific ID
+    $scope.deleteQuestion = function(arr, id){
+
+        var index = -1, i, obj;
+        for(i = 0; i < arr.length; i++){
+            if (arr[i].Index === id ){
+                index = i;
+                break;
+            }
+        }
+        if (index === -1)
+        {
+            return false;
+        }
+        obj = arr[index];
+        return (obj.Index === arr.splice(index, 1)[0].Index); //check if the splice was successful
+    };
+
     $scope.isText = function(text){
         if (text === undefined || text.length < 1){
-            $scope.errorMsg = "You need to fill out this form to be able to subimt it.";
             return false;
         }
         return true;
     };
-
+    
     $scope.validateSubmitButton = function(evaluation){
         var i;
         $scope.errorMsg = "";

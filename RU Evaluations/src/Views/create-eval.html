@@ -33,6 +33,10 @@
 						<input type="text" ng-model="question.TextEN" name="questionTextEN" />
 						<label>Image URL:</label>
 						<input type="text" ng-model="question.ImageURL"  />
+                        <button class="btn btn-default delquestion" ng-click="deleteQuestion(questions.CourseQuestions, question.Index)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            Delete
+                        </button>
 					</li>
 				</ul>
 				
@@ -44,6 +48,10 @@
 						<input type="text" ng-model="question.TextEN" name="questionTextEN" />
 						<label>Image URL:</label>
 						<input type="text" ng-model="question.ImageURL" />
+                         <button class="btn btn-default delquestion" ng-click="deleteQuestion(questions.CourseQuestions, question.Index)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            Delete
+                         </button>
 
 						<h4>Answers:</h4>
 						<ul>
@@ -89,6 +97,10 @@
 						<input type="text" ng-model="question.TextEN" name="questionTextEN" />
 						<label>Image URL:</label>
 						<input type="text" ng-model="question.ImageURL"  />
+                        <button class="btn btn-default delquestion" ng-click="deleteQuestion(questions.TeacherQuestions, question.Index)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            Delete
+                        </button>
 
 					</li>
 				</ul>
@@ -101,7 +113,10 @@
 						<input type="text" ng-model="question.TextEN" name="questionTextEN" />
 						<label>Image URL:</label>
 						<input type="text" ng-model="question.ImageURL"  />
-						{{ question.Text }}||{{question.TextEN}}||{{question.Index}}
+                        <button class="btn btn-default delquestion" ng-click="deleteQuestion(questions.TeacherQuestions, question.Index)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            Delete
+                        </button>
 						<h4>Answers:</h4>
 						<ul>
 							<li ng-repeat="answer in question.Answers track by $index">
