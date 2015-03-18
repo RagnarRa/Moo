@@ -1,5 +1,6 @@
 angular.module("evaluationApp").controller("LoginController", ["$scope", "$location", "LoginService", function($scope, $location, LoginService) {
 	$scope.username = "";
+    $scope.password = "";
 	$scope.token = "";
     $scope.errorMsg="";
 
@@ -18,4 +19,5 @@ angular.module("evaluationApp").controller("LoginController", ["$scope", "$locat
             $scope.errorMsg="Unable to login, please try again.";
 		});
 	};
+
 }]);

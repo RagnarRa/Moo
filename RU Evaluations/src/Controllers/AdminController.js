@@ -58,24 +58,5 @@ angular.module("evaluationApp").controller("AdminController", ["$scope", "$locat
 			$scope.courses = data.Courses; 
 		});
 	};
-
-	/* todo: delete me
-	$scope.test = function() {
-		var obj = null;
-		TemplateService.getEvaluations().success(function(data) {
-			obj = data;
-			console.log("Evaluation templates: ");
-			console.log(obj);
-		});
-
-		TemplateService.getEvaluationByID(42).success(function(data) {
-			console.log("Evaluation with ID 42");
-			console.log(data);
-		});
-
-		TemplateService.getEvaluationByID(50).success(function(data) {
-			console.log("Evaluation with ID 50");
-			console.log(data);
-		});
-	};*/
+	
 }]);

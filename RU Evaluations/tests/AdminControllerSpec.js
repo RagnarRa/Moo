@@ -24,6 +24,8 @@ describe('AdminController', function() {
             // backend definition common for all tests
             authRequestHandler = $httpBackend.when('GET', backendUrl + 'evaluationtemplates')
                 .respond(null, null); //.respond(data, headers);
+            $httpBackend.when('GET', backendUrl + 'evaluations')
+                .respond(null, null); //.respond(data, headers);
         }));
 
         afterEach(function () {
@@ -32,7 +34,6 @@ describe('AdminController', function() {
         });
 
         it("*should call /createeval ", function () {
-            authRequestHandler = $httpBackend.when('GET', backendUrl + 'evaluationtemplates')
             spyOn(location, 'path');
             scope.createEval();
             $httpBackend.flush();
@@ -70,6 +71,28 @@ describe('AdminController', function() {
             scope.addTemplate();
             $httpBackend.flush();
             expect(scope.resultMsg).toBe('Error, unable to add evaluation');
+        });
+    });
+
+    describe('getEvaluationResults', function() {
+        beforeEach(inject(function ($injector) {
+            // Set up the mock http service responses
+            $httpBackend = $injector.get('$httpBackend');
+
+            $httpBackend.when('GET', backendUrl + 'evaluationtemplates')
+                .respond(null, null); //.respond(data, headers);
+            $httpBackend.when('GET', backendUrl + 'evaluations')
+                .respond(null, null); //.respond(data, headers);
+
+            authRequestHandler = $httpBackend.when('GET', backendUrl + 'evaluations/0')
+                .respond({'Courses' : []}, null);
+        }));
+
+        it("should set courses as they are received from the server", function() {
+            scope.evalID = 0;
+            scope.getEvaluationResults();
+            $httpBackend.flush();
+            expect(scope.courses).toBeDefined();
         });
     });
 
