@@ -77,13 +77,17 @@ angular.module("evaluationApp").controller("CreateEvalController", ["$scope", "$
     //checks if a answer is valid
     $scope.checkAnswers = function(arr){
         var i;
+        if (arr.Answers === undefined){
+            return true;  //it's valid to have no answers
+        }
         //todo: do we need to check arr.Weight
-        for(i = 0; i < arr.length; i++){
-            if( ( !$scope.isText(arr.Text)   ) ||
-                ( !$scope.isText(arr.TextEN) )){
-                return false;
+        for(i = 0; i < arr.Answers.length; i++){
+            if( ( !$scope.isText(arr.Answers[i].Text)   ) ||
+                ( !$scope.isText(arr.Answers[i].TextEN) )){
+                return false;  //icelandic and english text required.
             }
         }
+        return true;
     };
 
     $scope.isText = function(text){
