@@ -74,4 +74,26 @@ describe('AdminController', function() {
         });
     });
 
+    describe('getEvaluationResults', function() {
+        beforeEach(inject(function ($injector) {
+            // Set up the mock http service responses
+            $httpBackend = $injector.get('$httpBackend');
+
+            $httpBackend.when('GET', backendUrl + 'evaluationtemplates')
+                .respond(null, null); //.respond(data, headers);
+            $httpBackend.when('GET', backendUrl + 'evaluations')
+                .respond(null, null); //.respond(data, headers);
+
+            authRequestHandler = $httpBackend.when('GET', backendUrl + 'evaluations/0')
+                .respond({'Courses' : []}, null);
+        }));
+
+        it("should set courses as they are received from the server", function() {
+            scope.evalID = 0;
+            scope.getEvaluationResults();
+            $httpBackend.flush();
+            expect(scope.courses).toBeDefined();
+        });
+    });
+
 });
