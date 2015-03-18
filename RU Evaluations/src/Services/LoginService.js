@@ -4,7 +4,7 @@ angular.module("evaluationApp").factory("LoginService", ["$http", "UserService",
 			var objToSend = { "user" : username,
 							  "pass" : password };
 			return $http({ method: "POST",
-						   url: "http://dispatch.ru.is/demo/api/v1/login",
+						   url: "http://dispatch.ru.is/h11/api/v1/login",
 						   data: objToSend }).success(function(data, status, headers, config) {
 						   		console.log("Logged in!");
 						   		console.dir(data);
