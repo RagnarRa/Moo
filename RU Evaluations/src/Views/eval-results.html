@@ -19,7 +19,7 @@
 	<h4>{{ question.Text }}</h4>
 	<p ng-if="question.Type!='text'" class="bg-warning">Single choice spurning.. ekkert til að birta (sjá warning efst).</p>
 	<ul class="list-group">
-		<li class="list-group-item" ng-repeat="answer in question.TextResults track by $index" ng-if="answer != null">{{ answer }}</li>
+		<li class="list-group-item" ng-repeat="answer in question.TextResults track by $index" ng-if="answer != null && answer != ''">{{ answer }}</li>
 	</ul>
 </div>
 

@@ -89,7 +89,7 @@ angular.module("evaluationApp").controller("EvalResultsController", ["$scope", "
 				numUnanswered = 0; 
 				
 				for (j = 0; j < $scope.courseEvaluationResult.Questions[i].TextResults.length; j++) {
-					if ($scope.courseEvaluationResult.Questions[i].TextResults[j] === null) {
+					if ($scope.courseEvaluationResult.Questions[i].TextResults[j] === null || $scope.courseEvaluationResult.Questions[i].TextResults[j] === "") {
 						numUnanswered++; 
 					}
 				}
