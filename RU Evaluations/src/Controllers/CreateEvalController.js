@@ -80,7 +80,7 @@ angular.module("evaluationApp").controller("CreateEvalController", ["$scope", "$
         }
         return true;
     };
-    
+
     $scope.validateSubmitButton = function(evaluation){
         var i;
         $scope.errorMsg = "";

@@ -233,4 +233,25 @@ describe('CreateEvalController', function(){
             expect(scope.validateSubmitButton(evaluation)).toBe(true);
         });
     });
+
+    describe("Delete a question from a array of questions", function() {
+        beforeEach(inject(function($injector) {
+            scope.questions.CourseQuestions = [];
+            scope.questions.CourseQuestions.push({Index: 3, TextEN: "item 3"});
+            scope.questions.CourseQuestions.push({Index: 2, TextEN: "item 2"});
+            scope.questions.CourseQuestions.push({Index: 1, TextEN: "item 1"});
+            scope.questions.CourseQuestions.push({Index: 0, TextEN: "item 0"});
+
+        }));
+        it("should delete one question", function () {
+
+            expect(scope.deleteQuestion(scope.questions.CourseQuestions, 2)).toBe(true);
+            expect(scope.questions.CourseQuestions.length).toBe(3);
+            expect(scope.questions.CourseQuestions[1].Index).toBe(1);
+        });
+        it("should NOT delete a question which does not exist", function () {
+            expect(scope.deleteQuestion(scope.questions.CourseQuestions, 8)).toBe(false);
+            expect(scope.questions.CourseQuestions.length).toBe(4);
+        });
+    });
 }); 
