@@ -74,6 +74,18 @@ angular.module("evaluationApp").controller("CreateEvalController", ["$scope", "$
         return (obj.Index === arr.splice(index, 1)[0].Index); //check if the splice was successful
     };
 
+    //checks if a answer is valid
+    $scope.checkAnswers = function(arr){
+        var i;
+        //todo: do we need to check arr.Weight
+        for(i = 0; i < arr.length; i++){
+            if( ( !$scope.isText(arr.Text)   ) ||
+                ( !$scope.isText(arr.TextEN) )){
+                return false;
+            }
+        }
+    };
+
     $scope.isText = function(text){
         if (text === undefined || text.length < 1){
             return false;
@@ -107,6 +119,10 @@ angular.module("evaluationApp").controller("CreateEvalController", ["$scope", "$
             if( ( !$scope.isText($scope.questions.CourseQuestions[i].Text)   ) ||
                 ( !$scope.isText($scope.questions.CourseQuestions[i].TextEN) )  ){
                 $scope.errorMsg = "All Course questions need to have a question in icelandic and english";
+                return false;
+            }
+            if(!$scope.checkAnswers($scope.questions.CourseQuestions[i])){
+                $scope.errorMsg = "All answers need to have a text in icelandic and english";
                 return false;
             }
         }
