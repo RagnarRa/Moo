@@ -171,8 +171,7 @@ describe('CreateEvalController', function(){
                 TitleEN:     "TitleEN text",
                 IntroTextEN: "IntroTextEN text"
             };
-
-
+            
             expect(scope.validateSubmitButton(evaluation)).toBe(false);
         });
 
