@@ -7,24 +7,20 @@ angular.module("evaluationApp").controller("CreateEvalController", ["$scope", "$
 	$scope.addQuestion = function(type) {
 		if (type === 0) { //Course
 			if ($scope.courseQuestionType !== "text") { //Need to add an answers property (and give the user a chance to add answers)..
-				console.log("not text");
 				//Indexed so we can add answers to it from the view.. where we lose indexing by using filters.
 				$scope.questions.CourseQuestions.push({ "Index" : $scope.questions.CourseQuestions.length, "Text" : "", "TextEN" : "", "ImageURL" : "", "Type" : $scope.courseQuestionType, "Answers" : []});
 			}
 			else {
-				console.log("text");
 				$scope.questions.CourseQuestions.push({ "Index" : $scope.questions.CourseQuestions.length, "Text" : "", "TextEN" : "", "ImageURL" : "", "Type" : $scope.courseQuestionType});
 			}
 		}
 
 		else if (type === 1) { //Teacher
 			if ($scope.teacherQuestionType !== "text") { //Need to add an answers property (and give the user a chance to add answers)..
-				console.log("not text");
 				//Indexed so we can add answers to it from the view.. where we lose indexing by using filters.
 				$scope.questions.TeacherQuestions.push({ "Index" : $scope.questions.TeacherQuestions.length, "Text" : "", "TextEN" : "", "ImageURL" : "", "Type" : $scope.teacherQuestionType, "Answers" : []});
 			}
 			else {
-				console.log("text");
 				$scope.questions.TeacherQuestions.push({ "Index" : $scope.questions.TeacherQuestions.length, "Text" : "", "TextEN" : "", "ImageURL" : "", "Type" : $scope.teacherQuestionType});
 			}
 		}
@@ -48,7 +44,6 @@ angular.module("evaluationApp").controller("CreateEvalController", ["$scope", "$
 		$scope.evaluation["TeacherQuestions"] = $scope.questions.TeacherQuestions;
 
 		TemplateService.createTemplate($scope.evaluation).success(function(data, status, headers, config) {
-			console.log("Template successfully created.");
 			$location.path("/admin");
 		}).error(function(data, status, headers, config) {
 			console.log("Template creation error, status: " + status + ", Headers:");

@@ -6,7 +6,6 @@ angular.module("evaluationApp").factory("UserService", [function() {
 			token = incToken;
 		}, 
 		getToken: function() {
-			console.log("Inside getToken: " + token);
 			return token;
 		},
 		setUsername: function(incUsername) {

@@ -4,7 +4,6 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 		//Templates
 		createTemplate : function(template) {
 			var token = UserService.getToken();
-			console.log("Using token: " + token);
 			return $http({
 				method: "POST",
 				url: backendUrl + "evaluationtemplates",
@@ -16,7 +15,6 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 		},
 		getTemplates : function() {
 			var token = UserService.getToken();
-			console.log("Using token: " + token);
 			return $http({
 				method: "GET",
 				url: backendUrl + "evaluationtemplates",
@@ -42,7 +40,6 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 		////opens an evaluation for students
 		addEvaluation : function(tID, start, end) {
 			var token = UserService.getToken();
-			console.log("Using token: " + token);
 			return $http({
 				method: "POST",
 				url: backendUrl + "evaluations",
@@ -58,7 +55,6 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 		},
 		getEvaluations: function() {
 			var token = UserService.getToken();
-			console.log("Using token: " + token);
 			return $http({
 				method: "GET",
 				url: backendUrl + "evaluations",
@@ -70,7 +66,6 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 		},
 		getEvaluationByID: function(ID) {
 			var token = UserService.getToken();
-			console.log("Using token: " + token);
 			return $http({
 				method: "GET",
 				url: backendUrl + "evaluations/" + ID,
@@ -95,7 +90,6 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 		},*/
 		getEvaluationsForStudent: function() {
 			var token = UserService.getToken();
-			console.log("Using token: " + token);
 			return $http({
 				method: "GET",
 				url: backendUrl + "my/evaluations",
@@ -108,7 +102,6 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 		//Courses
 		getTeachersForCourse: function(course, semester) {
 			var token = UserService.getToken();
-			console.log("Using token: " + token);
 			return $http({
 				method: "GET",
 				url: backendUrl + "courses/" + course + "/" + semester + "/teachers",
@@ -120,7 +113,6 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 		},
 		getEvaluationForCourseByEvalID: function(course, semester, evalID) {
 			var token = UserService.getToken();
-			console.log("Using token: " + token);
 			return $http({
 				method: "GET",
 				url: backendUrl + "courses/" + course + "/" + semester + "/evaluations/" + evalID,
@@ -132,7 +124,6 @@ angular.module("evaluationApp").factory("TemplateService", ["$http", "UserServic
 		},
 		saveAnswersToEvaluationInCourse: function(course, semester, evalID, evaluationAnswers) {
 			var token = UserService.getToken();
-			console.log("Using token: " + token);
 			return $http({
 				method: "POST",
 				url: backendUrl + "courses/" + course + "/" + semester + "/evaluations/" + evalID,

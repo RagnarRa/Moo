@@ -11,9 +11,6 @@ angular.module("evaluationApp").controller("EvalResultsController", ["$scope", "
 	$scope.statsForTextQuestions = []; // { "Text" : "", "PercentAnswered" : 0, "PercentUnanswered" : 0}
     
 	TemplateService.getEvaluationByID(evalID).success(function(data) {
-			console.log("Got the evaluations..");
-			console.log(data);
-			
 			evaluationResults = data;
 			$scope.templateTitle = evaluationResults.TemplateTitle;
 			
@@ -24,11 +21,8 @@ angular.module("evaluationApp").controller("EvalResultsController", ["$scope", "
 				}
 			}
 
-			console.log($scope.courseEvaluationResult);
 			//Fill the object with the names of the teachers for easy access in the view
 			TemplateService.getTeachersForCourse(courseID, semester).success(function(data) {
-				console.log("Got the teachers..");
-				console.log(data);
 				$scope.teachers = data;
 				var i = 0, j = 0;
 				for (i = 0; i < $scope.courseEvaluationResult.Questions.length; i++) {
@@ -37,7 +31,6 @@ angular.module("evaluationApp").controller("EvalResultsController", ["$scope", "
 						for (j = 0; j < $scope.teachers.length; j++) {
 							if ($scope.teachers[j]["SSN"] === $scope.courseEvaluationResult.Questions[i]["TeacherSSN"]) {
 								$scope.courseEvaluationResult.Questions[i]["TeacherName"] = $scope.teachers[j]["FullName"];
-								console.log($scope.courseEvaluationResult.Questions[i]["TeacherName"]);
 								break;
 							}
 						} 
@@ -63,13 +56,6 @@ angular.module("evaluationApp").controller("EvalResultsController", ["$scope", "
 						$scope.courseQuestions.push($scope.courseEvaluationResult.Questions[k]);
 					}
 				}
-
-				console.log("Alright.. let's now post the evaluationresults with the teachers..");
-				console.log($scope.courseEvaluationResult);
-				console.log("Course questions:");
-				console.log($scope.courseQuestions);
-				console.log("Teacher questions:");
-				console.log($scope.teacherQuestions);
 
 				populateCharts();
 			});
@@ -100,9 +86,6 @@ angular.module("evaluationApp").controller("EvalResultsController", ["$scope", "
 				
 			}
 		}
-
-		console.log("STATS: ");
-		console.log($scope.statsForTextQuestions);
 
 		$scope.labels = [];
 		$scope.series = ['Svarað', 'Ósvarað'];

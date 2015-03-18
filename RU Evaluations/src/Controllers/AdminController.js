@@ -24,13 +24,9 @@ angular.module("evaluationApp").controller("AdminController", ["$scope", "$locat
 	$scope.addTemplate = function() {
 		var startDate = $filter('date')($scope.startDate, 'yyyy-MM-ddTHH:mm:ss.sssZ', 'GMT');
 		var endDate = $filter('date')($scope.endDate, 'yyyy-MM-ddTHH:mm:ss.sssZ', 'GMT');
-		console.log("Template ID: " + $scope.templateID);
-		console.log("Start date formatted: " + startDate);
-		console.log("End date formatted: " + endDate);
 
         //opens an evaluation for students
 		TemplateService.addEvaluation($scope.templateID, startDate, endDate).success(function() {
-			console.log("Successfully added a template..");
             $scope.resultMsg = "Evaluations successfully added";
 
 		}).error(function(data, status, headers, config) {
@@ -43,8 +39,6 @@ angular.module("evaluationApp").controller("AdminController", ["$scope", "$locat
 
 	$scope.getEvaluationResults = function() {
 		TemplateService.getEvaluationByID($scope.evalID).success(function(data) {
-			console.log("Got the evaluations..");
-			console.log(data);
 			$scope.courses = data.Courses; 
 		});
 	};
