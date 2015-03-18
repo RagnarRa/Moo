@@ -1,9 +1,9 @@
 <div class="row">
 	<div class="col-md-12">
-		{{ evaluation }}
+
 		<h1>Create an evaluation template</h1>
 		<form name="create-eval-form">
-			<fieldset>
+			<fieldset class="tQuest">
 				<legend>Evaluation info</legend>
 				<div class="form-group">
 					<label for="TitleIS">Title (IS)</label>
@@ -19,10 +19,10 @@
 				</div>
 				<div class="form-group">
 					<label for="IntroTextEN">Intro text (EN)</label>
-					<input type="text" ng-model="evaluation.IntroTextEN" name="IntroTextEN" />
+					<input type="text"  ng-model="evaluation.IntroTextEN" name="IntroTextEN" />
 				</div>
 			</fieldset>
-			<fieldset>
+			<fieldset class="TextSingle">
 				<legend>Course questions</legend>
 				<h3>Text questions</h3>
 				<ul>
@@ -33,7 +33,10 @@
 						<input type="text" ng-model="question.TextEN" name="questionTextEN" />
 						<label>Image URL:</label>
 						<input type="text" ng-model="question.ImageURL"  />
-						{{ question.Text }}||{{question.TextEN}}||{{question.Index}}
+                        <button class="btn btn-default delquestion" ng-click="deleteQuestion(questions.CourseQuestions, question.Index)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            Delete
+                        </button>
 					</li>
 				</ul>
 				
@@ -45,7 +48,11 @@
 						<input type="text" ng-model="question.TextEN" name="questionTextEN" />
 						<label>Image URL:</label>
 						<input type="text" ng-model="question.ImageURL" />
-						{{ question.Text }}||{{question.TextEN}}||{{question.Index}}
+                         <button class="btn btn-default delquestion" ng-click="deleteQuestion(questions.CourseQuestions, question.Index)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            Delete
+                         </button>
+
 						<h4>Answers:</h4>
 						<ul>
 							<li ng-repeat="answer in question.Answers track by $index">
@@ -73,13 +80,13 @@
 					</li>
 				</ul> -->
 
-			  	<input type="radio" ng-model="courseQuestionType" value="text">  Text 
+			  	<input type="radio" ng-model="courseQuestionType" value="text">  Text
 			  	<input type="radio" ng-model="courseQuestionType" value="single"> Single 
 				<input type="radio" ng-model="courseQuestionType" value="multiple"> Multiple 
 
 				<button class="btn btn-default" ng-click="addQuestion(0)">Add course question</button>
 			</fieldset>
-			<fieldset>
+            <fieldset class="TextSingle">
 				<legend>Teacher questions</legend>
 				<h3>Text questions</h3>
 				<ul>
@@ -90,7 +97,11 @@
 						<input type="text" ng-model="question.TextEN" name="questionTextEN" />
 						<label>Image URL:</label>
 						<input type="text" ng-model="question.ImageURL"  />
-						{{ question.Text }}||{{question.TextEN}}||{{question.Index}}
+                        <button class="btn btn-default delquestion" ng-click="deleteQuestion(questions.TeacherQuestions, question.Index)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            Delete
+                        </button>
+
 					</li>
 				</ul>
 				
@@ -102,7 +113,10 @@
 						<input type="text" ng-model="question.TextEN" name="questionTextEN" />
 						<label>Image URL:</label>
 						<input type="text" ng-model="question.ImageURL"  />
-						{{ question.Text }}||{{question.TextEN}}||{{question.Index}}
+                        <button class="btn btn-default delquestion" ng-click="deleteQuestion(questions.TeacherQuestions, question.Index)">
+                            <span class="glyphicon glyphicon-trash"></span>
+                            Delete
+                        </button>
 						<h4>Answers:</h4>
 						<ul>
 							<li ng-repeat="answer in question.Answers track by $index">
@@ -119,13 +133,14 @@
 						<button class="btn btn-default" ng-click="addAnswer(question.Index, 1)">Add answer</button>
 				</div>
 
-			  	<input type="radio" ng-model="teacherQuestionType" value="text">  Text 
+			  	<input type="radio" ng-model="teacherQuestionType" value="text">  Text
 			  	<input type="radio" ng-model="teacherQuestionType" value="single"> Single 
 				<input type="radio" ng-model="teacherQuestionType" value="multiple"> Multiple 
 
 				<button class="btn btn-default" ng-click="addQuestion(1)">Add teacher question</button>
 			</fieldset>
-			<button class="btn btn-default" ng-click="createEval(evaluation)">Save evaluation</button>
+            <div class="errorMsg" ng-show="errorMsg.length" ng-bind="errorMsg"></div>
+			<button class="btn btn-default" ng-disabled="!validateSubmitButton(evaluation)" ng-click="createEval(evaluation)">Save evaluation</button>
 		</form>
 	</div>
 </div>

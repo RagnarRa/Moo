@@ -9,7 +9,9 @@
 				<label for="password">Password:</label>
 				<input type="password" ng-model="password" ng-required="true" name="password" />
 			</div>
+            <div class="errorMsg" ng-show="errorMsg.length" ng-bind="errorMsg"></div>
 			<button class="btn btn-default" ng-click="logIn(username, password)">Log in</button>
+
 		</form>
 	</div>
 </div>
