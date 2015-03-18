@@ -136,4 +136,101 @@ describe('CreateEvalController', function(){
 		expect(scope.questions.TeacherQuestions[0]["Answers"].length).toBe(1);
   	});
   });
+
+    describe("Evaluation form validation check", function() {
+        it("evaluation should not be defined", function () {
+
+            expect(scope.validateSubmitButton()).toBe(false);
+        });
+
+        it("should not allow an empty title", function () {
+            var evaluation = {
+                Title: ""
+            };
+            expect(scope.validateSubmitButton(evaluation)).toBe(false);
+        });
+
+        it("should not validate without a course question", function () {
+            var evaluation = {
+                Title:       "Title text",
+                IntroText:   "IntroText text",
+                TitleEN:     "TitleEN text",
+                IntroTextEN: "IntroTextEN text"
+            };
+            expect(scope.validateSubmitButton(evaluation)).toBe(false);
+        });
+
+        it("should not validate a form if the course question is invalid", function () {
+            var evaluation = {
+                Title:       "Title text",
+                IntroText:   "IntroText text",
+                TitleEN:     "TitleEN text",
+                IntroTextEN: "IntroTextEN text"
+            };
+            scope.questions.CourseQuestions = [];
+            scope.questions.CourseQuestions.push({
+                Text   : "",
+                TextEN : "stuff"
+            });
+
+            expect(scope.validateSubmitButton(evaluation)).toBe(false);
+        });
+
+        it("should not validate a form if a teacher question is invalid", function () {
+            var evaluation = {
+                Title:       "Title text",
+                IntroText:   "IntroText text",
+                TitleEN:     "TitleEN text",
+                IntroTextEN: "IntroTextEN text"
+            };
+            scope.questions.CourseQuestions = [];
+            scope.questions.CourseQuestions.push({
+                Text   : "stuff",
+                TextEN : "stuff"
+            });
+            scope.questions.TeacherQuestions = [];
+            scope.questions.TeacherQuestions.push({
+                Text   : "stuff",
+                TextEN : ""
+            });
+
+            expect(scope.validateSubmitButton(evaluation)).toBe(false);
+        });
+        it("should validate a form if a teacher question is valid", function () {
+            var evaluation = {
+                Title:       "Title text",
+                IntroText:   "IntroText text",
+                TitleEN:     "TitleEN text",
+                IntroTextEN: "IntroTextEN text"
+            };
+            scope.questions.CourseQuestions = [];
+            scope.questions.CourseQuestions.push({
+                Text   : "stuff",
+                TextEN : "stuff"
+            });
+            scope.questions.TeacherQuestions = [];
+            scope.questions.TeacherQuestions.push({
+                Text   : "stuff",
+                TextEN : "stuff"
+            });
+
+            expect(scope.validateSubmitButton(evaluation)).toBe(true);
+        });
+
+        it("should validate a filled out form with one valid course question", function () {
+            var evaluation = {
+                Title:       "Title text",
+                IntroText:   "IntroText text",
+                TitleEN:     "TitleEN text",
+                IntroTextEN: "IntroTextEN text"
+            };
+            scope.questions.CourseQuestions = [];
+            scope.questions.CourseQuestions.push({
+                Text   : "stuff",
+                TextEN : "stuff"
+                });
+
+            expect(scope.validateSubmitButton(evaluation)).toBe(true);
+        });
+    });
 }); 
