@@ -1,5 +1,5 @@
 angular.module("evaluationApp").factory("TemplateService", ["$http", "UserService", function($http, UserService) {
-	//url: "http://dispatch.ru.is/demo/api/v1/evaluationtemplates
+	//backendUrl = 'http://localhost:19358/api/v1/';
 	var backendUrl = 'http://dispatch.ru.is/demo/api/v1/';
 	return {
 		//Templates
