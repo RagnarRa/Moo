@@ -16,7 +16,7 @@
   width: 70%;
 }
 .TextSingle > ul > li > label {
-  width: 150px;
+  width: 190px;
 }
 .TextSingle > div {
   margin-top: 10px;
@@ -27,7 +27,7 @@
   width: 70%;
 }
 .TextSingle > div > label {
-  width: 150px;
+  width: 190px;
 }
 .TextSingle > div > ul {
   list-style-type: none;
@@ -41,7 +41,7 @@
   width: 70%;
 }
 .TextSingle > div > ul > li > label {
-  width: 150px;
+  width: 190px;
 }
 .errorMsg {
   font-size: 14px;

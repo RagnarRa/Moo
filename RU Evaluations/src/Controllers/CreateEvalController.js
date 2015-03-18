@@ -58,6 +58,7 @@ angular.module("evaluationApp").controller("CreateEvalController", ["$scope", "$
 
     $scope.isText = function(text){
         if (text === undefined || text.length < 1){
+            $scope.errorMsg = "You need to fill out this form to be able to subimt it.";
             return false;
         }
         return true;
@@ -65,8 +66,9 @@ angular.module("evaluationApp").controller("CreateEvalController", ["$scope", "$
 
     $scope.validateSubmitButton = function(evaluation){
         var i;
-
+        $scope.errorMsg = "";
         if (evaluation === undefined){
+
             return false;
         }
 
@@ -74,18 +76,21 @@ angular.module("evaluationApp").controller("CreateEvalController", ["$scope", "$
             ( !$scope.isText(evaluation.IntroText)   ) ||
             ( !$scope.isText(evaluation.TitleEN)     ) ||
             ( !$scope.isText(evaluation.IntroTextEN) ) ){
-            return false;  //Title, TitleEN, IntroText and IntroTextEN required
+            $scope.errorMsg = "Title (IS), Title (EN), Intro text (IS) and Intro text (EN) are required";
+            return false;
         }
         //now the sub-questions
         else if ( $scope.questions.CourseQuestions === undefined ||
             $scope.questions.CourseQuestions.length < 1){
+            $scope.errorMsg = "At least one Course question is required";
             return false; //you have no use for a course template without any questions
         }
 
         for(i = 0; i < $scope.questions.CourseQuestions.length ; i++){
             if( ( !$scope.isText($scope.questions.CourseQuestions[i].Text)   ) ||
                 ( !$scope.isText($scope.questions.CourseQuestions[i].TextEN) )  ){
-                return false;  //Every question needs to have a Text and TextEN
+                $scope.errorMsg = "All Course questions need to have a question in icelandic and english";
+                return false;
             }
         }
 
@@ -95,7 +100,8 @@ angular.module("evaluationApp").controller("CreateEvalController", ["$scope", "$
             for(i = 0; i < $scope.questions.TeacherQuestions.length ; i++){
                 if( ( !$scope.isText($scope.questions.TeacherQuestions[i].Text)   ) ||
                     ( !$scope.isText($scope.questions.TeacherQuestions[i].TextEN) )  ){
-                    return false;  //Every question needs to have a Text and TextEN
+                    $scope.errorMsg = "All Teacher questions need to have a question in icelandic and english";
+                    return false;
                 }
             }
         }
