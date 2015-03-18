@@ -19,5 +19,5 @@ angular.module("evaluationApp").controller("LoginController", ["$scope", "$locat
             $scope.errorMsg="Unable to login, please try again.";
 		});
 	};
-    
+
 }]);

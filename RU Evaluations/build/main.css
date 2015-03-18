@@ -58,3 +58,7 @@
 .login .test {
   color: red;
 }
+p.bg-warning {
+  padding: 20px;
+  font-size: 1.5em;
+}
