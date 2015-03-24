@@ -27,6 +27,7 @@ window.Player = (function() {
 
 	//Delta er timi i sekundumf ra sidasta frame
 	Player.prototype.onFrame = function(delta) {
+		/*
 		if (Controls.keys.right) {
 			this.pos.x += delta * SPEED;
 		}
@@ -38,6 +39,14 @@ window.Player = (function() {
 		}
 		if (Controls.keys.up) {
 			this.pos.y -= delta * SPEED;
+		} */
+
+		if (Controls.didJump()) {
+			this.pos.y -= delta * SPEED * 10; 
+		}
+		else {
+			//Gravity
+			this.pos.y += delta * SPEED / 3; 
 		}
 
 		this.checkCollisionWithBounds();

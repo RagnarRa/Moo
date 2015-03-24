@@ -7,7 +7,33 @@
     left: 0;
     width: em(50px);
     height: em(50px);
+    border-radius: 50%;
 
     background: blue;
     transform: translateZ(0);
+}
+
+.Player-Wing {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px; 
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+
+    background: red;
+    transform: translateZ(0);
+    transform-origin: top left;
+    animation: 0.4s flap alternate infinite;
+}
+
+@keyframes flap {
+  from {
+    transform: rotateX(0);
+  }
+  to {
+    transform: rotateX(180deg);
+  }
 }
