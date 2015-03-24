@@ -1,64 +1,107 @@
-.Player {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 5em;
-	height: 5em;
-	background: blue;
-} 
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/main\.scss}line{font-family:\000031}}
+body {
+  background: black;
+}
 
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/main\.scss}line{font-family:\000035}}
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-canvas\.scss}line{font-family:\000033}}
+.GameCanvas {
+  font-size: 10px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 102.4em;
+  height: 57.6em;
+  margin-left: -51.2em;
+  margin-top: -28.8em;
+  overflow: hidden;
+  background: #7ec0ee;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_player\.scss}line{font-family:\000032}}
+.Player {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  height: 24px;
+  border-radius-left: 50%;
+  border-radius-top: 50%;
+  border-radius-right: 50%;
+  border-radius-bottom: 50%;
+  background-image: url("/images/fugl.png");
+  background-size: 100%;
+  transform: translateZ(0);
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_player\.scss}line{font-family:\0000318}}
+.Player-Wing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -8px;
+  margin-top: 1px;
+  width: 20px;
+  height: 25px;
+  background-image: url("/images/wing.png");
+  background-size: 100%;
+  background: chyan;
+  transform: translateZ(0);
+  transform-origin: top left;
+  animation: 0.4s flap alternate infinite;
+}
+
+@keyframes flap {
+  from {
+    transform: rotateX(0);
+  }
+  to {
+    transform: rotateX(180deg);
+  }
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_scoreboard\.scss}line{font-family:\000032}}
 .Scoreboard {
-	position: absolute;
-	left: 50%;
-	top: 10em;
-	height: 30em;
-	width: 40em;
-	margin-left: -20em;
-	box-sizing: border-box;
-	background: purple;
-	text-align: center;
-	-webkit-transform: translate(0, -40em);
-	-webkit-transition: -webkit-transform 0.5s;
+  position: absolute;
+  left: 50%;
+  top: 10em;
+  height: 30em;
+  width: 40em;
+  margin-left: -20em;
+  box-sizing: border-box;
+  background: purple;
+  text-align: center;
+  transform: translate(0, -40em);
+  transition: transform 0.5s;
 }
 
 /**
-* Reset transform to animate it into the correct spot on the screen.
-*/
+ * Reset transform to animate it into the correct spot on the screen.
+ */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_scoreboard\.scss}line{font-family:\0000322}}
 .Scoreboard.is-visible {
-	-webkit-transform: none;
+  transform: none;
 }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_scoreboard\.scss}line{font-family:\0000326}}
 .Scoreboard-restart {
-	margin-top: 20em;
-	font-size: inherit;
-	padding: 0.4em 1.5em;
-	border: 0.2em solid white;
-	background: none;
-	cursor: pointer;
+  margin-top: 20em;
+  font-size: inherit;
+  padding: 0.4em 1.5em;
+  border: 0.2em solid white;
+  background: none;
+  cursor: pointer;
 }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_scoreboard\.scss}line{font-family:\0000336}}
 .Scoreboard-restartText {
-font-family: 'Comic Sans MS', serif;
-font-size: 2.4em;
-color: white;
-}
-body {
-background: black;
-}
-.browsehappy {
-margin: 0.2em 0;
-background: ?#?ccc?;
-color: #000;
-padding: 0.2em 0;
-}
-.GameCanvas {
-font-size: 10px;
-position: absolute;
-left: 50%;
-top: 50%;
-width: 102.4em;
-height: 57.6em;
-margin-left: -51.2em;
-margin-top: -28.8em;
-overflow: hidden;
-background: red;
+  font-family: serif;
+  font-size: 2.4em;
+  color: white;
 }
