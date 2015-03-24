@@ -144,7 +144,8 @@ module.exports = function (grunt) {
         compass: {
             options: {
                 sassDir: '<%= config.app %>/styles',
-                cssDir: '.tmp/styles',
+                //cssDir: '.tmp/styles',
+                cssDir: '<%= config.app %>/styles',
                 generatedImagesDir: '.tmp/images/generated',
                 imagesDir: '<%= config.app %>/images',
                 javascriptsDir: '<%= config.app %>/scripts',
