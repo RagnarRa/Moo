@@ -80,7 +80,7 @@ window.Game = (function() {
 	 */
 	Game.prototype.WORLD_WIDTH = 102.4;
 	Game.prototype.WORLD_HEIGHT = 57.6;
-	Game.prototype.DIRT_HEIGHT = 4; 
+	Game.prototype.DIRT_HEIGHT = 4;
 	Game.prototype.GRASS_HEIGHT = 6;
 
 	return Game;
