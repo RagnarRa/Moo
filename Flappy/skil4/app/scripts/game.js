@@ -65,7 +65,17 @@ window.Game = (function() {
 
 		// Should be refactored into a Scoreboard class.
 		var that = this;
+        var newHighScore = (this.scoreStats.score > this.scoreStats.highscore);
 		var scoreboardEl = this.el.find('.Scoreboard');
+        scoreboardEl.find('#Score').html(this.scoreStats.score);
+        if (newHighScore === true){
+            scoreboardEl.find('.new').show();
+            this.scoreStats.highscore = this.scoreStats.score;
+        }
+        else {
+            scoreboardEl.find('.newHighscore').hide();
+        }
+        scoreboardEl.find('#HighScore').html(this.scoreStats.highscore);
 		scoreboardEl
 			.addClass('is-visible')
 			.find('.Scoreboard-restart')
@@ -75,6 +85,8 @@ window.Game = (function() {
 				});
 	};
 
+
+
 	/**
 	 * Some shared constants. / 1 em
 	 */
@@ -82,6 +94,11 @@ window.Game = (function() {
 	Game.prototype.WORLD_HEIGHT = 57.6;
 	Game.prototype.DIRT_HEIGHT = 4;
 	Game.prototype.GRASS_HEIGHT = 6;
+
+    Game.prototype.scoreStats = {
+        score :0,
+        highscore:1
+    };
 
 	return Game;
 })();

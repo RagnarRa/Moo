@@ -1,3 +1,4 @@
+$ScoreFont : em(24px);
 
 .Scoreboard {
 	position: absolute;
@@ -12,8 +13,11 @@
 	text-align: center;
 
 	// Keep it off-screen
-	transform: translate(0, em(-400px));
+	transform: translate(0, em(-412px));
 	transition: transform 0.5s;
+
+    border-radius: 20%;
+    box-shadow: inset 0 em(10px) em(5px) rgba(255, 255, 255,0.5), 0 em(10px) em(5px) rgba(0, 0, 0, 0.5);
 }
 
 /**
@@ -24,7 +28,7 @@
 }
 
 .Scoreboard-restart {
-	margin-top: em(200px);
+	margin-top: em(35px);
 
 	font-size: inherit;
 	padding: em(4px) em(15px);
@@ -33,8 +37,26 @@
 	cursor: pointer;
 }
 
-.Scoreboard-restartText {
+.Scoreboard-restartText,  .Score,    .HighScore {
 	font-family: serif;
-	font-size: em(24px);
+	font-size: $ScoreFont;
 	color: white;
 }
+
+.Score{
+    margin-top:em(15px);
+    margin-bottom:em(5px);
+}
+
+.newHighscore{
+    font-family: serif;
+    font-size: em(10px);
+    -webkit-transform: rotate(-30deg);
+    color: greenyellow;
+    position: absolute;
+    left: em(29px);
+    top: em(56px);
+    z-index: 1;
+
+}
+
