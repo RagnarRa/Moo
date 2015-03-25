@@ -41,12 +41,22 @@ body {
   position: absolute;
   bottom: 3em;
   left: 0;
-  right: 0;
+  right: -5em;
   height: 7em;
-  background: url("../images/grass-no-space.png") repeat-x;
+  background: url("../images/grass-thinner.png") repeat-x;
   background-size: 5em;
+  animation: slide-left 0.4s infinite linear;
+  transform: translateZ(0);
 }
 
+@keyframes slide-left {
+  from {
+    transform: translateZ(0) none;
+  }
+  to {
+    transform: translateZ(0) translate(-5em, 0);
+  }
+}
 /* line 2, _player.scss */
 .Player {
   position: absolute;
@@ -74,7 +84,7 @@ body {
   height: 25px;
   background-image: url("/images/wing.png");
   background-size: 100%;
-  background-color: blue;
+  background: chyan;
   transform: translateZ(0);
   transform-origin: top left;
   animation: 0.4s flap alternate infinite;
