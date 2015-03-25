@@ -22,3 +22,23 @@
     // Some graphics
     background: #7ec0ee;
 }
+
+.GameCanvas-Dirt {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: em(40px);
+    background: #784800;
+}
+
+.GameCanvas-Grass {
+    z-index: 1;
+    position: absolute; 
+    bottom: em(30px); //10px ofan i dirt 
+    left: 0;
+    right: 0;
+    height: em(70px);
+    background: url('../images/grass-no-space.png') repeat-x;
+    background-size: em(50px);
+}
