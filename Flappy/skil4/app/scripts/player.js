@@ -43,6 +43,15 @@ window.Player = (function() {
 
 		if (Controls.didJump()) {
 			this.pos.y -= delta * SPEED * 10;
+            //.Player-Wing { animation: 0.4s flap alternate infinite;
+            //animation: 0.4s flap alternate infinite
+          //  console.log(document.getElementById('wwing'));//.css('background-color', 'red');
+          //  this.el.css('background-color', 'yellow');
+          //  document.getElementById("wwing").css('background-color', 'red');
+            // /document.getElementById('wwing').css('background-color', 'red');
+            //document.getElementById('wwing').firstChild.css('background-color', 'red');
+
+            //this.el.childNodes[0].css('background-color', 'blue');
 		}
 		else {
 			/*Gravity*/
