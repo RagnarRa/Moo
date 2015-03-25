@@ -42,16 +42,16 @@ window.Player = (function() {
 		} */
 
 		if (Controls.didJump()) {
-			this.pos.y -= delta * SPEED * 10; 
+			this.pos.y -= delta * SPEED * 10;
 		}
 		else {
-			//Gravity
-			this.pos.y += delta * SPEED / 3; 
+			/*Gravity*/
+			this.pos.y += delta * SPEED / 3;
 		}
 
 		this.checkCollisionWithBounds();
 
-		// Update UI
+		/* Update UI*/
 		this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
 	};
 

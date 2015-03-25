@@ -1,9 +1,9 @@
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/main\.scss}line{font-family:\000031}}
+/* line 1, main.scss */
 body {
   background: black;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/main\.scss}line{font-family:\000035}}
+/* line 5, main.scss */
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -11,7 +11,7 @@ body {
   padding: 0.2em 0;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-canvas\.scss}line{font-family:\000033}}
+/* line 3, _game-canvas.scss */
 .GameCanvas {
   font-size: 10px;
   position: absolute;
@@ -25,7 +25,29 @@ body {
   background: #7ec0ee;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_player\.scss}line{font-family:\000032}}
+/* line 26, _game-canvas.scss */
+.GameCanvas-Dirt {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4em;
+  background: #784800;
+}
+
+/* line 35, _game-canvas.scss */
+.GameCanvas-Grass {
+  z-index: 1;
+  position: absolute;
+  bottom: 3em;
+  left: 0;
+  right: 0;
+  height: 7em;
+  background: url("../images/grass-no-space.png") repeat-x;
+  background-size: 5em;
+}
+
+/* line 2, _player.scss */
 .Player {
   position: absolute;
   top: 20px;
@@ -41,7 +63,7 @@ body {
   transform: translateZ(0);
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_player\.scss}line{font-family:\0000318}}
+/* line 18, _player.scss */
 .Player-Wing {
   position: absolute;
   top: 50%;
@@ -66,7 +88,7 @@ body {
     transform: rotateX(180deg);
   }
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_scoreboard\.scss}line{font-family:\000032}}
+/* line 2, _scoreboard.scss */
 .Scoreboard {
   position: absolute;
   left: 50%;
@@ -84,12 +106,12 @@ body {
 /**
  * Reset transform to animate it into the correct spot on the screen.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_scoreboard\.scss}line{font-family:\0000322}}
+/* line 22, _scoreboard.scss */
 .Scoreboard.is-visible {
   transform: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_scoreboard\.scss}line{font-family:\0000326}}
+/* line 26, _scoreboard.scss */
 .Scoreboard-restart {
   margin-top: 20em;
   font-size: inherit;
@@ -99,7 +121,7 @@ body {
   cursor: pointer;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_scoreboard\.scss}line{font-family:\0000336}}
+/* line 36, _scoreboard.scss */
 .Scoreboard-restartText {
   font-family: serif;
   font-size: 2.4em;
