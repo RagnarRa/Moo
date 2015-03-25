@@ -37,8 +37,19 @@
     position: absolute; 
     bottom: em(30px); //10px ofan i dirt 
     left: 0;
-    right: 0;
+    right: em(-50px);
     height: em(70px);
     background: url('../images/grass-no-space.png') repeat-x;
     background-size: em(50px);
+    animation: slide-left 0.4s infinite linear;
+    transform: translateZ(0);
+}
+
+@keyframes slide-left {
+   from {
+      transform: translateZ(0) none;
+   }
+   to {
+      transform: translateZ(0) translate(em(-50px), 0); 
+   }
 }
