@@ -42,7 +42,7 @@ window.Player = (function() {
 		} */
 
 		if (Controls.didJump()) {
-			this.pos.y -= delta * SPEED * 10;
+			this.pos.y -= delta * SPEED * 7;
 		}
 		else {
 			/*Gravity*/
@@ -60,6 +60,8 @@ window.Player = (function() {
 			this.pos.x + WIDTH > this.game.WORLD_WIDTH ||
 			this.pos.y < 0 ||
 			this.pos.y + HEIGHT > (this.game.WORLD_HEIGHT - this.game.DIRT_HEIGHT - this.game.GRASS_HEIGHT + 3)) {
+			var punchAudio = document.getElementsByTagName("audio")[0];
+		    punchAudio.play();
 			return this.game.gameover();
 		}
 	};
