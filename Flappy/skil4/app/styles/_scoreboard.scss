@@ -1,6 +1,7 @@
-$ScoreFont : em(24px);
+@import 'variables';
 
 .Scoreboard {
+    z-index:5;
 	position: absolute;
 	left: 50%;
 	top: em(100px);
@@ -56,7 +57,7 @@ $ScoreFont : em(24px);
     position: absolute;
     left: em(29px);
     top: em(56px);
-    z-index: 1;
+    z-index: 6;
 
 }
 

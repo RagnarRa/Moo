@@ -1,3 +1,5 @@
-call del app\styles\main.css
-call grunt compass
-call grunt server
+cd "C:\git\Vefforritun-2\Flappy\skil4"
+grunt compass
+cd "C:\git\Vefforritun-2\Flappy\skil4"
+grunt server
+cd "C:\git\Vefforritun-2\Flappy\skil4"

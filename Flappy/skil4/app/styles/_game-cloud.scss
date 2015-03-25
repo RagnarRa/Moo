@@ -1,0 +1,41 @@
+@import 'variables';
+
+
+.GameCanvas-Cloud {
+     z-index: 4;
+     position: absolute;
+     top: em(20px); //10px ofan i dirt
+     width:100%;
+     right: -110%;
+     height: em(100px);
+     animation: slide-left-Cloud 20s infinite linear;
+     transform: translateZ(0);
+ }
+
+.x2{
+    z-index: 2;
+    top: em(40px); //10px ofan i dirt
+    height: em(80px);
+    right: -100%;
+    animation: slide-left-Cloud 30s infinite linear;
+}
+.x3 {
+    z-index: 1;
+    top: em(50px); //10px ofan i dirt
+    right: -120%;
+    height: em(40px);
+    animation: slide-left-Cloud 40s infinite linear;
+}
+
+.GameCanvas-Cloud img{
+    height:100%;
+}
+
+@keyframes slide-left-Cloud {
+    from {
+        transform: translateZ(0) none;
+    }
+    to {
+        transform: translateZ(0) translate(-140%, 0);
+    }
+}
