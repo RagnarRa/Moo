@@ -59,7 +59,7 @@ window.Player = (function() {
 		if (this.pos.x < 0 ||
 			this.pos.x + WIDTH > this.game.WORLD_WIDTH ||
 			this.pos.y < 0 ||
-			this.pos.y + HEIGHT > (this.game.WORLD_HEIGHT - this.game.DIRT_HEIGHT - this.game.GRASS_HEIGHT + 2)) {
+			this.pos.y + HEIGHT > (this.game.WORLD_HEIGHT - this.game.DIRT_HEIGHT - this.game.GRASS_HEIGHT + 3)) {
 			return this.game.gameover();
 		}
 	};
