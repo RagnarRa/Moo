@@ -1,3 +1,9 @@
+body {
+    background-color: #b0c4de;
+}
+.cont {
+    position: relative; 
+}
 
 .Player {
     position: absolute;
@@ -9,7 +15,7 @@
     border-radius-top: 50%;
     border-radius-right: 50%;
     border-radius-bottom: 50%;
-    background-image: url("/images/fugl.png");
+    background-image: url("fugl.png");
     background-size: 100%;
     //background: yellow;
     transform: translateZ(0);
@@ -24,7 +30,7 @@
     width: 20px;
     height: 25px;
     //border-radius-top: 30%;
-	background-image: url("/images/wing.png");
+	background-image: url("wing.png");
 	background-size: 100%;
     background: chyan;
     transform: translateZ(0);

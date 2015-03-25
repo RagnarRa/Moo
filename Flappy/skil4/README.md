@@ -9,9 +9,30 @@ This game project has the following:
 * A "Game Over" screen when player is moved outside bounds, where the game can be restarted.
 
 ## Setup
+Before installing this package you will need to have set up git, Node JS with npm, grunt, bower, ruby, sass and compass.  If you don't have that installed, this is how you do it on windows.
+*   install Git [from here](http://git-scm.com/download/win "Download and install it from here") see:
+*   install Node JS with npm [from here]( https://nodejs.org/ "Download and install it from here") with all features.  You will need npm install as administrator.
+*   install [Ruby](https://www.ruby-lang.org/en/documentation/installation/ "Many Ruby installers for various systems"). Here is the [windows installer](http://rubyinstaller.org/downloads/ "Download and install the windows installer it from here").  Be sure when installing Ruby, to add Ruby executables to your PATH. 
+
+*   Run command line promt as Administrator
+
+    install grunt, bower, sass and compass:
+ ```sh
+	  npm install -g grunt-cli
+	  npm install -g bower
+	  gem install sass
+	  gem install compass
+```
+### finally in the command promt do:
+#### on windows
+```
+install.bat
+```
+#### on Unix/Linux
 
 ```
 npm install
 bower install
+grunt compass
 grunt server
 ```
