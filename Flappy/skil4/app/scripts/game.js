@@ -55,7 +55,7 @@ window.Game = (function() {
 	 * Resets the state of the game so a new game can be started.
 	 */
 	Game.prototype.reset = function() {
-        this.scoreStats.score = 0;
+        this.setScore(0);
 		this.player.reset();
 	};
 
@@ -150,6 +150,12 @@ window.Game = (function() {
 	Game.prototype.DIRT_HEIGHT = 4;
 	Game.prototype.GRASS_HEIGHT = 6;
 
+    Game.prototype.addScore = function(){
+        this.scoreStats.score++;
+    };
+    Game.prototype.setScore = function(newScore){
+        this.scoreStats.score = newScore;
+    };
     Game.prototype.scoreStats = {
         score :0,
         highscore:1
