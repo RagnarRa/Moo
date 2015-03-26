@@ -88,6 +88,7 @@ window.Game = (function() {
             vol = 1;
         }
         console.log('after  vol:'+vol);
+        this.lastVolume = vol;
         this.setVolume(vol);
 
     };

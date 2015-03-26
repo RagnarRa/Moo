@@ -13,13 +13,29 @@ body {
 
 /* line 14, main.scss */
 .volume {
+  position: absolute;
+  left: 12em;
+  top: 3em;
+  height: 1.8em;
   cursor: pointer;
-  margin-right: 0.3em;
+  background-color: purple;
+  border-radius: 50%;
 }
 
-/* line 18, main.scss */
+/* line 24, main.scss */
+.volume:active {
+  background-color: #7ec0ee;
+}
+
+/* line 27, main.scss */
+#volume-up {
+  left: 14.2em;
+}
+
+/* line 30, main.scss */
 .volume img {
   width: 1.8em;
+  height: 1.8em;
 }
 
 /* line 5, _game-cloud.scss */
