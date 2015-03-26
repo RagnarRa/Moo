@@ -12,7 +12,6 @@ window.Game = (function() {
 		this.player = new window.Player(this.el.find('.Player'), this);
 		this.isPlaying = false;
         this.lastVolume = 1;
-
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
 	};
@@ -45,7 +44,7 @@ window.Game = (function() {
 	Game.prototype.start = function() {
 		this.reset();
         this.runAnimations();
-		// Restart the onFrame loop
+        //this.setScore(this.scoreStats.highscore+1);
 		this.lastFrame = +new Date() / 1000;
 		window.requestAnimationFrame(this.onFrame);
 		this.isPlaying = true;
@@ -58,22 +57,6 @@ window.Game = (function() {
         this.setScore(0);
 		this.player.reset();
 	};
-
-    /*document.getElementById('toggle-audio').addEventListener('click', function() {
-        if (!isMuted) {
-            punchAudio.volume = 0;
-            backgroundAudio.volume = 0;
-            flapAudio.volume = 0;
-            isMuted = true;
-        }
-        else {
-            punchAudio.volume = 1;
-            backgroundAudio.volume = 1;
-            flapAudio.volume = 1;
-            isMuted = false;
-        }
-    });*/
-
 
     Game.prototype.VolumeChange = function(step){
 
@@ -126,6 +109,9 @@ window.Game = (function() {
 
         scoreboardEl.find('#Score').html(this.scoreStats.score);
         if (newHighScore === true){
+            var hsAudio = document.getElementById("audioHighscore");
+            hsAudio.volume = 1;
+            hsAudio.play();
             scoreboardEl.find('.new').show();
             this.scoreStats.highscore = this.scoreStats.score;
         }
