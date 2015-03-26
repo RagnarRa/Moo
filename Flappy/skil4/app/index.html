@@ -24,15 +24,40 @@
         <![endif]-->
 
         <div class="GameCanvas">
-            <div class="GameCanvas-Cloud animation">
+            <!--<div class="GameCanvas-Cloud animation">
                 <img src="../images/sky.png" alt="" />
             </div>
             <div class="GameCanvas-Cloud x2 animation">
-                <img src="../images/sky.png" alt="" />
+            <img src="../images/sky.png" alt="" />
             </div>
             <div class="GameCanvas-Cloud x3 animation">
                 <img src="../images/sky.png" alt="" />
             </div>
+            -->
+            <div id="cloud1" class="GameCanvas-Cloud animation cloud">
+                <div class="cx1"></div>
+                <div class="cx2"></div>
+                <div class="cx3"></div>
+                <div class="cx4"></div>
+                <div class="cx5"></div>
+            </div>
+
+            <div id="cloud2" class="GameCanvas-Cloud x2 animation cloud">
+                <div class="cx1"></div>
+                <div class="cx2"></div>
+                <div class="cx3"></div>
+                <div class="cx4"></div>
+                <div class="cx5"></div>
+            </div>
+            <div id="cloud3" class="GameCanvas-Cloud x3 animation cloud">
+                <div class="cx1"></div>
+                <div class="cx2"></div>
+                <div class="cx3"></div>
+                <div class="cx4"></div>
+                <div class="cx5"></div>
+            </div>
+
+
             <div class="Player">
                 <div id ="wwing" class="Player-Wing animation"></div>
             </div>
@@ -81,7 +106,12 @@
 
 
 
-        <!-- build:js scripts/vendor.js -->
+
+
+
+
+
+                                <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <!-- endbower -->

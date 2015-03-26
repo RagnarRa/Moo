@@ -13,6 +13,7 @@ body {
 
 /* line 14, main.scss */
 .volume {
+  z-index: 5;
   position: absolute;
   left: 12em;
   top: 3em;
@@ -22,23 +23,157 @@ body {
   border-radius: 50%;
 }
 
-/* line 24, main.scss */
+/* line 25, main.scss */
 .volume:active {
   background-color: #7ec0ee;
 }
 
-/* line 27, main.scss */
+/* line 28, main.scss */
 #volume-up {
   left: 14.2em;
 }
 
-/* line 30, main.scss */
+/* line 31, main.scss */
 .volume img {
   width: 1.8em;
   height: 1.8em;
 }
 
 /* line 5, _game-cloud.scss */
+.cloud {
+  width: 17.2em;
+  height: 12.3em;
+}
+
+/* line 10, _game-cloud.scss */
+.cloud div {
+  position: absolute;
+  background-color: #f6f6f6;
+  border-radius: 50%;
+  border-width: 0.5em;
+}
+
+/* line 19, _game-cloud.scss */
+#cloud1 .cx1 {
+  top: 4em;
+  left: 1em;
+  width: 6em;
+  height: 5em;
+}
+
+/* line 20, _game-cloud.scss */
+#cloud1 .cx2 {
+  top: 2em;
+  left: 4em;
+  width: 5em;
+  height: 5em;
+}
+
+/* line 21, _game-cloud.scss */
+#cloud1 .cx3 {
+  top: 3em;
+  left: 5em;
+  width: 10em;
+  height: 10em;
+}
+
+/* line 22, _game-cloud.scss */
+#cloud1 .cx4 {
+  top: 3em;
+  left: 1em;
+  width: 16em;
+  height: 8em;
+}
+
+/* line 23, _game-cloud.scss */
+#cloud1 .cx5 {
+  top: 1em;
+  left: 7em;
+  width: 7em;
+  height: 7em;
+}
+
+/* line 19, _game-cloud.scss */
+#cloud2 .cx1 {
+  top: 2.4em;
+  left: 0.6em;
+  width: 3.6em;
+  height: 3em;
+}
+
+/* line 20, _game-cloud.scss */
+#cloud2 .cx2 {
+  top: 1.2em;
+  left: 2.4em;
+  width: 3em;
+  height: 3em;
+}
+
+/* line 21, _game-cloud.scss */
+#cloud2 .cx3 {
+  top: 1.8em;
+  left: 3em;
+  width: 6em;
+  height: 6em;
+}
+
+/* line 22, _game-cloud.scss */
+#cloud2 .cx4 {
+  top: 1.8em;
+  left: 0.6em;
+  width: 9.6em;
+  height: 4.8em;
+}
+
+/* line 23, _game-cloud.scss */
+#cloud2 .cx5 {
+  top: 0.6em;
+  left: 4.2em;
+  width: 4.2em;
+  height: 4.2em;
+}
+
+/* line 19, _game-cloud.scss */
+#cloud3 .cx1 {
+  top: 1.2em;
+  left: 0.3em;
+  width: 1.8em;
+  height: 1.5em;
+}
+
+/* line 20, _game-cloud.scss */
+#cloud3 .cx2 {
+  top: 0.6em;
+  left: 1.2em;
+  width: 1.5em;
+  height: 1.5em;
+}
+
+/* line 21, _game-cloud.scss */
+#cloud3 .cx3 {
+  top: 0.9em;
+  left: 1.5em;
+  width: 3em;
+  height: 3em;
+}
+
+/* line 22, _game-cloud.scss */
+#cloud3 .cx4 {
+  top: 0.9em;
+  left: 0.3em;
+  width: 4.8em;
+  height: 2.4em;
+}
+
+/* line 23, _game-cloud.scss */
+#cloud3 .cx5 {
+  top: 0.3em;
+  left: 2.1em;
+  width: 2.1em;
+  height: 2.1em;
+}
+
+/* line 31, _game-cloud.scss */
 .GameCanvas-Cloud {
   z-index: 4;
   position: absolute;
@@ -46,34 +181,34 @@ body {
   width: 100%;
   right: -110%;
   height: 10em;
-  animation: slide-left-Cloud 20s infinite linear;
+  animation: slide-left-Cloud 30s infinite linear;
   transform: translateZ(0);
 }
 
-/* line 16, _game-cloud.scss */
+/* line 42, _game-cloud.scss */
 .x2 {
   z-index: 2;
   top: 10em;
   height: 8em;
   right: -100%;
-  animation: slide-left-Cloud 30s infinite linear;
+  animation: slide-left-Cloud 40s infinite linear;
 }
 
-/* line 24, _game-cloud.scss */
+/* line 50, _game-cloud.scss */
 .run {
   transform: none;
 }
 
-/* line 29, _game-cloud.scss */
+/* line 55, _game-cloud.scss */
 .x3 {
   z-index: 1;
   top: 20em;
   right: -120%;
   height: 4em;
-  animation: slide-left-Cloud 50s infinite linear;
+  animation: slide-left-Cloud 60s infinite linear;
 }
 
-/* line 37, _game-cloud.scss */
+/* line 63, _game-cloud.scss */
 .GameCanvas-Cloud img {
   height: 100%;
 }
@@ -140,16 +275,13 @@ body {
   left: 20px;
   width: 50px;
   height: 24px;
-  border-radius-left: 50%;
-  border-radius-top: 50%;
-  border-radius-right: 50%;
-  border-radius-bottom: 50%;
+  border-radius: 50%;
   background-image: url("/images/fugl.png");
   background-size: 100%;
   transform: translateZ(0);
 }
 
-/* line 20, _player.scss */
+/* line 17, _player.scss */
 .Player-Wing {
   position: absolute;
   top: 50%;
@@ -166,7 +298,7 @@ body {
   animation: 0.4s flap alternate infinite;
 }
 
-/* line 37, _player.scss */
+/* line 34, _player.scss */
 .Player-Wing.is-stopped {
   transform: none;
 }

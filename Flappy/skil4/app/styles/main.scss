@@ -12,6 +12,7 @@ body {
 }
 
 .volume{
+    z-index:5;
     position:absolute;
     left: em(120px);
     top: em(30px);
@@ -28,6 +29,7 @@ body {
     left: em(142px);
 }
 .volume img{
+
     width:em(18px);
     height:em(18px);
 }

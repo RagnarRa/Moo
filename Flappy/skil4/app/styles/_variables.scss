@@ -2,6 +2,6 @@ $base-font-size: 10px;
 $ScoreFont : em(24px);
 
 
-@function em($px, $base: $base-font-size) {
-    @return ($px / $base) * 1em;
-}
+    @function em($px, $base: $base-font-size) {
+        @return ($px / $base) * 1em;
+    }
