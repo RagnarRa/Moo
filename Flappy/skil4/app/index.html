@@ -24,17 +24,17 @@
         <![endif]-->
 
         <div class="GameCanvas">
-            <div id="x1" class="GameCanvas-Cloud">
+            <div class="GameCanvas-Cloud animation">
                 <img src="../images/sky.png" alt="" />
             </div>
-            <div id="x2" class="GameCanvas-Cloud x2 run">
+            <div class="GameCanvas-Cloud x2 animation">
                 <img src="../images/sky.png" alt="" />
             </div>
-            <div id="x3" class="GameCanvas-Cloud x3">
+            <div class="GameCanvas-Cloud x3 animation">
                 <img src="../images/sky.png" alt="" />
             </div>
             <div class="Player">
-                <div id ="wwing" class="Player-Wing"></div>
+                <div id ="wwing" class="Player-Wing animation"></div>
             </div>
 
             <div class="Scoreboard">
@@ -54,7 +54,7 @@
                 </button>
             </div>
 
-            <div class="GameCanvas-Grass"></div>
+            <div class="GameCanvas-Grass animation"></div>
             <div class="GameCanvas-Dirt"></div>
         </div>
         <!-- Background mewsik
@@ -68,8 +68,15 @@
         <audio src="audio/gardenparty.mp3" autoplay loop>
             <p>Your browser does not support the audio element.</p>
         </audio>
+        <span id="volume-down" class="volume">
+            <img src="../images/volminus.png" alt="increase volume"/>
+        </span>
+        <span id="volume-up" class="volume" >
+            <img src="../images/volplus.png" alt="increase volume"/>
+        </span>
 
-        <button id="toggle-audio">Toggle audio sound</button>
+
+
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->

@@ -16,6 +16,7 @@
     transform: translateZ(0);
 }
 
+
 .Player-Wing {
     position: absolute;
     top: 50%;
@@ -31,6 +32,10 @@
     transform: translateZ(0);
     transform-origin: top left;
     animation: 0.4s flap alternate infinite;
+}
+
+.Player-Wing.is-stopped {
+    transform: none;
 }
 
 @keyframes flap {

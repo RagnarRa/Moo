@@ -11,6 +11,7 @@ window.Game = (function() {
 		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this);
 		this.isPlaying = false;
+        this.lastVolume = 1;
 
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
@@ -58,20 +59,60 @@ window.Game = (function() {
 		this.player.reset();
 	};
 
-	/**
-	 * Signals that the game is over.
-	 */
+    /*document.getElementById('toggle-audio').addEventListener('click', function() {
+        if (!isMuted) {
+            punchAudio.volume = 0;
+            backgroundAudio.volume = 0;
+            flapAudio.volume = 0;
+            isMuted = true;
+        }
+        else {
+            punchAudio.volume = 1;
+            backgroundAudio.volume = 1;
+            flapAudio.volume = 1;
+            isMuted = false;
+        }
+    });*/
+
+
+    Game.prototype.VolumeChange = function(step){
+
+        var vol = document.getElementsByTagName("audio")[0].volume;
+        console.log('before vol:'+vol);
+        vol += step;
+
+        if (vol < 0){
+            vol = 0;
+        }
+        if (vol > 1){
+            vol = 1;
+        }
+        console.log('after  vol:'+vol);
+        this.setVolume(vol);
+
+    };
+    Game.prototype.setVolume = function(volume){
+        var audios = document.getElementsByTagName("audio");
+        for(var i = 0 ; i < audios.length; i++){
+            audios[i].volume = volume;
+        }
+    };
+
     Game.prototype.pauseAnimations = function (){
-        $('#x1').css('webkitAnimationPlayState', 'paused');
-        $('#x2').css('webkitAnimationPlayState', 'paused');
-        $('#x3').css('webkitAnimationPlayState', 'paused');
+        $('.animation').css('webkitAnimationPlayState', 'paused');
+        this.lastVolume = document.getElementsByTagName("audio")[0].volume;
+        this.setVolume(0);
+
+
     };
     Game.prototype.runAnimations = function (){
-        $('#x1').css('webkitAnimationPlayState', 'running');
-        $('#x2').css('webkitAnimationPlayState', 'running');
-        $('#x3').css('webkitAnimationPlayState', 'running');
+        $('.animation').css('webkitAnimationPlayState', 'running');
+        this.setVolume(this.lastVolume);
     };
-	Game.prototype.gameover = function() {
+    /**
+     * Signals that the game is over.
+     */
+    Game.prototype.gameover = function() {
 		this.isPlaying = false;
 
 		// Should be refactored into a Scoreboard class.
@@ -82,11 +123,6 @@ window.Game = (function() {
         var parent = $( this ).parent();
         this.pauseAnimations();
 
-/*
-        $('#x1').css('webkitAnimationPlayState', 'paused');
-        $('#x2').css('webkitAnimationPlayState', 'paused');
-        $('#x3').css('webkitAnimationPlayState', 'paused');
-*/
         scoreboardEl.find('#Score').html(this.scoreStats.score);
         if (newHighScore === true){
             scoreboardEl.find('.new').show();
@@ -104,8 +140,6 @@ window.Game = (function() {
 					that.start();
 				});
 	};
-
-
 
 	/**
 	 * Some shared constants. / 1 em
