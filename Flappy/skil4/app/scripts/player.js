@@ -57,7 +57,7 @@ window.Player = (function() {
 		this.checkCollisionWithBounds();
 
 		/* Update UI*/
-		this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em) rotate(' + this.angle + 'deg)');
+		this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em) rotateZ(0deg) rotate(' + this.angle + 'deg)');
 	};
 
 	Player.prototype.checkCollisionWithBounds = function() {
