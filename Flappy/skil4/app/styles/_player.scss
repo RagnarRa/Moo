@@ -26,10 +26,9 @@
     //border-radius-top: 30%;
 	background-image: url("/images/wing.png");
 	background-size: 100%;
-    background: chyan;
     transform: translateZ(0);
     transform-origin: top left;
-    animation: 0.4s flap alternate infinite;
+    animation: 0.1s flap alternate infinite;
 }
 
 @keyframes flap {

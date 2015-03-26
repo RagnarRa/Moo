@@ -45,6 +45,29 @@
     transform: translateZ(0);
 }
 
+
+.GameCanvas-PipeUpper {
+    position: absolute;
+    width: 75px;
+    height: 250px;
+    background: green;
+    top: 0px;
+    right: 0px;
+    border: 1px solid black;
+    transform: translateZ(0);
+}
+
+.GameCanvas-PipeLower {
+    position: absolute;
+    background: green;
+    width: 75px;
+    height: 180px;
+    bottom: em(40px); //dirt
+    right: 0px; 
+    border: 1px solid black; 
+    transform: translateZ(0);
+}
+
 @keyframes slide-left {
    from {
       transform: translateZ(0) none;

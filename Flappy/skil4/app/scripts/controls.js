@@ -52,7 +52,6 @@ window.Controls = (function() {
     };
 
     Controls.prototype._onMouseDown = function(e) {
-        console.log("Hello");
         if (!this.keys['mouse']) {
             this._didJump = true; 
         }

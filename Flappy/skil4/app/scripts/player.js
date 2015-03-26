@@ -7,12 +7,15 @@ window.Player = (function() {
 	// for 1024x576px canvas.
 	var SPEED = 30; // * 10 pixels per second
 	var WIDTH = 5;
-	var HEIGHT = 5;
+	var HEIGHT = 2.4;
 	var INITIAL_POSITION_X = 30;
 	var INITIAL_POSITION_Y = 25;
+	//var INITIAL_POSITION_X = 0, INITIAL_POSITION_Y = 0;
 
 	var Player = function(el, game) {
 		this.el = el;
+		console.log("Player in player: ");
+		console.log(this.el);
 		this.game = game;
 		this.pos = { x: 0, y: 0 };
 	};
@@ -40,6 +43,7 @@ window.Player = (function() {
 		if (Controls.keys.up) {
 			this.pos.y -= delta * SPEED;
 		} */
+		console.log("(" + this.pos.x + ", " + this.pos.y + ")");
 
 		if (Controls.didJump()) {
 			this.pos.y -= delta * SPEED * 7;
@@ -59,7 +63,7 @@ window.Player = (function() {
 		if (this.pos.x < 0 ||
 			this.pos.x + WIDTH > this.game.WORLD_WIDTH ||
 			this.pos.y < 0 ||
-			this.pos.y + HEIGHT > (this.game.WORLD_HEIGHT - this.game.DIRT_HEIGHT - this.game.GRASS_HEIGHT + 3)) {
+			this.pos.y + HEIGHT > (this.game.WORLD_HEIGHT - this.game.DIRT_HEIGHT - this.game.GRASS_HEIGHT)) {
 			var punchAudio = document.getElementsByTagName("audio")[0];
 		    punchAudio.play();
 			return this.game.gameover();
