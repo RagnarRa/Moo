@@ -43,7 +43,7 @@ window.Game = (function() {
 	 */
 	Game.prototype.start = function() {
 		this.reset();
-
+        this.runAnimations();
 		// Restart the onFrame loop
 		this.lastFrame = +new Date() / 1000;
 		window.requestAnimationFrame(this.onFrame);
@@ -54,19 +54,39 @@ window.Game = (function() {
 	 * Resets the state of the game so a new game can be started.
 	 */
 	Game.prototype.reset = function() {
+        this.scoreStats.score = 0;
 		this.player.reset();
 	};
 
 	/**
 	 * Signals that the game is over.
 	 */
+    Game.prototype.pauseAnimations = function (){
+        $('#x1').css('webkitAnimationPlayState', 'paused');
+        $('#x2').css('webkitAnimationPlayState', 'paused');
+        $('#x3').css('webkitAnimationPlayState', 'paused');
+    };
+    Game.prototype.runAnimations = function (){
+        $('#x1').css('webkitAnimationPlayState', 'running');
+        $('#x2').css('webkitAnimationPlayState', 'running');
+        $('#x3').css('webkitAnimationPlayState', 'running');
+    };
 	Game.prototype.gameover = function() {
 		this.isPlaying = false;
 
 		// Should be refactored into a Scoreboard class.
 		var that = this;
+
         var newHighScore = (this.scoreStats.score > this.scoreStats.highscore);
 		var scoreboardEl = this.el.find('.Scoreboard');
+        var parent = $( this ).parent();
+        this.pauseAnimations();
+
+/*
+        $('#x1').css('webkitAnimationPlayState', 'paused');
+        $('#x2').css('webkitAnimationPlayState', 'paused');
+        $('#x3').css('webkitAnimationPlayState', 'paused');
+*/
         scoreboardEl.find('#Score').html(this.scoreStats.score);
         if (newHighScore === true){
             scoreboardEl.find('.new').show();

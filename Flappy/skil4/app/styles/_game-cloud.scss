@@ -1,30 +1,37 @@
 @import 'variables';
 
+$clode-duration:20s;
 
 .GameCanvas-Cloud {
      z-index: 4;
      position: absolute;
-     top: em(20px); //10px ofan i dirt
+     top: em(20px);
      width:100%;
      right: -110%;
      height: em(100px);
-     animation: slide-left-Cloud 20s infinite linear;
+     animation: slide-left-Cloud $clode-duration infinite linear;
      transform: translateZ(0);
  }
 
 .x2{
     z-index: 2;
-    top: em(40px); //10px ofan i dirt
+    top: em(100px);
     height: em(80px);
     right: -100%;
-    animation: slide-left-Cloud 30s infinite linear;
+    animation: slide-left-Cloud ($clode-duration + 10s) infinite linear;
 }
+
+.run {
+    transform: none;
+}
+
+
 .x3 {
     z-index: 1;
-    top: em(50px); //10px ofan i dirt
+    top: em(200px);
     right: -120%;
     height: em(40px);
-    animation: slide-left-Cloud 40s infinite linear;
+    animation: slide-left-Cloud ($clode-duration + 30s) infinite linear;
 }
 
 .GameCanvas-Cloud img{

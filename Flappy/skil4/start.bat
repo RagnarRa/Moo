@@ -1,5 +1,6 @@
-cd "C:\git\Vefforritun-2\Flappy\skil4"
-grunt compass
-cd "C:\git\Vefforritun-2\Flappy\skil4"
-grunt server
-cd "C:\git\Vefforritun-2\Flappy\skil4"
+SET OLDDIR=%CD%
+call grunt compass
+CD %OLDDIR%
+call grunt server
+CD %OLDDIR%
+SET OLDDIR=
