@@ -12,28 +12,10 @@ window.Pipe = (function() {
 	var INITIAL_POSITION_Y = 0;
 
 	//40px i dirt.  536px eftir.. tokum 150px í gat.. 386px eftir sem deilist a upper og lower.. account f. 2px border
-	//var UPPERHEIGHT = 23;
-	//var LOWERHEIGHT = 15.6;
 
 	var Pipe = function(pipes, game) {
 		this.pipes = pipes;
 		this.game = game;
-		//var availableHeight = this.game.WORLD_HEIGHT - this.game.GAP - this.game.DIRT_HEIGHT;
-		/*
-		for (var i = 0; i < pipes.length; i++) {
-			this.pipes[i].UpperHeight = 23;
-			this.pipes[i].LowerHeight = 15.6;
-		}
-		
-		$.each(this.pipes[0].Pipe, function( index, value ) {
-			if ($(value).hasClass('GameCanvas-PipeUpper')) {
-				$(value).css('height', '40px');
-			}
-			else if ($(value).hasClass('GameCanvas-PipeLower')) {
-			}
-		});*/
-		//console.log(this.pipes[0].Pipe.find('GameCanvas-PipeUpper'));
-
 	};
 
 	 /**
