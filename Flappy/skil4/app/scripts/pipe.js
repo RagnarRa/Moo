@@ -12,16 +12,28 @@ window.Pipe = (function() {
 	var INITIAL_POSITION_Y = 0;
 
 	//40px i dirt.  536px eftir.. tokum 150px í gat.. 386px eftir sem deilist a upper og lower.. account f. 2px border
-	var UPPERHEIGHT = 23;
-	var LOWERHEIGHT = 15.6;
+	//var UPPERHEIGHT = 23;
+	//var LOWERHEIGHT = 15.6;
 
 	var Pipe = function(pipes, game) {
 		this.pipes = pipes;
 		this.game = game;
+		//var availableHeight = this.game.WORLD_HEIGHT - this.game.GAP - this.game.DIRT_HEIGHT;
+		/*
 		for (var i = 0; i < pipes.length; i++) {
 			this.pipes[i].UpperHeight = 23;
 			this.pipes[i].LowerHeight = 15.6;
 		}
+		
+		$.each(this.pipes[0].Pipe, function( index, value ) {
+			if ($(value).hasClass('GameCanvas-PipeUpper')) {
+				$(value).css('height', '40px');
+			}
+			else if ($(value).hasClass('GameCanvas-PipeLower')) {
+			}
+		});*/
+		//console.log(this.pipes[0].Pipe.find('GameCanvas-PipeUpper'));
+
 	};
 
 	 /**
@@ -31,11 +43,44 @@ window.Pipe = (function() {
 		if (index !== undefined) {
 			this.pipes[index].Pos.x = INITIAL_POSITION_X; 
 			this.pipes[index].Pos.y = INITIAL_POSITION_Y;
+			var availableHeight = this.game.WORLD_HEIGHT - this.game.GAP - this.game.DIRT_HEIGHT;
+
+			this.pipes[index].UpperHeight = Math.random() * ((availableHeight - 4) - 4) + 4; 
+			this.pipes[index].LowerHeight = availableHeight - this.pipes[index].UpperHeight;
+				
+			var that = this; 
+			//Stilum height med css
+			$.each(this.pipes[index].Pipe, function( idx, value ) {
+				if ($(value).hasClass('GameCanvas-PipeUpper')) {
+					$(value).css('height', (that.pipes[index].UpperHeight * 10) + 'px');
+				}
+				else if ($(value).hasClass('GameCanvas-PipeLower')) {
+					$(value).css('height', (that.pipes[index].LowerHeight * 10) + 'px');
+				}
+			});
 		}
 		else { //Reset all, i.e. reset both bars
+			//Setjum i upphafsstodur
 			for (var i = 0; i < this.pipes.length; i++) {
 				this.pipes[i].Pos.x = INITIAL_POSITION_X + (i * this.game.SPACE_BETWEEN_BARS);
 				this.pipes[i].Pos.y = INITIAL_POSITION_Y; 
+			}
+			var availableHeight = this.game.WORLD_HEIGHT - this.game.GAP - this.game.DIRT_HEIGHT;
+			//Stillum haedina
+			for (i = 0; i < this.pipes.length; i++) {
+				this.pipes[i].UpperHeight = Math.random() * ((availableHeight - 4) - 4) + 4; //Skiljum alltaf eftir a.m.k. 50px
+				this.pipes[i].LowerHeight = availableHeight - this.pipes[i].UpperHeight;
+
+				var that = this; 
+				//Stilum height med css
+				$.each(this.pipes[i].Pipe, function( index, value ) {
+					if ($(value).hasClass('GameCanvas-PipeUpper')) {
+						$(value).css('height', (that.pipes[i].UpperHeight * 10) + 'px');
+					}
+					else if ($(value).hasClass('GameCanvas-PipeLower')) {
+						$(value).css('height', (that.pipes[i].LowerHeight * 10) + 'px');
+					}
+				});
 			}
 		}
 	};
@@ -66,7 +111,7 @@ window.Pipe = (function() {
 			//Ef byrjunarX players + vidd hans er >= byrjun pipu.. og byrjunarX hans er <= endi pipu.. 
 			//Og byrjunarY players (toppur) <= UPPERHEIGHT EDA (byrjunarY + playerHeight) >= (UPPERHEIGHT + 5em)
 			if ((playerX + playerWidth) > pipeStartX && playerX < pipeEndX && 
-			   ( (playerY < UPPERHEIGHT) || ( (playerY + playerHeight) > (UPPERHEIGHT + this.game.GAP)) )) {
+			   ( (playerY < this.pipes[i].UpperHeight) || ( (playerY + playerHeight) > (this.pipes[i].UpperHeight + this.game.GAP)) )) {
 				return true;
 			} 
 		}
