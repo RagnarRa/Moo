@@ -47,6 +47,7 @@ window.Player = (function() {
 		if (Controls.didJump()) {
 			this.pos.y -= delta * SPEED * 7;
             this.angle = -25;
+            this.game.addScore();//todo:delete
 		}
 		else {
 			/*Gravity*/

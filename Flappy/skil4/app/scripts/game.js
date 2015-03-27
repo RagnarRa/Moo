@@ -112,7 +112,7 @@ window.Game = (function() {
             var hsAudio = document.getElementById("audioHighscore");
             hsAudio.volume = 1;
             hsAudio.play();
-            scoreboardEl.find('.new').show();
+            scoreboardEl.find('.newHighscore').show();
             this.scoreStats.highscore = this.scoreStats.score;
         }
         else {
@@ -138,6 +138,7 @@ window.Game = (function() {
 
     Game.prototype.addScore = function(){
         this.scoreStats.score++;
+        document.getElementById("DisplayScore").innerHTML=this.scoreStats.score.toString();
     };
     Game.prototype.setScore = function(newScore){
         this.scoreStats.score = newScore;

@@ -1,9 +1,9 @@
-/* line 3, main.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/main\.scss}line{font-family:\000033}}
 body {
   background: black;
 }
 
-/* line 7, main.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/main\.scss}line{font-family:\000037}}
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -11,7 +11,7 @@ body {
   padding: 0.2em 0;
 }
 
-/* line 14, main.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/main\.scss}line{font-family:\0000314}}
 .volume {
   z-index: 5;
   position: absolute;
@@ -23,29 +23,29 @@ body {
   border-radius: 50%;
 }
 
-/* line 25, main.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/main\.scss}line{font-family:\0000325}}
 .volume:active {
   background-color: #7ec0ee;
 }
 
-/* line 28, main.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/main\.scss}line{font-family:\0000328}}
 #volume-up {
   left: 14.2em;
 }
 
-/* line 31, main.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/main\.scss}line{font-family:\0000331}}
 .volume img {
   width: 1.8em;
   height: 1.8em;
 }
 
-/* line 5, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\000035}}
 .cloud {
   width: 17.2em;
   height: 12.3em;
 }
 
-/* line 10, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000310}}
 .cloud div {
   position: absolute;
   background-color: #f6f6f6;
@@ -53,7 +53,7 @@ body {
   border-width: 0.5em;
 }
 
-/* line 19, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000319}}
 #cloud1 .cx1 {
   top: 4em;
   left: 1em;
@@ -61,7 +61,7 @@ body {
   height: 5em;
 }
 
-/* line 20, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000320}}
 #cloud1 .cx2 {
   top: 2em;
   left: 4em;
@@ -69,7 +69,7 @@ body {
   height: 5em;
 }
 
-/* line 21, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000321}}
 #cloud1 .cx3 {
   top: 3em;
   left: 5em;
@@ -77,7 +77,7 @@ body {
   height: 10em;
 }
 
-/* line 22, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000322}}
 #cloud1 .cx4 {
   top: 3em;
   left: 1em;
@@ -85,7 +85,7 @@ body {
   height: 8em;
 }
 
-/* line 23, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000323}}
 #cloud1 .cx5 {
   top: 1em;
   left: 7em;
@@ -93,7 +93,7 @@ body {
   height: 7em;
 }
 
-/* line 19, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000319}}
 #cloud2 .cx1 {
   top: 2.4em;
   left: 0.6em;
@@ -101,7 +101,7 @@ body {
   height: 3em;
 }
 
-/* line 20, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000320}}
 #cloud2 .cx2 {
   top: 1.2em;
   left: 2.4em;
@@ -109,7 +109,7 @@ body {
   height: 3em;
 }
 
-/* line 21, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000321}}
 #cloud2 .cx3 {
   top: 1.8em;
   left: 3em;
@@ -117,7 +117,7 @@ body {
   height: 6em;
 }
 
-/* line 22, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000322}}
 #cloud2 .cx4 {
   top: 1.8em;
   left: 0.6em;
@@ -125,7 +125,7 @@ body {
   height: 4.8em;
 }
 
-/* line 23, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000323}}
 #cloud2 .cx5 {
   top: 0.6em;
   left: 4.2em;
@@ -133,7 +133,7 @@ body {
   height: 4.2em;
 }
 
-/* line 19, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000319}}
 #cloud3 .cx1 {
   top: 1.2em;
   left: 0.3em;
@@ -141,7 +141,7 @@ body {
   height: 1.5em;
 }
 
-/* line 20, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000320}}
 #cloud3 .cx2 {
   top: 0.6em;
   left: 1.2em;
@@ -149,7 +149,7 @@ body {
   height: 1.5em;
 }
 
-/* line 21, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000321}}
 #cloud3 .cx3 {
   top: 0.9em;
   left: 1.5em;
@@ -157,7 +157,7 @@ body {
   height: 3em;
 }
 
-/* line 22, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000322}}
 #cloud3 .cx4 {
   top: 0.9em;
   left: 0.3em;
@@ -165,7 +165,7 @@ body {
   height: 2.4em;
 }
 
-/* line 23, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000323}}
 #cloud3 .cx5 {
   top: 0.3em;
   left: 2.1em;
@@ -173,9 +173,10 @@ body {
   height: 2.1em;
 }
 
-/* line 31, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000331}}
 .GameCanvas-Cloud {
   z-index: 4;
+  /*make bird go behind this cloud*/
   position: absolute;
   top: 2em;
   width: 100%;
@@ -183,32 +184,30 @@ body {
   height: 10em;
   animation: slide-left-Cloud 30s infinite linear;
   transform: translateZ(0);
+  opacity: 0.3;
 }
 
-/* line 42, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000343}}
 .x2 {
-  z-index: 2;
+  z-index: 1;
   top: 10em;
   height: 8em;
   right: -100%;
   animation: slide-left-Cloud 40s infinite linear;
+  opacity: 0.5;
 }
 
-/* line 50, _game-cloud.scss */
-.run {
-  transform: none;
-}
-
-/* line 55, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000353}}
 .x3 {
   z-index: 1;
   top: 20em;
   right: -120%;
   height: 4em;
   animation: slide-left-Cloud 60s infinite linear;
+  opacity: 0.7;
 }
 
-/* line 63, _game-cloud.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-cloud\.scss}line{font-family:\0000362}}
 .GameCanvas-Cloud img {
   height: 100%;
 }
@@ -221,7 +220,7 @@ body {
     transform: translateZ(0) translate(-140%, 0);
   }
 }
-/* line 3, _game-canvas.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-canvas\.scss}line{font-family:\000033}}
 .GameCanvas {
   font-size: 10px;
   position: absolute;
@@ -235,7 +234,7 @@ body {
   background: #7ec0ee;
 }
 
-/* line 26, _game-canvas.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-canvas\.scss}line{font-family:\0000326}}
 .GameCanvas-Dirt {
   position: absolute;
   bottom: 0;
@@ -245,7 +244,7 @@ body {
   background: #784800;
 }
 
-/* line 35, _game-canvas.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_game-canvas\.scss}line{font-family:\0000335}}
 .GameCanvas-Grass {
   z-index: 1;
   position: absolute;
@@ -267,7 +266,7 @@ body {
     transform: translateZ(0) translate(-5em, 0);
   }
 }
-/* line 2, _player.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_player\.scss}line{font-family:\000032}}
 .Player {
   z-index: 3;
   position: absolute;
@@ -281,7 +280,7 @@ body {
   transform: translateZ(0);
 }
 
-/* line 17, _player.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_player\.scss}line{font-family:\0000317}}
 .Player-Wing {
   position: absolute;
   top: 50%;
@@ -298,7 +297,7 @@ body {
   animation: 0.4s flap alternate infinite;
 }
 
-/* line 34, _player.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_player\.scss}line{font-family:\0000334}}
 .Player-Wing.is-stopped {
   transform: none;
 }
@@ -311,7 +310,17 @@ body {
     transform: rotateX(180deg);
   }
 }
-/* line 3, _scoreboard.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_scoreboard\.scss}line{font-family:\000032}}
+.DisplayScore {
+  position: absolute;
+  color: white;
+  top: 0.5em;
+  right: 0.7em;
+  font-family: serif;
+  font-size: 5em;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_scoreboard\.scss}line{font-family:\0000311}}
 .Scoreboard {
   z-index: 5;
   position: absolute;
@@ -332,12 +341,12 @@ body {
 /**
  * Reset transform to animate it into the correct spot on the screen.
  */
-/* line 27, _scoreboard.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_scoreboard\.scss}line{font-family:\0000335}}
 .Scoreboard.is-visible {
   transform: none;
 }
 
-/* line 31, _scoreboard.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_scoreboard\.scss}line{font-family:\0000339}}
 .Scoreboard-restart {
   margin-top: 3.5em;
   font-size: inherit;
@@ -347,20 +356,20 @@ body {
   cursor: pointer;
 }
 
-/* line 41, _scoreboard.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_scoreboard\.scss}line{font-family:\0000349}}
 .Scoreboard-restartText, .Score, .HighScore {
   font-family: serif;
   font-size: 2.4em;
   color: white;
 }
 
-/* line 47, _scoreboard.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_scoreboard\.scss}line{font-family:\0000355}}
 .Score {
   margin-top: 1.5em;
   margin-bottom: 0.5em;
 }
 
-/* line 52, _scoreboard.scss */
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/git\/Vefforritun-2\/Flappy\/skil4\/app\/styles\/_scoreboard\.scss}line{font-family:\0000360}}
 .newHighscore {
   font-family: serif;
   font-size: 1em;

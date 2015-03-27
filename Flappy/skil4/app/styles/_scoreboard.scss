@@ -1,5 +1,13 @@
 @import 'variables';
+.DisplayScore{
+    position:absolute;
+    color:white;
+    top:em(5px);
+    right:em(7px);
 
+    font-family: serif;
+    font-size:em(50px);
+}
 .Scoreboard {
     z-index:5;
 	position: absolute;
