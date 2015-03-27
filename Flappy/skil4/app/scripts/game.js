@@ -31,6 +31,7 @@ window.Game = (function() {
 
     Game.prototype.addScore = function(){
         this.setScore(++this.scoreStats.score);
+        console.log('addScore - Score now:' + this.scoreStats.score );
 
     };
     Game.prototype.setScore = function(newScore){
