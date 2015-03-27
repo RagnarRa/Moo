@@ -33,7 +33,7 @@ $volButtonSize : 50px;
 }
 
 .GameCanvas-Grass {
-    z-index: 6;
+    z-index: 5;
     position: absolute;
     bottom: em(30px); //10px ofan i dirt
     left: 0;
@@ -46,6 +46,7 @@ $volButtonSize : 50px;
 }
 
 .GameCanvas-PipeUpper {
+    z-index: 3;
     position: absolute;
     width: em(75px);
     height: em(228px);
@@ -67,6 +68,7 @@ $volButtonSize : 50px;
 }
 .GameCanvas-PipeLower-top {
     position:relative;
+    left:em(-2px);
     top:em(-37px);
     width:em(75px);
     height: em(75px);
@@ -75,6 +77,7 @@ $volButtonSize : 50px;
     -webkit-transform: rotateZ(0) rotateX(70deg);
 }
 .GameCanvas-PipeLower {
+    z-index: 3;
     position: absolute;
     background: green;
     width: em(75px);

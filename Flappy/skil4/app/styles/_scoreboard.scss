@@ -1,5 +1,6 @@
 @import 'variables';
 .DisplayScore{
+    z-index:5;
     position:absolute;
     color:white;
     top:em(5px);

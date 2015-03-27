@@ -29,7 +29,7 @@ $clode-duration:30s;
 
 
 .GameCanvas-Cloud {
-     z-index: 4; /*make bird go behind this cloud*/
+     z-index: 2; /*make bird go behind this cloud*/
      position: absolute;
      top: em(20px);
      width:100%;

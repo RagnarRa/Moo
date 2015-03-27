@@ -1,16 +1,12 @@
 $base-font-size: 10px;
+@media screen and (max-width: 310px) { .GameCanvas {  font-size: 3px;  } }
+@media screen and (max-width: 412px) { .GameCanvas {  font-size: 4px;  } }
+@media screen and (max-width: 514px) { .GameCanvas {  font-size: 5px;  } }
+@media screen and (max-width: 922px) { .GameCanvas {  font-size: 9px;  } }
+@media screen and (max-width: 820px) { .GameCanvas {  font-size: 8px;  } }
+@media screen and (max-width: 718px) { .GameCanvas {  font-size: 7px;  } }
+@media screen and (max-width: 616px) { .GameCanvas {  font-size: 6px;  } }
 
-@media screen and (max-width: 800px) {
-
-    .GameCanvas {
-        // Design everything with a nice em of 10px.
-        font-size: $base-font-size/2;
-    }
-    body {
-        background-color: lightblue;
-        font-size: $base-font-size/2;
-    }
-}
     @function em($px, $base: $base-font-size) {
         @return ($px / $base) * 1em;
     }

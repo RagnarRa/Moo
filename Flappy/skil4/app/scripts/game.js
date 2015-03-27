@@ -30,11 +30,12 @@ window.Game = (function() {
 
 
     Game.prototype.addScore = function(){
-        this.scoreStats.score++;
-        document.getElementById("DisplayScore").innerHTML=this.scoreStats.score.toString();
+        this.setScore(++this.scoreStats.score);
+
     };
     Game.prototype.setScore = function(newScore){
         this.scoreStats.score = newScore;
+        document.getElementById("DisplayScore").innerHTML=this.scoreStats.score.toString();
     };
 
 
