@@ -14,7 +14,7 @@ window.Game = (function() {
 		this.pipe = new window.Pipe(pipes, this);
 		this.player = new window.Player(this.el.find('.Player'), this, this.pipe);
 		this.isPlaying = false;
-
+        this.lastVolume = 1;
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
 	};
@@ -47,8 +47,8 @@ window.Game = (function() {
 	 */
 	Game.prototype.start = function() {
 		this.reset();
-
-		// Restart the onFrame loop
+        this.runAnimations();
+        //this.setScore(this.scoreStats.highscore+1);
 		this.lastFrame = +new Date() / 1000;
 		window.requestAnimationFrame(this.onFrame);
 		this.isPlaying = true;
@@ -59,18 +59,69 @@ window.Game = (function() {
 	 */
 	Game.prototype.reset = function() {
 		this.pipe.reset();
+        this.setScore(0);
 		this.player.reset();
 	};
 
-	/**
-	 * Signals that the game is over.
-	 */
-	Game.prototype.gameover = function() {
+    Game.prototype.VolumeChange = function(step){
+
+        var vol = document.getElementsByTagName("audio")[0].volume;
+        console.log('before vol:'+vol);
+        vol += step;
+
+        if (vol < 0){
+            vol = 0;
+        }
+        if (vol > 1){
+            vol = 1;
+        }
+        console.log('after  vol:'+vol);
+        this.lastVolume = vol;
+        this.setVolume(vol);
+
+    };
+    Game.prototype.setVolume = function(volume){
+        var audios = document.getElementsByTagName("audio");
+        for(var i = 0 ; i < audios.length; i++){
+            audios[i].volume = volume;
+        }
+    };
+
+    Game.prototype.pauseAnimations = function (){
+        $('.animation').css('webkitAnimationPlayState', 'paused');
+        this.lastVolume = document.getElementsByTagName("audio")[0].volume;
+        this.setVolume(0);
+    };
+    Game.prototype.runAnimations = function (){
+        $('.animation').css('webkitAnimationPlayState', 'running');
+        this.setVolume(this.lastVolume);
+    };
+    /**
+     * Signals that the game is over.
+     */
+    Game.prototype.gameover = function() {
 		this.isPlaying = false;
 
 		// Should be refactored into a Scoreboard class.
 		var that = this;
+
+        var newHighScore = (this.scoreStats.score > this.scoreStats.highscore);
 		var scoreboardEl = this.el.find('.Scoreboard');
+        var parent = $( this ).parent();
+        this.pauseAnimations();
+
+        scoreboardEl.find('#Score').html(this.scoreStats.score);
+        if (newHighScore === true){
+            var hsAudio = document.getElementById("audioHighscore");
+            hsAudio.volume = this.lastVolume;
+            hsAudio.play();
+            scoreboardEl.find('.newHighscore').show();
+            this.scoreStats.highscore = this.scoreStats.score;
+        }
+        else {
+            scoreboardEl.find('.newHighscore').hide();
+        }
+        scoreboardEl.find('#HighScore').html(this.scoreStats.highscore);
 		scoreboardEl
 			.addClass('is-visible')
 			.find('.Scoreboard-restart')
@@ -89,6 +140,18 @@ window.Game = (function() {
 	Game.prototype.GRASS_HEIGHT = 6;
 	Game.prototype.GAP = 15; //Space between moving bars 
 	Game.prototype.SPACE_BETWEEN_BARS = 40; 
+
+    Game.prototype.addScore = function(){
+        this.scoreStats.score++;
+        document.getElementById("DisplayScore").innerHTML=this.scoreStats.score.toString();
+    };
+    Game.prototype.setScore = function(newScore){
+        this.scoreStats.score = newScore;
+    };
+    Game.prototype.scoreStats = {
+        score :0,
+        highscore:0
+    };
 
 	return Game;
 })();

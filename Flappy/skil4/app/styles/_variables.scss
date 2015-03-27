@@ -1,6 +1,16 @@
 $base-font-size: 10px;
 
+@media screen and (max-width: 800px) {
 
-@function em($px, $base: $base-font-size) {
-    @return ($px / $base) * 1em;
-}  
+    .GameCanvas {
+        // Design everything with a nice em of 10px.
+        font-size: $base-font-size/2;
+    }
+    body {
+        background-color: lightblue;
+        font-size: $base-font-size/2;
+    }
+}
+    @function em($px, $base: $base-font-size) {
+        @return ($px / $base) * 1em;
+    }

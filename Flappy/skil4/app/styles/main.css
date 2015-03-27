@@ -1,9 +1,21 @@
-/* line 1, main.scss */
+@media screen and (max-width: 800px) {
+  /* line 5, _variables.scss */
+  .GameCanvas {
+    font-size: 5px;
+  }
+
+  /* line 9, _variables.scss */
+  body {
+    background-color: lightblue;
+    font-size: 5px;
+  }
+}
+/* line 3, main.scss */
 body {
   background: black;
 }
 
-/* line 5, main.scss */
+/* line 7, main.scss */
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -11,6 +23,255 @@ body {
   padding: 0.2em 0;
 }
 
+@media screen and (max-width: 800px) {
+  /* line 5, _variables.scss */
+  .GameCanvas {
+    font-size: 5px;
+  }
+
+  /* line 9, _variables.scss */
+  body {
+    background-color: lightblue;
+    font-size: 5px;
+  }
+}
+/* line 3, _pillar.scss */
+.pillars {
+  z-index: 5;
+  position: absolute;
+  left: 70em;
+}
+
+/* line 9, _pillar.scss */
+.pillar-top, .pillar-bottom {
+  width: 10em;
+  height: 19.5em;
+  background-image: url("/images/pillar.png");
+  border-bottom-right-radius: 4em 2em;
+  border-bottom-left-radius: 4em 2em;
+}
+
+/* line 17, _pillar.scss */
+.pillar-middle {
+  height: 15em;
+}
+
+/* line 20, _pillar.scss */
+.pillar-bottom-top {
+  position: relative;
+  top: -5em;
+  width: 10em;
+  height: 10em;
+  background-image: url("/images/rings.png");
+  border-radius: 5em;
+  -webkit-transform: rotateZ(0) rotateX(70deg);
+}
+
+@media screen and (max-width: 800px) {
+  /* line 5, _variables.scss */
+  .GameCanvas {
+    font-size: 5px;
+  }
+
+  /* line 9, _variables.scss */
+  body {
+    background-color: lightblue;
+    font-size: 5px;
+  }
+}
+/* line 5, _game-cloud.scss */
+.cloud {
+  width: 17.2em;
+  height: 12.3em;
+}
+
+/* line 10, _game-cloud.scss */
+.cloud div {
+  position: absolute;
+  background-color: #f6f6f6;
+  border-radius: 50%;
+  border-width: 0.5em;
+}
+
+/* line 19, _game-cloud.scss */
+#cloud1 .cx1 {
+  top: 4em;
+  left: 1em;
+  width: 6em;
+  height: 5em;
+}
+
+/* line 20, _game-cloud.scss */
+#cloud1 .cx2 {
+  top: 2em;
+  left: 4em;
+  width: 5em;
+  height: 5em;
+}
+
+/* line 21, _game-cloud.scss */
+#cloud1 .cx3 {
+  top: 3em;
+  left: 5em;
+  width: 10em;
+  height: 10em;
+}
+
+/* line 22, _game-cloud.scss */
+#cloud1 .cx4 {
+  top: 3em;
+  left: 1em;
+  width: 16em;
+  height: 8em;
+}
+
+/* line 23, _game-cloud.scss */
+#cloud1 .cx5 {
+  top: 1em;
+  left: 7em;
+  width: 7em;
+  height: 7em;
+}
+
+/* line 19, _game-cloud.scss */
+#cloud2 .cx1 {
+  top: 2.4em;
+  left: 0.6em;
+  width: 3.6em;
+  height: 3em;
+}
+
+/* line 20, _game-cloud.scss */
+#cloud2 .cx2 {
+  top: 1.2em;
+  left: 2.4em;
+  width: 3em;
+  height: 3em;
+}
+
+/* line 21, _game-cloud.scss */
+#cloud2 .cx3 {
+  top: 1.8em;
+  left: 3em;
+  width: 6em;
+  height: 6em;
+}
+
+/* line 22, _game-cloud.scss */
+#cloud2 .cx4 {
+  top: 1.8em;
+  left: 0.6em;
+  width: 9.6em;
+  height: 4.8em;
+}
+
+/* line 23, _game-cloud.scss */
+#cloud2 .cx5 {
+  top: 0.6em;
+  left: 4.2em;
+  width: 4.2em;
+  height: 4.2em;
+}
+
+/* line 19, _game-cloud.scss */
+#cloud3 .cx1 {
+  top: 1.2em;
+  left: 0.3em;
+  width: 1.8em;
+  height: 1.5em;
+}
+
+/* line 20, _game-cloud.scss */
+#cloud3 .cx2 {
+  top: 0.6em;
+  left: 1.2em;
+  width: 1.5em;
+  height: 1.5em;
+}
+
+/* line 21, _game-cloud.scss */
+#cloud3 .cx3 {
+  top: 0.9em;
+  left: 1.5em;
+  width: 3em;
+  height: 3em;
+}
+
+/* line 22, _game-cloud.scss */
+#cloud3 .cx4 {
+  top: 0.9em;
+  left: 0.3em;
+  width: 4.8em;
+  height: 2.4em;
+}
+
+/* line 23, _game-cloud.scss */
+#cloud3 .cx5 {
+  top: 0.3em;
+  left: 2.1em;
+  width: 2.1em;
+  height: 2.1em;
+}
+
+/* line 31, _game-cloud.scss */
+.GameCanvas-Cloud {
+  z-index: 4;
+  /*make bird go behind this cloud*/
+  position: absolute;
+  top: 2em;
+  width: 100%;
+  right: -110%;
+  height: 10em;
+  animation: slide-left-Cloud 30s infinite linear;
+  transform: translateZ(0);
+  opacity: 0.3;
+}
+
+/* line 43, _game-cloud.scss */
+.x2 {
+  z-index: 1;
+  top: 10em;
+  height: 8em;
+  right: -100%;
+  animation: slide-left-Cloud 40s infinite linear;
+  opacity: 0.5;
+}
+
+/* line 53, _game-cloud.scss */
+.x3 {
+  z-index: 1;
+  top: 20em;
+  right: -120%;
+  height: 4em;
+  animation: slide-left-Cloud 60s infinite linear;
+  opacity: 0.7;
+}
+
+/* line 62, _game-cloud.scss */
+.GameCanvas-Cloud img {
+  height: 100%;
+}
+
+@keyframes slide-left-Cloud {
+  from {
+    transform: translateZ(0) none;
+  }
+  to {
+    transform: translateZ(0) translate(-140%, 0);
+  }
+}
+@media screen and (max-width: 800px) {
+  /* line 5, _variables.scss */
+  .GameCanvas {
+    font-size: 5px;
+  }
+
+  /* line 9, _variables.scss */
+  body {
+    background-color: lightblue;
+    font-size: 5px;
+  }
+}
 /* line 3, _game-canvas.scss */
 .GameCanvas {
   font-size: 10px;
@@ -37,7 +298,7 @@ body {
 
 /* line 35, _game-canvas.scss */
 .GameCanvas-Grass {
-  z-index: 1;
+  z-index: 6;
   position: absolute;
   bottom: 3em;
   left: 0;
@@ -49,6 +310,34 @@ body {
   transform: translateZ(0);
 }
 
+/* line 49, _game-canvas.scss */
+.volume {
+  z-index: 5;
+  position: absolute;
+  left: 5em;
+  top: 3em;
+  height: 5em;
+  cursor: pointer;
+  background-color: purple;
+  border-radius: 50%;
+}
+
+/* line 60, _game-canvas.scss */
+.volume:active {
+  background-color: #7ec0ee;
+}
+
+/* line 63, _game-canvas.scss */
+#volume-up {
+  left: 12.5em;
+}
+
+/* line 66, _game-canvas.scss */
+.volume img {
+  width: 5em;
+  height: 5em;
+}
+
 @keyframes slide-left {
   from {
     transform: translateZ(0) none;
@@ -57,37 +346,51 @@ body {
     transform: translateZ(0) translate(-5em, 0);
   }
 }
+@media screen and (max-width: 800px) {
+  /* line 5, _variables.scss */
+  .GameCanvas {
+    font-size: 5px;
+  }
+
+  /* line 9, _variables.scss */
+  body {
+    background-color: lightblue;
+    font-size: 5px;
+  }
+}
 /* line 2, _player.scss */
 .Player {
+  z-index: 3;
   position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 50px;
-  height: 24px;
-  border-radius-left: 50%;
-  border-radius-top: 50%;
-  border-radius-right: 50%;
-  border-radius-bottom: 50%;
+  top: 2em;
+  left: 2em;
+  width: 5em;
+  height: 2.4em;
+  border-radius: 50%;
   background-image: url("/images/fugl.png");
   background-size: 100%;
   transform: translateZ(0);
 }
 
-/* line 18, _player.scss */
+/* line 16, _player.scss */
 .Player-Wing {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-left: -8px;
-  margin-top: 1px;
-  width: 20px;
-  height: 25px;
+  margin-left: -0.8em;
+  margin-top: 0.1em;
+  width: 2em;
+  height: 2.5em;
   background-image: url("/images/wing.png");
   background-size: 100%;
-  background: chyan;
   transform: translateZ(0);
   transform-origin: top left;
   animation: 0.4s flap alternate infinite;
+}
+
+/* line 31, _player.scss */
+.Player-Wing.is-stopped {
+  transform: none;
 }
 
 @keyframes flap {
@@ -98,8 +401,31 @@ body {
     transform: rotateX(180deg);
   }
 }
+@media screen and (max-width: 800px) {
+  /* line 5, _variables.scss */
+  .GameCanvas {
+    font-size: 5px;
+  }
+
+  /* line 9, _variables.scss */
+  body {
+    background-color: lightblue;
+    font-size: 5px;
+  }
+}
 /* line 2, _scoreboard.scss */
+.DisplayScore {
+  position: absolute;
+  color: white;
+  top: 0.5em;
+  right: 0.7em;
+  font-family: serif;
+  font-size: 5em;
+}
+
+/* line 11, _scoreboard.scss */
 .Scoreboard {
+  z-index: 5;
   position: absolute;
   left: 50%;
   top: 10em;
@@ -109,21 +435,23 @@ body {
   box-sizing: border-box;
   background: purple;
   text-align: center;
-  transform: translate(0, -40em);
+  transform: translate(0, -41.2em);
   transition: transform 0.5s;
+  border-radius: 20%;
+  box-shadow: inset 0 1em 0.5em rgba(255, 255, 255, 0.5), 0 1em 0.5em rgba(0, 0, 0, 0.5);
 }
 
 /**
  * Reset transform to animate it into the correct spot on the screen.
  */
-/* line 22, _scoreboard.scss */
+/* line 35, _scoreboard.scss */
 .Scoreboard.is-visible {
   transform: none;
 }
 
-/* line 26, _scoreboard.scss */
+/* line 39, _scoreboard.scss */
 .Scoreboard-restart {
-  margin-top: 20em;
+  margin-top: 3.5em;
   font-size: inherit;
   padding: 0.4em 1.5em;
   border: 0.2em solid white;
@@ -131,9 +459,27 @@ body {
   cursor: pointer;
 }
 
-/* line 36, _scoreboard.scss */
-.Scoreboard-restartText {
+/* line 49, _scoreboard.scss */
+.Scoreboard-restartText, .Score, .HighScore {
   font-family: serif;
   font-size: 2.4em;
   color: white;
+}
+
+/* line 55, _scoreboard.scss */
+.Score {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+/* line 60, _scoreboard.scss */
+.newHighscore {
+  font-family: serif;
+  font-size: 1em;
+  -webkit-transform: rotate(-30deg);
+  color: greenyellow;
+  position: absolute;
+  left: 2.9em;
+  top: 5.6em;
+  z-index: 6;
 }

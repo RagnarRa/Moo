@@ -14,7 +14,7 @@ window.Player = (function() {
 	var HEIGHT = 2.4;
 	var INITIAL_POSITION_X = 30;
 	var INITIAL_POSITION_Y = 25;
-	//var INITIAL_POSITION_X = 30, INITIAL_POSITION_Y = 36;
+    var MAX_ANGLE = 90;
 
 	var Player = function(el, game, pipes) {
 		this.el = el;
@@ -23,6 +23,7 @@ window.Player = (function() {
 		this.game = game;
 		this.pos = { x: 0, y: 0 };
 		this.pipes = pipes; 
+        this.angle = 0;
 	};
 
 	/**
@@ -31,8 +32,8 @@ window.Player = (function() {
 	Player.prototype.reset = function() {
 		this.pos.x = INITIAL_POSITION_X;
 		this.pos.y = INITIAL_POSITION_Y;
+        this.angle = 0;
 	};
-	var counter = 0; 
 	//Delta er timi i sekundumf ra sidasta frame
 	Player.prototype.onFrame = function(delta) {
 		/*
@@ -53,16 +54,19 @@ window.Player = (function() {
 		
 		if (Controls.didJump()) {
 			this.pos.y -= delta * SPEED * 7;
+            this.angle = -25;
+            this.game.addScore();//todo:delete
 		}
 		else {
 			//Gravity
 			this.pos.y += delta * SPEED / 3;
-		} 
+            this.angle = Math.min(MAX_ANGLE, this.angle + (delta * SPEED * 2));
+		}
 
 		this.checkCollisionWithBounds();
 
 		/* Update UI*/
-		this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
+		this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em) rotateZ(0deg) rotate(' + this.angle + 'deg)');
 	};
 
 	Player.prototype.checkCollisionWithBounds = function() {

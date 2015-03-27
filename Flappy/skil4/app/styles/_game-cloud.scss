@@ -1,0 +1,73 @@
+@import 'variables';
+
+$clode-duration:30s;
+
+.cloud{
+    width:em(172px);
+    height:em(123px);
+
+}
+.cloud div{
+    position:absolute;
+    background-color:#f6f6f6;
+    border-radius:50%;
+    border-width: em(5px);
+
+}
+
+@mixin cloudDiv($id, $ratio){
+    #{$id} .cx1{ top:  (4*$ratio); left: (1*$ratio);  width: (6*$ratio);   height: (5*$ratio);}
+    #{$id} .cx2{ top:  (2*$ratio); left: (4*$ratio);  width: (5*$ratio);   height: (5*$ratio);}
+    #{$id} .cx3{  top: (3*$ratio); left: (5*$ratio);  width: (10*$ratio);  height: (10*$ratio);}
+    #{$id} .cx4{  top: (3*$ratio); left: (1*$ratio);  width: (16*$ratio);  height: (8*$ratio);}
+    #{$id} .cx5{  top: (1*$ratio); left: (7*$ratio);  width: (7*$ratio);  height: (7*$ratio);}
+}
+
+@include cloudDiv(#cloud1, em(10px));
+@include cloudDiv(#cloud2, em(6px));
+@include cloudDiv(#cloud3, em(3px));
+
+
+.GameCanvas-Cloud {
+     z-index: 4; /*make bird go behind this cloud*/
+     position: absolute;
+     top: em(20px);
+     width:100%;
+     right: -110%;
+     height: em(100px);
+     animation: slide-left-Cloud $clode-duration infinite linear;
+     transform: translateZ(0);
+     opacity: 0.3;
+ }
+
+.x2{
+    z-index: 1;
+    top: em(100px);
+    height: em(80px);
+    right: -100%;
+    animation: slide-left-Cloud ($clode-duration + 10s) infinite linear;
+    opacity: 0.5;
+}
+
+
+.x3 {
+    z-index: 1;
+    top: em(200px);
+    right: -120%;
+    height: em(40px);
+    animation: slide-left-Cloud ($clode-duration + 30s) infinite linear;
+    opacity: 0.7;
+}
+
+.GameCanvas-Cloud img{
+    height:100%;
+}
+
+@keyframes slide-left-Cloud {
+    from {
+        transform: translateZ(0) none;
+    }
+    to {
+        transform: translateZ(0) translate(-140%, 0);
+    }
+}

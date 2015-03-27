@@ -24,26 +24,80 @@
         <![endif]-->
 
         <div class="GameCanvas">
+           <span id="volume-down" class="volume">
+                <img src="../images/volminus.png" alt="increase volume"/>
+            </span>
+            <span id="volume-up" class="volume" >
+                <img src="../images/volplus.png" alt="increase volume"/>
+            </span>
+
+            <div id="DisplayScore" class="DisplayScore">00</div>
+            <div id="cloud1" class="GameCanvas-Cloud animation cloud">
+                <div class="cx1"></div>
+                <div class="cx2"></div>
+                <div class="cx3"></div>
+                <div class="cx4"></div>
+                <div class="cx5"></div>
+            </div>
+
+            <div id="cloud2" class="GameCanvas-Cloud x2 animation cloud">
+                <div class="cx1"></div>
+                <div class="cx2"></div>
+                <div class="cx3"></div>
+                <div class="cx4"></div>
+                <div class="cx5"></div>
+            </div>
+            <div id="cloud3" class="GameCanvas-Cloud x3 animation cloud">
+                <div class="cx1"></div>
+                <div class="cx2"></div>
+                <div class="cx3"></div>
+                <div class="cx4"></div>
+                <div class="cx5"></div>
+            </div>
+
+
             <div class="Player">
-                <div id ="wwing" class="Player-Wing"></div>
+                <div id ="wwing" class="Player-Wing animation"></div>
             </div>
 
             <div class="Scoreboard">
+                <div class="ScoreStats">
+                    <div class="Score">
+                        <div class="score-text">Score</div>
+                        <div id ="Score" class="score-number">1</div>
+                    </div>
+                    <div class="Score HighScore">
+                        <div class="score-text">High Score</div>
+                        <div id ="HighScore" class="score-number">2</div>
+                        <div class="newHighscore">NEW</div>
+                    </div>
+                </div>
                 <button class="Scoreboard-restart">
                     <span class="Scoreboard-restartText">Restart</span>
                 </button>
             </div>
+
             <div class="GameCanvas-PipeUpper GameCanvas-Pipe1"></div>
             <div class="GameCanvas-PipeLower GameCanvas-Pipe1"></div>
             <div class="GameCanvas-PipeUpper GameCanvas-Pipe2"></div>
             <div class="GameCanvas-PipeLower GameCanvas-Pipe2"></div>
-            <div class="GameCanvas-Grass"></div>
+
+            <div class="GameCanvas-Grass animation"></div>
             <div class="GameCanvas-Dirt"></div>
+
+            <!-- 
+            <div class="pillars">
+                <div class="pillar">
+                    <div class="pillar-top"></div>
+                    <div class="pillar-middle"></div>
+                    <div class="pillar-bottom">
+                        <div class="pillar-bottom-top"></div>
+                    </div>
+                </div>
+            </div> -->
+
         </div>
-        <!-- Background mewsik 
-        <audio src="/test/audio.ogg" autoplay loop>
-            <p>Your browser does not support the audio element.</p>
-        </audio> -->
+
 
         <audio src="audio/punch.mp3">
             <p>Your browser does not support the audio element.</p>
@@ -51,14 +105,15 @@
         <audio src="audio/gardenparty.mp3" autoplay loop>
             <p>Your browser does not support the audio element.</p>
         </audio>
+        <audio id="audioHighscore" src="audio/highscore.mp3">
+            <p>Your browser does not support the audio element.</p>
+        </audio>
 
         <audio src="audio/speedflap.mp3" autoplay loop>
             <p>Your browser does not support the audio element.</p>
         </audio> 
 
-        <button id="toggle-audio">Toggle audio sound</button>
-
-        <!-- build:js scripts/vendor.js -->
+                                <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
         <script src="bower_components/jquery/dist/jquery.js"></script>
         <!-- endbower -->
