@@ -1,3 +1,15 @@
+@media screen and (max-width: 800px) {
+  /* line 5, _variables.scss */
+  .GameCanvas {
+    font-size: 5px;
+  }
+
+  /* line 9, _variables.scss */
+  body {
+    background-color: lightblue;
+    font-size: 5px;
+  }
+}
 /* line 3, main.scss */
 body {
   background: black;
@@ -11,66 +23,62 @@ body {
   padding: 0.2em 0;
 }
 
-/* line 14, main.scss */
-.volume {
-  z-index: 5;
-  position: absolute;
-  left: 12em;
-  top: 3em;
-  height: 1.8em;
-  cursor: pointer;
-  background-color: purple;
-  border-radius: 50%;
-}
+@media screen and (max-width: 800px) {
+  /* line 5, _variables.scss */
+  .GameCanvas {
+    font-size: 5px;
+  }
 
-/* line 25, main.scss */
-.volume:active {
-  background-color: #7ec0ee;
+  /* line 9, _variables.scss */
+  body {
+    background-color: lightblue;
+    font-size: 5px;
+  }
 }
-
-/* line 28, main.scss */
-#volume-up {
-  left: 14.2em;
-}
-
-/* line 31, main.scss */
-.volume img {
-  width: 1.8em;
-  height: 1.8em;
-}
-
-/* line 1, _pillar.scss */
+/* line 3, _pillar.scss */
 .pillars {
   z-index: 5;
   position: absolute;
-  left: 700px;
+  left: 70em;
 }
 
-/* line 7, _pillar.scss */
+/* line 9, _pillar.scss */
 .pillar-top, .pillar-bottom {
-  width: 100px;
-  height: 195px;
+  width: 10em;
+  height: 19.5em;
   background-image: url("/images/pillar.png");
-  border-bottom-right-radius: 40px 20px;
-  border-bottom-left-radius: 40px 20px;
+  border-bottom-right-radius: 4em 2em;
+  border-bottom-left-radius: 4em 2em;
 }
 
-/* line 15, _pillar.scss */
+/* line 17, _pillar.scss */
 .pillar-middle {
-  height: 150px;
+  height: 15em;
 }
 
-/* line 18, _pillar.scss */
+/* line 20, _pillar.scss */
 .pillar-bottom-top {
   position: relative;
-  top: -50px;
-  width: 100px;
-  height: 100px;
+  top: -5em;
+  width: 10em;
+  height: 10em;
   background-image: url("/images/rings.png");
-  border-radius: 50%;
-  -webkit-transform: rotateX(70deg);
+  border-radius: 5em;
+  -webkit-transform: rotateZ(0) rotateX(70deg);
 }
 
+@media screen and (max-width: 800px) {
+  /* line 5, _variables.scss */
+  .GameCanvas {
+    font-size: 5px;
+  }
+
+  /* line 9, _variables.scss */
+  body {
+    background-color: lightblue;
+    font-size: 5px;
+  }
+}
 /* line 5, _game-cloud.scss */
 .cloud {
   width: 17.2em;
@@ -252,6 +260,18 @@ body {
     transform: translateZ(0) translate(-140%, 0);
   }
 }
+@media screen and (max-width: 800px) {
+  /* line 5, _variables.scss */
+  .GameCanvas {
+    font-size: 5px;
+  }
+
+  /* line 9, _variables.scss */
+  body {
+    background-color: lightblue;
+    font-size: 5px;
+  }
+}
 /* line 3, _game-canvas.scss */
 .GameCanvas {
   font-size: 10px;
@@ -290,6 +310,34 @@ body {
   transform: translateZ(0);
 }
 
+/* line 49, _game-canvas.scss */
+.volume {
+  z-index: 5;
+  position: absolute;
+  left: 5em;
+  top: 3em;
+  height: 5em;
+  cursor: pointer;
+  background-color: purple;
+  border-radius: 50%;
+}
+
+/* line 60, _game-canvas.scss */
+.volume:active {
+  background-color: #7ec0ee;
+}
+
+/* line 63, _game-canvas.scss */
+#volume-up {
+  left: 12.5em;
+}
+
+/* line 66, _game-canvas.scss */
+.volume img {
+  width: 5em;
+  height: 5em;
+}
+
 @keyframes slide-left {
   from {
     transform: translateZ(0) none;
@@ -298,38 +346,49 @@ body {
     transform: translateZ(0) translate(-5em, 0);
   }
 }
+@media screen and (max-width: 800px) {
+  /* line 5, _variables.scss */
+  .GameCanvas {
+    font-size: 5px;
+  }
+
+  /* line 9, _variables.scss */
+  body {
+    background-color: lightblue;
+    font-size: 5px;
+  }
+}
 /* line 2, _player.scss */
 .Player {
   z-index: 3;
   position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 50px;
-  height: 24px;
+  top: 2em;
+  left: 2em;
+  width: 5em;
+  height: 2.4em;
   border-radius: 50%;
   background-image: url("/images/fugl.png");
   background-size: 100%;
   transform: translateZ(0);
 }
 
-/* line 17, _player.scss */
+/* line 16, _player.scss */
 .Player-Wing {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-left: -8px;
-  margin-top: 1px;
-  width: 20px;
-  height: 25px;
+  margin-left: -0.8em;
+  margin-top: 0.1em;
+  width: 2em;
+  height: 2.5em;
   background-image: url("/images/wing.png");
   background-size: 100%;
-  background: chyan;
   transform: translateZ(0);
   transform-origin: top left;
   animation: 0.4s flap alternate infinite;
 }
 
-/* line 34, _player.scss */
+/* line 31, _player.scss */
 .Player-Wing.is-stopped {
   transform: none;
 }
@@ -340,6 +399,18 @@ body {
   }
   to {
     transform: rotateX(180deg);
+  }
+}
+@media screen and (max-width: 800px) {
+  /* line 5, _variables.scss */
+  .GameCanvas {
+    font-size: 5px;
+  }
+
+  /* line 9, _variables.scss */
+  body {
+    background-color: lightblue;
+    font-size: 5px;
   }
 }
 /* line 2, _scoreboard.scss */

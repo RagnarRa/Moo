@@ -1,26 +1,28 @@
+@import 'variables';
+
 .pillars{
     z-index:5;
     position:absolute;
-    left:700px;
+    left:em(700px);//todo:del me
 }
 
 .pillar-top, .pillar-bottom{
-    width:100px;
-    height:195px;
+    width:em(100px);
+    height:em(195px);
     background-image: url('/images/pillar.png');
-    border-bottom-right-radius: 40px 20px;
-    border-bottom-left-radius: 40px 20px;
+    border-bottom-right-radius: em(40px) em(20px);
+    border-bottom-left-radius: em(40px) em(20px);
 
 }
 .pillar-middle{
-    height:150px;
+    height:em(150px);
 }
 .pillar-bottom-top{
     position:relative;
-    top:-50px;
-    width:100px;
-    height: 100px;
+    top:em(-50px);
+    width:em(100px);
+    height: em(100px);
     background-image: url('/images/rings.png');
-    border-radius:50%;
-    -webkit-transform: rotateX(70deg);
+    border-radius: em(50px);
+    -webkit-transform: rotateZ(0) rotateX(70deg);
 }

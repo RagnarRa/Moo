@@ -110,7 +110,7 @@ window.Game = (function() {
         scoreboardEl.find('#Score').html(this.scoreStats.score);
         if (newHighScore === true){
             var hsAudio = document.getElementById("audioHighscore");
-            hsAudio.volume = 1;
+            hsAudio.volume = this.lastVolume;
             hsAudio.play();
             scoreboardEl.find('.newHighscore').show();
             this.scoreStats.highscore = this.scoreStats.score;
@@ -145,7 +145,7 @@ window.Game = (function() {
     };
     Game.prototype.scoreStats = {
         score :0,
-        highscore:1
+        highscore:0
     };
 
 	return Game;

@@ -1,5 +1,5 @@
 @import 'variables';
-
+$volButtonSize : 50px;
 .GameCanvas {
     // Design everything with a nice em of 10px.
     font-size: $base-font-size;
@@ -43,6 +43,30 @@
     background-size: em(50px);
     animation: slide-left 0.4s infinite linear;
     transform: translateZ(0);
+}
+
+
+.volume{
+    z-index:5;
+    position:absolute;
+    left: em($volButtonSize);
+    top: em(30px);
+    height:em($volButtonSize);
+    cursor: pointer;
+    background-color:purple;
+    border-radius: 50%;
+
+}
+.volume:active {
+    background-color: #7ec0ee;
+}
+#volume-up{
+    left: em($volButtonSize*2.5);
+}
+.volume img{
+
+    width:em($volButtonSize);
+    height:em($volButtonSize);
 }
 
 @keyframes slide-left {

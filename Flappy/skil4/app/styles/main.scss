@@ -11,28 +11,6 @@ body {
 	padding: 0.2em 0;
 }
 
-.volume{
-    z-index:5;
-    position:absolute;
-    left: em(120px);
-    top: em(30px);
-    height:em(18px);
-    cursor: pointer;
-    background-color:purple;
-    border-radius: 50%;
-
-}
-.volume:active {
-    background-color: #7ec0ee;
-}
-#volume-up{
-    left: em(142px);
-}
-.volume img{
-
-    width:em(18px);
-    height:em(18px);
-}
 
 @import '_pillar';
 @import '_game-cloud';

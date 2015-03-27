@@ -48,7 +48,7 @@
 
 .Scoreboard-restartText,  .Score,    .HighScore {
 	font-family: serif;
-	font-size: $ScoreFont;
+	font-size: em(24px);
 	color: white;
 }
 
