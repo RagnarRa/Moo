@@ -33,9 +33,9 @@
 }
 
 .GameCanvas-Grass {
-    z-index: 1;
-    position: absolute; 
-    bottom: em(30px); //10px ofan i dirt 
+    z-index: 6;
+    position: absolute;
+    bottom: em(30px); //10px ofan i dirt
     left: 0;
     right: em(-50px);
     height: em(70px);
@@ -50,6 +50,6 @@
       transform: translateZ(0) none;
    }
    to {
-      transform: translateZ(0) translate(em(-50px), 0); 
+      transform: translateZ(0) translate(em(-50px), 0);
    }
 }

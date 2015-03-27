@@ -1,0 +1,30 @@
+.pillars{
+    z-index:5;
+    position:absolute;
+    left:700px;
+}
+
+.pillar-top, .pillar-bottom{
+    width:100px;
+    height:195px;
+    background-image: url('/images/pillar.png');
+    background-color: #cccccc;
+    border-bottom-right-radius: 40px 20px;
+    border-bottom-left-radius: 40px 20px;
+
+}
+.pillar-middle{
+    height:150px;
+}
+.pillar-bottom-top{
+    position:relative;
+    top:-10px;
+    left:2px;
+    width:96px;
+    height: 20px;
+    background: gray;
+    border-top-right-radius: 70px 14px;
+    border-top-left-radius: 70px 14px;
+    border-bottom-right-radius: 30px 20px;
+    border-bottom-left-radius: 30px 20px;
+}

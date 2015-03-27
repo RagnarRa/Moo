@@ -34,6 +34,7 @@ body {
     height:em(18px);
 }
 
+@import '_pillar';
 @import '_game-cloud';
 @import '_game-canvas';
 @import '_player';
