@@ -15,9 +15,28 @@ window.Game = (function() {
 		this.player = new window.Player(this.el.find('.Player'), this, this.pipe);
 		this.isPlaying = false;
         this.lastVolume = 1;
-		// Cache a bound onFrame since we need it each frame.
-		this.onFrame = this.onFrame.bind(this);
-	};
+        // Cache a bound onFrame since we need it each frame.
+        this.onFrame = this.onFrame.bind(this);
+        this.scoreStats = {
+            score :0,
+            highscore:0
+        };
+        var saved = localStorage.getItem('highscore');
+        if (saved !== undefined){
+            this.scoreStats.highscore = saved;
+        }
+    };
+
+
+
+    Game.prototype.addScore = function(){
+        this.scoreStats.score++;
+        document.getElementById("DisplayScore").innerHTML=this.scoreStats.score.toString();
+    };
+    Game.prototype.setScore = function(newScore){
+        this.scoreStats.score = newScore;
+    };
+
 
 	/**
 	 * Runs every frame. Calculates a delta and allows each game
@@ -100,36 +119,35 @@ window.Game = (function() {
      * Signals that the game is over.
      */
     Game.prototype.gameover = function() {
-		this.isPlaying = false;
+        this.isPlaying = false;
 
-		// Should be refactored into a Scoreboard class.
-		var that = this;
-
+        // Should be refactored into a Scoreboard class.
+        var that = this;
         var newHighScore = (this.scoreStats.score > this.scoreStats.highscore);
-		var scoreboardEl = this.el.find('.Scoreboard');
-        var parent = $( this ).parent();
+        var scoreboardEl = this.el.find('.Scoreboard');
         this.pauseAnimations();
-
+        var sound = document.getElementById('hit');
         scoreboardEl.find('#Score').html(this.scoreStats.score);
         if (newHighScore === true){
-            var hsAudio = document.getElementById("audioHighscore");
-            hsAudio.volume = this.lastVolume;
-            hsAudio.play();
+            sound = document.getElementById('audioHighscore');
             scoreboardEl.find('.newHighscore').show();
             this.scoreStats.highscore = this.scoreStats.score;
+            localStorage.setItem('highscore', this.scoreStats.highscore);
         }
         else {
             scoreboardEl.find('.newHighscore').hide();
         }
+        sound.volume = this.lastVolume;
+        sound.play();
         scoreboardEl.find('#HighScore').html(this.scoreStats.highscore);
-		scoreboardEl
-			.addClass('is-visible')
-			.find('.Scoreboard-restart')
-				.one('click', function() {
-					scoreboardEl.removeClass('is-visible');
-					that.start();
-				});
-	};
+        scoreboardEl
+            .addClass('is-visible')
+            .find('.Scoreboard-restart')
+            .one('click', function() {
+                scoreboardEl.removeClass('is-visible');
+                that.start();
+            });
+    };
 
 	/**
 	 * Some shared constants. / 1 em
@@ -138,20 +156,8 @@ window.Game = (function() {
 	Game.prototype.WORLD_HEIGHT = 57.6;
 	Game.prototype.DIRT_HEIGHT = 4;
 	Game.prototype.GRASS_HEIGHT = 6;
-	Game.prototype.GAP = 15; //Space between moving bars 
-	Game.prototype.SPACE_BETWEEN_BARS = 40; 
-
-    Game.prototype.addScore = function(){
-        this.scoreStats.score++;
-        document.getElementById("DisplayScore").innerHTML=this.scoreStats.score.toString();
-    };
-    Game.prototype.setScore = function(newScore){
-        this.scoreStats.score = newScore;
-    };
-    Game.prototype.scoreStats = {
-        score :0,
-        highscore:0
-    };
+	Game.prototype.GAP = 15; //Space between moving bars
+	Game.prototype.SPACE_BETWEEN_BARS = 40;
 
 	return Game;
 })();

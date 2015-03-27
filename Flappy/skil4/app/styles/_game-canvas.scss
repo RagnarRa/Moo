@@ -53,19 +53,39 @@ $volButtonSize : 50px;
     top: 0px;
     //right: 0px;
     left: 0px;
-    border: em(1px) solid black;
+   // border: em(1px) solid black;
+
+    background-image: url('../images/pillar.png');
+    border-bottom-right-radius: em(30px) em(15px);
+    border-bottom-left-radius: em(30px) em(15px);
+
+
+
+
+
     transform: translateZ(0);
 }
-
+.GameCanvas-PipeLower-top {
+    position:relative;
+    top:em(-37px);
+    width:em(75px);
+    height: em(75px);
+    background-image: url('../images/rings.png');
+    border-radius: em(37px);
+    -webkit-transform: rotateZ(0) rotateX(70deg);
+}
 .GameCanvas-PipeLower {
     position: absolute;
     background: green;
     width: em(75px);
     height: em(154px);
     bottom: em(40px); //dirt
-    //right: 0px; 
+    //right: 0px;
     left: 0px;
-    border: em(1px) solid black; 
+    //border: em(1px) solid black;
+
+    background-image: url('../images/pillar.png');
+
     transform: translateZ(0);
 }
 
