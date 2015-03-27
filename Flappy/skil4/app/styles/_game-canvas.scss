@@ -48,23 +48,25 @@
 
 .GameCanvas-PipeUpper {
     position: absolute;
-    width: 75px;
-    height: 250px;
+    width: em(75px);
+    height: em(228px);
     background: green;
     top: 0px;
-    right: 0px;
-    border: 1px solid black;
+    //right: 0px;
+    left: 0px;
+    border: em(1px) solid black;
     transform: translateZ(0);
 }
 
 .GameCanvas-PipeLower {
     position: absolute;
     background: green;
-    width: 75px;
-    height: 180px;
+    width: em(75px);
+    height: em(154px);
     bottom: em(40px); //dirt
-    right: 0px; 
-    border: 1px solid black; 
+    //right: 0px; 
+    left: 0px;
+    border: em(1px) solid black; 
     transform: translateZ(0);
 }
 

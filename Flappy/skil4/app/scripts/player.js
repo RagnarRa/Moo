@@ -2,6 +2,10 @@ window.Player = (function() {
 	'use strict';
 
 	var Controls = window.Controls;
+	/*var Pipes = window.Pipe; 
+	console.log("Pipes object:");
+	console.log(Pipes);
+	console.log("END PIPE");*/
 
 	// All these constants are in em's, multiply by 10 pixels
 	// for 1024x576px canvas.
@@ -10,14 +14,15 @@ window.Player = (function() {
 	var HEIGHT = 2.4;
 	var INITIAL_POSITION_X = 30;
 	var INITIAL_POSITION_Y = 25;
-	//var INITIAL_POSITION_X = 0, INITIAL_POSITION_Y = 0;
+	//var INITIAL_POSITION_X = 30, INITIAL_POSITION_Y = 36;
 
-	var Player = function(el, game) {
+	var Player = function(el, game, pipes) {
 		this.el = el;
 		console.log("Player in player: ");
 		console.log(this.el);
 		this.game = game;
 		this.pos = { x: 0, y: 0 };
+		this.pipes = pipes; 
 	};
 
 	/**
@@ -27,7 +32,7 @@ window.Player = (function() {
 		this.pos.x = INITIAL_POSITION_X;
 		this.pos.y = INITIAL_POSITION_Y;
 	};
-
+	var counter = 0; 
 	//Delta er timi i sekundumf ra sidasta frame
 	Player.prototype.onFrame = function(delta) {
 		/*
@@ -43,27 +48,33 @@ window.Player = (function() {
 		if (Controls.keys.up) {
 			this.pos.y -= delta * SPEED;
 		} */
-		console.log("(" + this.pos.x + ", " + this.pos.y + ")");
+		//console.log("(" + this.pos.x + ", " + this.pos.y + ")");
 
+		
 		if (Controls.didJump()) {
 			this.pos.y -= delta * SPEED * 7;
 		}
 		else {
-			/*Gravity*/
+			//Gravity
 			this.pos.y += delta * SPEED / 3;
-		}
+		} 
 
 		this.checkCollisionWithBounds();
 
-		/* Update UI*/
-		this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
+		//if (counter === 0) {
+			console.log(this.pos.y);
+			/* Update UI*/
+			this.el.css('transform', 'translateZ(0) translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
+			//counter++; 
+		//}
 	};
 
 	Player.prototype.checkCollisionWithBounds = function() {
 		if (this.pos.x < 0 ||
 			this.pos.x + WIDTH > this.game.WORLD_WIDTH ||
 			this.pos.y < 0 ||
-			this.pos.y + HEIGHT > (this.game.WORLD_HEIGHT - this.game.DIRT_HEIGHT - this.game.GRASS_HEIGHT)) {
+			this.pos.y + HEIGHT > (this.game.WORLD_HEIGHT - this.game.DIRT_HEIGHT - this.game.GRASS_HEIGHT) ||
+			this.pipes.collidesWithPlayer(this.pos.x, this.pos.y, WIDTH, HEIGHT)) {
 			var punchAudio = document.getElementsByTagName("audio")[0];
 		    punchAudio.play();
 			return this.game.gameover();

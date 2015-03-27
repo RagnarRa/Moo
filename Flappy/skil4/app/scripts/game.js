@@ -9,8 +9,8 @@ window.Game = (function() {
 	 */
 	var Game = function(el) {
 		this.el = el;
-		this.player = new window.Player(this.el.find('.Player'), this);
 		this.pipe = new window.Pipe(this.el.find('.GameCanvas-Pipe1'), this);
+		this.player = new window.Player(this.el.find('.Player'), this, this.pipe);
 		this.isPlaying = false;
 
 		// Cache a bound onFrame since we need it each frame.
@@ -33,8 +33,8 @@ window.Game = (function() {
 		this.lastFrame = now;
 
 		// Update game entities.
-		this.player.onFrame(delta);
 		this.pipe.onFrame(delta);
+		this.player.onFrame(delta);
 
 		// Request next frame.
 		window.requestAnimationFrame(this.onFrame);
@@ -56,8 +56,8 @@ window.Game = (function() {
 	 * Resets the state of the game so a new game can be started.
 	 */
 	Game.prototype.reset = function() {
-		this.player.reset();
 		this.pipe.reset();
+		this.player.reset();
 	};
 
 	/**
@@ -85,6 +85,7 @@ window.Game = (function() {
 	Game.prototype.WORLD_HEIGHT = 57.6;
 	Game.prototype.DIRT_HEIGHT = 4;
 	Game.prototype.GRASS_HEIGHT = 6;
+	Game.prototype.GAP = 15; //Space between moving bars 
 
 	return Game;
 })();
