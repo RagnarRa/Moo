@@ -9,7 +9,9 @@ window.Game = (function() {
 	 */
 	var Game = function(el) {
 		this.el = el;
-		this.pipe = new window.Pipe(this.el.find('.GameCanvas-Pipe1'), this);
+		var pipes = [{ "Pipe" : this.el.find('.GameCanvas-Pipe1'), "Pos" : { "x" : 0, "y" : 0}, "UpperHeight" : 0, "LowerHeight" : 0 }, { "Pipe" : this.el.find('.GameCanvas-Pipe2'), "Pos" : { "x" : 0, "y" : 0}, "UpperHeight" : 0, "LowerHeight" : 0 }];
+		//this.pipe = new window.Pipe(this.el.find('.GameCanvas-Pipe1'), this);
+		this.pipe = new window.Pipe(pipes, this);
 		this.player = new window.Player(this.el.find('.Player'), this, this.pipe);
 		this.isPlaying = false;
 
@@ -86,6 +88,7 @@ window.Game = (function() {
 	Game.prototype.DIRT_HEIGHT = 4;
 	Game.prototype.GRASS_HEIGHT = 6;
 	Game.prototype.GAP = 15; //Space between moving bars 
+	Game.prototype.SPACE_BETWEEN_BARS = 40; 
 
 	return Game;
 })();
