@@ -16,6 +16,7 @@ window.Pipe = (function() {
 	var Pipe = function(pipes, game) {
 		this.pipes = pipes;
 		this.game = game;
+		this.lastPipe = -1; //Last pipe the player flew through
 	};
 
 	 /**
@@ -87,7 +88,7 @@ window.Pipe = (function() {
 	};
 
 	Pipe.prototype.collidesWithPlayer = function(playerX, playerY, playerWidth, playerHeight) {
-		var pipeStartX = 0, pipeEndX = 0;
+		var pipeStartX = 0, pipeEndX = 0, lastPipe = -1;
 		for (var i = 0; i < this.pipes.length; i++) {
 			pipeStartX = this.pipes[i].Pos.x, pipeEndX = this.pipes[i].Pos.x + WIDTH;
 			//Ef byrjunarX players + vidd hans er >= byrjun pipu.. og byrjunarX hans er <= endi pipu.. 
@@ -96,6 +97,12 @@ window.Pipe = (function() {
 			   ( (playerY < this.pipes[i].UpperHeight) || ( (playerY + playerHeight) > (this.pipes[i].UpperHeight + this.game.GAP)) )) {
 				return true;
 			} 
+			else if ((playerX + playerWidth) > pipeStartX && playerX < pipeEndX) { //Ekki collide og inni i sulu.. 
+				if (this.lastPipe !== i) { //Ef ekki buid ad gefa score fyrir thessa pipu
+					this.lastPipe = i; 
+					this.game.addScore();
+				}
+			}
 		}
 
 		return false; 
