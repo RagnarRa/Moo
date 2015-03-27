@@ -43,6 +43,7 @@ window.Pipe = (function() {
 			});
 		}
 		else { //Reset all, i.e. reset both bars
+			this.lastPipe = -1; 
 			//Setjum i upphafsstodur
 			for (var i = 0; i < this.pipes.length; i++) {
 				this.pipes[i].Pos.x = INITIAL_POSITION_X + (i * this.game.SPACE_BETWEEN_BARS);
