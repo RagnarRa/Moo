@@ -30,15 +30,15 @@ window.Pipe = (function() {
 
 			this.pipes[index].UpperHeight = Math.random() * ((availableHeight - 4) - 4) + 4; 
 			this.pipes[index].LowerHeight = availableHeight - this.pipes[index].UpperHeight;
-				
+
 			var that = this; 
 			//Stilum height med css
 			$.each(this.pipes[index].Pipe, function( idx, value ) {
 				if ($(value).hasClass('GameCanvas-PipeUpper')) {
-					$(value).css('height', (that.pipes[index].UpperHeight * parseInt($(".GameCanvas").css('font-size'))) + 'px');
+					$(value).css('height', (that.pipes[index].UpperHeight * parseInt(that.game.el.css('font-size'))) + 'px');
 				}
 				else if ($(value).hasClass('GameCanvas-PipeLower')) {
-					$(value).css('height', (that.pipes[index].LowerHeight * parseInt($(".GameCanvas").css('font-size'))) + 'px');
+					$(value).css('height', (that.pipes[index].LowerHeight * parseInt(that.game.el.css('font-size'))) + 'px');
 				}
 			});
 		}
@@ -59,10 +59,10 @@ window.Pipe = (function() {
 				//Stilum height med css
 				$.each(this.pipes[i].Pipe, function( index, value ) {
 					if ($(value).hasClass('GameCanvas-PipeUpper')) {
-						$(value).css('height', (that.pipes[i].UpperHeight * parseInt($(".GameCanvas").css('font-size'))) + 'px');
+						$(value).css('height', (that.pipes[i].UpperHeight * parseInt(that.game.el.css('font-size'))) + 'px');
 					}
 					else if ($(value).hasClass('GameCanvas-PipeLower')) {
-						$(value).css('height', (that.pipes[i].LowerHeight * parseInt($(".GameCanvas").css('font-size'))) + 'px');
+						$(value).css('height', (that.pipes[i].LowerHeight * parseInt(that.game.el.css('font-size'))) + 'px');
 					}
 				});
 			}
