@@ -69,3 +69,16 @@
 
 }
 
+@media (max-width: 500px) {
+   .DisplayScore{
+      right: em(87px);
+   }
+
+   .volume {
+      left: em(470px);
+   }
+
+   #volume-up {
+   	  left: em(605px);
+   }
+}

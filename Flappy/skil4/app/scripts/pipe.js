@@ -35,10 +35,10 @@ window.Pipe = (function() {
 			//Stilum height med css
 			$.each(this.pipes[index].Pipe, function( idx, value ) {
 				if ($(value).hasClass('GameCanvas-PipeUpper')) {
-					$(value).css('height', (that.pipes[index].UpperHeight * 10) + 'px');
+					$(value).css('height', (that.pipes[index].UpperHeight * parseInt($(".GameCanvas").css('font-size'))) + 'px');
 				}
 				else if ($(value).hasClass('GameCanvas-PipeLower')) {
-					$(value).css('height', (that.pipes[index].LowerHeight * 10) + 'px');
+					$(value).css('height', (that.pipes[index].LowerHeight * parseInt($(".GameCanvas").css('font-size'))) + 'px');
 				}
 			});
 		}
@@ -59,10 +59,10 @@ window.Pipe = (function() {
 				//Stilum height med css
 				$.each(this.pipes[i].Pipe, function( index, value ) {
 					if ($(value).hasClass('GameCanvas-PipeUpper')) {
-						$(value).css('height', (that.pipes[i].UpperHeight * 10) + 'px');
+						$(value).css('height', (that.pipes[i].UpperHeight * parseInt($(".GameCanvas").css('font-size'))) + 'px');
 					}
 					else if ($(value).hasClass('GameCanvas-PipeLower')) {
-						$(value).css('height', (that.pipes[i].LowerHeight * 10) + 'px');
+						$(value).css('height', (that.pipes[i].LowerHeight * parseInt($(".GameCanvas").css('font-size'))) + 'px');
 					}
 				});
 			}
