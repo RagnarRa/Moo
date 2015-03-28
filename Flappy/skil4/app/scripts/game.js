@@ -145,10 +145,10 @@ window.Game = (function() {
         scoreboardEl
             .addClass('is-visible')
             .find('.Scoreboard-restart')
-            .one('click', function() {
-                scoreboardEl.removeClass('is-visible');
-                that.start();
-            });
+            .one('click tap', function() {
+            scoreboardEl.removeClass('is-visible');
+            that.start();
+        });
     };
 
 	/**
