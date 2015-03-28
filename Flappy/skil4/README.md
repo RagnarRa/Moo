@@ -23,6 +23,7 @@ Before installing this package you will need to have set up git, Node JS with np
 	  gem install sass
 	  gem install compass
 ```
+
 ### finally in the command promt do:
 #### on windows
 ```

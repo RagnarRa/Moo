@@ -2,7 +2,7 @@ window.Player = (function() {
 	'use strict';
 
 	var Controls = window.Controls;
-	/*var Pipes = window.Pipe; 
+	/*var Pipes = window.Pipe;
 	console.log("Pipes object:");
 	console.log(Pipes);
 	console.log("END PIPE");*/
@@ -22,7 +22,7 @@ window.Player = (function() {
 		console.log(this.el);
 		this.game = game;
 		this.pos = { x: 0, y: 0 };
-		this.pipes = pipes; 
+		this.pipes = pipes;
         this.angle = 0;
 	};
 
@@ -51,15 +51,15 @@ window.Player = (function() {
 		} */
 		//console.log("(" + this.pos.x + ", " + this.pos.y + ")");
 
-		
+		var test = 1.2;  //todo: ghs testing
 		if (Controls.didJump()) {
-			this.pos.y -= delta * SPEED * 7;
+			this.pos.y -= delta * SPEED * 7 * test;  //todo: ghs testing
             this.angle = -25;
 		}
 		else {
 			//Gravity
-			this.pos.y += delta * SPEED / 3;
-            this.angle = Math.min(MAX_ANGLE, this.angle + (delta * SPEED * 2));
+			this.pos.y += (delta * SPEED / 3)* (test + 0.2); //todo: ghs testing
+            this.angle = Math.min(MAX_ANGLE, this.angle + ((delta * SPEED * 2)* test));  //todo: ghs testing
 		}
 
 		this.checkCollisionWithBounds();

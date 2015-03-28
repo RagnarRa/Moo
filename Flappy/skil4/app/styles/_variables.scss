@@ -1,16 +1,18 @@
 $base-font-size: 10px;
 
-@media screen and (max-width: 800px) {
+/*Iphone 6*/
+@media screen and (max-width: 375px) and (max-height: 667px) { .GameCanvas {  font-size: 4px;  } }
 
-    .GameCanvas {
-        // Design everything with a nice em of 10px.
-        font-size: $base-font-size/2;
-    }
-    body {
-        background-color: lightblue;
-        font-size: $base-font-size/2;
-    }
-}
-    @function em($px, $base: $base-font-size) {
+/*Ipad mini*/
+@media screen and (max-width: 768px) and (max-height: 1024px) { .GameCanvas {  font-size: 7px;  } }
+
+/*Samsung galaxy S4*/
+@media screen and (max-width: 640px) and (max-height: 360px) { .GameCanvas {  font-size: 5px;  } }
+
+/*Iphone 62*/
+@media screen and (max-width: 375px) and (max-height: 667px) { .GameCanvas {  font-size: 3px;  } }
+
+
+@function em($px, $base: $base-font-size) {
         @return ($px / $base) * 1em;
     }
