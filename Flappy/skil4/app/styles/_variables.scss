@@ -1,8 +1,5 @@
 $base-font-size: 10px;
 
-/*Iphone 6*/
-@media screen and (max-width: 375px) and (max-height: 667px) { .GameCanvas {  font-size: 4px;  } }
-
 /*Ipad mini*/
 @media screen and (max-width: 768px) and (max-height: 1024px) { .GameCanvas {  font-size: 7px;  } }
 

@@ -1,29 +1,38 @@
-/*Iphone 6*/
-@media screen and (max-width: 375px) and (max-height: 667px) {
-  /* line 4, _variables.scss */
-  .GameCanvas {
-    font-size: 4px;
-  }
-}
 /*Ipad mini*/
 @media screen and (max-width: 768px) and (max-height: 1024px) {
-  /* line 7, _variables.scss */
+  /* line 4, _variables.scss */
   .GameCanvas {
     font-size: 7px;
   }
 }
 /*Samsung galaxy S4*/
 @media screen and (max-width: 640px) and (max-height: 360px) {
-  /* line 10, _variables.scss */
+  /* line 7, _variables.scss */
   .GameCanvas {
     font-size: 5px;
   }
 }
 /*Iphone 62*/
 @media screen and (max-width: 375px) and (max-height: 667px) {
-  /* line 13, _variables.scss */
+  /* line 10, _variables.scss */
   .GameCanvas {
     font-size: 3px;
+  }
+}
+@media (max-width: 1024px) {
+  /* line 13, _variables.scss */
+  .DisplayScore {
+    right: em(87px) !important;
+  }
+
+  /* line 17, _variables.scss */
+  .volume {
+    left: em(470px);
+  }
+
+  /* line 21, _variables.scss */
+  #volume-up {
+    left: em(605px);
   }
 }
 /* line 3, main.scss */
@@ -39,92 +48,41 @@ body {
   padding: 0.2em 0;
 }
 
-/*Iphone 6*/
-@media screen and (max-width: 375px) and (max-height: 667px) {
-  /* line 4, _variables.scss */
-  .GameCanvas {
-    font-size: 4px;
-  }
-}
 /*Ipad mini*/
 @media screen and (max-width: 768px) and (max-height: 1024px) {
-  /* line 7, _variables.scss */
+  /* line 4, _variables.scss */
   .GameCanvas {
     font-size: 7px;
   }
 }
 /*Samsung galaxy S4*/
 @media screen and (max-width: 640px) and (max-height: 360px) {
-  /* line 10, _variables.scss */
-  .GameCanvas {
-    font-size: 5px;
-  }
-}
-/*Iphone 62*/
-@media screen and (max-width: 375px) and (max-height: 667px) {
-  /* line 13, _variables.scss */
-  .GameCanvas {
-    font-size: 3px;
-  }
-}
-/* line 3, _pillar.scss */
-.pillars {
-  z-index: 5;
-  position: absolute;
-  left: 70em;
-}
-
-/* line 9, _pillar.scss */
-.pillar-top, .pillar-bottom {
-  width: 10em;
-  height: 25.5em;
-  background-image: url("../images/pillar.png");
-  border-bottom-right-radius: 4em 2em;
-  border-bottom-left-radius: 4em 2em;
-}
-
-/* line 17, _pillar.scss */
-.pillar-middle {
-  height: 15em;
-}
-
-/* line 20, _pillar.scss */
-.pillar-bottom-top {
-  position: relative;
-  top: -5em;
-  width: 10em;
-  height: 10em;
-  background-image: url("../images/rings.png");
-  border-radius: 5em;
-  -webkit-transform: rotateZ(0) rotateX(70deg);
-}
-
-/*Iphone 6*/
-@media screen and (max-width: 375px) and (max-height: 667px) {
-  /* line 4, _variables.scss */
-  .GameCanvas {
-    font-size: 4px;
-  }
-}
-/*Ipad mini*/
-@media screen and (max-width: 768px) and (max-height: 1024px) {
   /* line 7, _variables.scss */
   .GameCanvas {
-    font-size: 7px;
-  }
-}
-/*Samsung galaxy S4*/
-@media screen and (max-width: 640px) and (max-height: 360px) {
-  /* line 10, _variables.scss */
-  .GameCanvas {
     font-size: 5px;
   }
 }
 /*Iphone 62*/
 @media screen and (max-width: 375px) and (max-height: 667px) {
-  /* line 13, _variables.scss */
+  /* line 10, _variables.scss */
   .GameCanvas {
     font-size: 3px;
+  }
+}
+@media (max-width: 1024px) {
+  /* line 13, _variables.scss */
+  .DisplayScore {
+    right: 8.7em !important;
+  }
+
+  /* line 17, _variables.scss */
+  .volume {
+    left: 47em;
+  }
+
+  /* line 21, _variables.scss */
+  #volume-up {
+    left: 60.5em;
   }
 }
 /* line 5, _game-cloud.scss */
@@ -308,32 +266,41 @@ body {
     transform: translateZ(0) translate(-140%, 0);
   }
 }
-/*Iphone 6*/
-@media screen and (max-width: 375px) and (max-height: 667px) {
-  /* line 4, _variables.scss */
-  .GameCanvas {
-    font-size: 4px;
-  }
-}
 /*Ipad mini*/
 @media screen and (max-width: 768px) and (max-height: 1024px) {
-  /* line 7, _variables.scss */
+  /* line 4, _variables.scss */
   .GameCanvas {
     font-size: 7px;
   }
 }
 /*Samsung galaxy S4*/
 @media screen and (max-width: 640px) and (max-height: 360px) {
-  /* line 10, _variables.scss */
+  /* line 7, _variables.scss */
   .GameCanvas {
     font-size: 5px;
   }
 }
 /*Iphone 62*/
 @media screen and (max-width: 375px) and (max-height: 667px) {
-  /* line 13, _variables.scss */
+  /* line 10, _variables.scss */
   .GameCanvas {
     font-size: 3px;
+  }
+}
+@media (max-width: 1024px) {
+  /* line 13, _variables.scss */
+  .DisplayScore {
+    right: 8.7em !important;
+  }
+
+  /* line 17, _variables.scss */
+  .volume {
+    left: 47em;
+  }
+
+  /* line 21, _variables.scss */
+  #volume-up {
+    left: 60.5em;
   }
 }
 /* line 3, _game-canvas.scss */
@@ -370,7 +337,7 @@ body {
   height: 7em;
   background: url("../images/grass-thinner.png") repeat-x;
   background-size: 5em;
-  animation: slide-left 0.4s infinite linear;
+  animation: slide-left 0.25s infinite linear;
   transform: translateZ(0);
 }
 
@@ -450,32 +417,41 @@ body {
     transform: translateZ(0) translate(-5em, 0);
   }
 }
-/*Iphone 6*/
-@media screen and (max-width: 375px) and (max-height: 667px) {
-  /* line 4, _variables.scss */
-  .GameCanvas {
-    font-size: 4px;
-  }
-}
 /*Ipad mini*/
 @media screen and (max-width: 768px) and (max-height: 1024px) {
-  /* line 7, _variables.scss */
+  /* line 4, _variables.scss */
   .GameCanvas {
     font-size: 7px;
   }
 }
 /*Samsung galaxy S4*/
 @media screen and (max-width: 640px) and (max-height: 360px) {
-  /* line 10, _variables.scss */
+  /* line 7, _variables.scss */
   .GameCanvas {
     font-size: 5px;
   }
 }
 /*Iphone 62*/
 @media screen and (max-width: 375px) and (max-height: 667px) {
-  /* line 13, _variables.scss */
+  /* line 10, _variables.scss */
   .GameCanvas {
     font-size: 3px;
+  }
+}
+@media (max-width: 1024px) {
+  /* line 13, _variables.scss */
+  .DisplayScore {
+    right: 8.7em !important;
+  }
+
+  /* line 17, _variables.scss */
+  .volume {
+    left: 47em;
+  }
+
+  /* line 21, _variables.scss */
+  #volume-up {
+    left: 60.5em;
   }
 }
 /* line 2, _player.scss */
@@ -521,32 +497,41 @@ body {
     transform: rotateX(180deg);
   }
 }
-/*Iphone 6*/
-@media screen and (max-width: 375px) and (max-height: 667px) {
-  /* line 4, _variables.scss */
-  .GameCanvas {
-    font-size: 4px;
-  }
-}
 /*Ipad mini*/
 @media screen and (max-width: 768px) and (max-height: 1024px) {
-  /* line 7, _variables.scss */
+  /* line 4, _variables.scss */
   .GameCanvas {
     font-size: 7px;
   }
 }
 /*Samsung galaxy S4*/
 @media screen and (max-width: 640px) and (max-height: 360px) {
-  /* line 10, _variables.scss */
+  /* line 7, _variables.scss */
   .GameCanvas {
     font-size: 5px;
   }
 }
 /*Iphone 62*/
 @media screen and (max-width: 375px) and (max-height: 667px) {
-  /* line 13, _variables.scss */
+  /* line 10, _variables.scss */
   .GameCanvas {
     font-size: 3px;
+  }
+}
+@media (max-width: 1024px) {
+  /* line 13, _variables.scss */
+  .DisplayScore {
+    right: 8.7em !important;
+  }
+
+  /* line 17, _variables.scss */
+  .volume {
+    left: 47em;
+  }
+
+  /* line 21, _variables.scss */
+  #volume-up {
+    left: 60.5em;
   }
 }
 /* line 2, _scoreboard.scss */
@@ -605,7 +590,7 @@ body {
 
 /* line 55, _scoreboard.scss */
 .Score {
-  margin-top: 1.5em;
+  margin-top: 1.4em;
   margin-bottom: 0.5em;
 }
 

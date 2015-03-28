@@ -25,9 +25,8 @@ window.Game = (function() {
         if (saved !== undefined){
             this.scoreStats.highscore = saved;
         }
+
     };
-
-
 
     Game.prototype.addScore = function(){
         this.setScore(++this.scoreStats.score);
@@ -104,18 +103,28 @@ window.Game = (function() {
     Game.prototype.setVolume = function(volume){
         var audios = document.getElementsByTagName("audio");
         for(var i = 0 ; i < audios.length; i++){
-            audios[i].volume = volume;
+
+            if (audios[i].id === 'song'){
+                audios[i].volume = (volume/15); //background music must be lower
+            }
+            else{
+                audios[i].volume = volume;
+            }
+            console.log("setvol á " + audios[i].id + " = " + volume);
         }
     };
 
     Game.prototype.pauseAnimations = function (){
         $('.animation').css('webkitAnimationPlayState', 'paused');
+        //save the
         this.lastVolume = document.getElementsByTagName("audio")[0].volume;
         this.setVolume(0);
+        $('#audioSpeedflap').stop();
     };
     Game.prototype.runAnimations = function (){
         $('.animation').css('webkitAnimationPlayState', 'running');
         this.setVolume(this.lastVolume);
+        document.getElementById('audioSpeedflap').play();
     };
     /**
      * Signals that the game is over.
@@ -150,7 +159,6 @@ window.Game = (function() {
             that.start();
         });
     };
-
 	/**
 	 * Some shared constants. / 1 em
 	 */
