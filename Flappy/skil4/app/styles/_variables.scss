@@ -6,8 +6,15 @@ $base-font-size: 10px;
 /*Samsung galaxy S4*/
 @media screen and (max-width: 640px) and (max-height: 360px) { .GameCanvas {  font-size: 5px;  } }
 
-/*Iphone 62*/
-@media screen and (max-width: 375px) and (max-height: 667px) { .GameCanvas {  font-size: 3px;  } }
+/*Iphone 6*/
+@media screen and (max-width: 375px) and (max-height: 667px) { .GameCanvas {  font-size: 5px;  } }
+
+/*Iphone 4S does not work wery well, but playable*/
+@media screen and (max-width: 360px) and (max-height: 480px) { .GameCanvas {  font-size: 5px;  } }
+
+
+
+
 
 @media (max-width: 1024px) {
    .DisplayScore{
