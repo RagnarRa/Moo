@@ -145,7 +145,7 @@ window.Game = (function() {
         scoreboardEl
             .addClass('is-visible')
             .find('.Scoreboard-restart')
-            .one('click tap', function() {
+            .one('click touchstart', function() {
             scoreboardEl.removeClass('is-visible');
             that.start();
         });
