@@ -26,7 +26,9 @@ window.Controls = (function() {
             .on('keydown', this._onKeyDown.bind(this))
             .on('keyup', this._onKeyUp.bind(this))
             .on('mousedown', this._onMouseDown.bind(this))
-            .on('mouseup', this._onMouseUp.bind(this));
+            .on('mouseup', this._onMouseUp.bind(this))
+            .on('touchstart', this._onTouchStart.bind(this))
+            .on('touchend', this._onTouchEnd.bind(this));
     };
 
     Controls.prototype._onKeyDown = function(e) {
@@ -66,6 +68,22 @@ window.Controls = (function() {
             return false; 
         }
     };
+
+    Controls.prototype._onTouchStart = function(e) {
+        if (!this.keys['touch']) {
+            this._didJump = true;
+        }
+
+        this.keys['touch'] = true;
+        return false;
+    }
+
+    Controls.prototype._onTouchEnd = function(e) {
+        if (this.keys['touch']) {
+            this.keys['touch'] = false;
+            return false;
+        }
+    }
 
     /**
      * Only answers true once until a key is pressed again.
