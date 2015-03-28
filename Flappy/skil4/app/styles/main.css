@@ -12,25 +12,32 @@
     font-size: 5px;
   }
 }
-/*Iphone 62*/
+/*Iphone 6*/
 @media screen and (max-width: 375px) and (max-height: 667px) {
   /* line 10, _variables.scss */
   .GameCanvas {
-    font-size: 3px;
+    font-size: 5px;
+  }
+}
+/*Iphone 4S does not work wery well, but playable*/
+@media screen and (max-width: 360px) and (max-height: 480px) {
+  /* line 13, _variables.scss */
+  .GameCanvas {
+    font-size: 5px;
   }
 }
 @media (max-width: 1024px) {
-  /* line 13, _variables.scss */
+  /* line 20, _variables.scss */
   .DisplayScore {
     right: em(87px) !important;
   }
 
-  /* line 17, _variables.scss */
+  /* line 24, _variables.scss */
   .volume {
     left: em(470px);
   }
 
-  /* line 21, _variables.scss */
+  /* line 28, _variables.scss */
   #volume-up {
     left: em(605px);
   }
@@ -62,25 +69,32 @@ body {
     font-size: 5px;
   }
 }
-/*Iphone 62*/
+/*Iphone 6*/
 @media screen and (max-width: 375px) and (max-height: 667px) {
   /* line 10, _variables.scss */
   .GameCanvas {
-    font-size: 3px;
+    font-size: 5px;
+  }
+}
+/*Iphone 4S does not work wery well, but playable*/
+@media screen and (max-width: 360px) and (max-height: 480px) {
+  /* line 13, _variables.scss */
+  .GameCanvas {
+    font-size: 5px;
   }
 }
 @media (max-width: 1024px) {
-  /* line 13, _variables.scss */
+  /* line 20, _variables.scss */
   .DisplayScore {
     right: 8.7em !important;
   }
 
-  /* line 17, _variables.scss */
+  /* line 24, _variables.scss */
   .volume {
     left: 47em;
   }
 
-  /* line 21, _variables.scss */
+  /* line 28, _variables.scss */
   #volume-up {
     left: 60.5em;
   }
@@ -280,25 +294,32 @@ body {
     font-size: 5px;
   }
 }
-/*Iphone 62*/
+/*Iphone 6*/
 @media screen and (max-width: 375px) and (max-height: 667px) {
   /* line 10, _variables.scss */
   .GameCanvas {
-    font-size: 3px;
+    font-size: 5px;
+  }
+}
+/*Iphone 4S does not work wery well, but playable*/
+@media screen and (max-width: 360px) and (max-height: 480px) {
+  /* line 13, _variables.scss */
+  .GameCanvas {
+    font-size: 5px;
   }
 }
 @media (max-width: 1024px) {
-  /* line 13, _variables.scss */
+  /* line 20, _variables.scss */
   .DisplayScore {
     right: 8.7em !important;
   }
 
-  /* line 17, _variables.scss */
+  /* line 24, _variables.scss */
   .volume {
     left: 47em;
   }
 
-  /* line 21, _variables.scss */
+  /* line 28, _variables.scss */
   #volume-up {
     left: 60.5em;
   }
@@ -431,25 +452,32 @@ body {
     font-size: 5px;
   }
 }
-/*Iphone 62*/
+/*Iphone 6*/
 @media screen and (max-width: 375px) and (max-height: 667px) {
   /* line 10, _variables.scss */
   .GameCanvas {
-    font-size: 3px;
+    font-size: 5px;
+  }
+}
+/*Iphone 4S does not work wery well, but playable*/
+@media screen and (max-width: 360px) and (max-height: 480px) {
+  /* line 13, _variables.scss */
+  .GameCanvas {
+    font-size: 5px;
   }
 }
 @media (max-width: 1024px) {
-  /* line 13, _variables.scss */
+  /* line 20, _variables.scss */
   .DisplayScore {
     right: 8.7em !important;
   }
 
-  /* line 17, _variables.scss */
+  /* line 24, _variables.scss */
   .volume {
     left: 47em;
   }
 
-  /* line 21, _variables.scss */
+  /* line 28, _variables.scss */
   #volume-up {
     left: 60.5em;
   }
@@ -511,25 +539,32 @@ body {
     font-size: 5px;
   }
 }
-/*Iphone 62*/
+/*Iphone 6*/
 @media screen and (max-width: 375px) and (max-height: 667px) {
   /* line 10, _variables.scss */
   .GameCanvas {
-    font-size: 3px;
+    font-size: 5px;
+  }
+}
+/*Iphone 4S does not work wery well, but playable*/
+@media screen and (max-width: 360px) and (max-height: 480px) {
+  /* line 13, _variables.scss */
+  .GameCanvas {
+    font-size: 5px;
   }
 }
 @media (max-width: 1024px) {
-  /* line 13, _variables.scss */
+  /* line 20, _variables.scss */
   .DisplayScore {
     right: 8.7em !important;
   }
 
-  /* line 17, _variables.scss */
+  /* line 24, _variables.scss */
   .volume {
     left: 47em;
   }
 
-  /* line 21, _variables.scss */
+  /* line 28, _variables.scss */
   #volume-up {
     left: 60.5em;
   }
