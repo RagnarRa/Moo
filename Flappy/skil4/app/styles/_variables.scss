@@ -12,6 +12,20 @@ $base-font-size: 10px;
 /*Iphone 62*/
 @media screen and (max-width: 375px) and (max-height: 667px) { .GameCanvas {  font-size: 3px;  } }
 
+@media (max-width: 1024px) {
+   .DisplayScore{
+      right: em(87px) !important;
+   }
+
+   .volume {
+      left: em(470px);
+   }
+
+   #volume-up {
+      left: em(605px);
+   }
+}
+
 
 @function em($px, $base: $base-font-size) {
         @return ($px / $base) * 1em;
