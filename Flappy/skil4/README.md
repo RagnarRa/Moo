@@ -24,7 +24,7 @@ Before installing this package you will need to have set up git, Node JS with np
 	  gem install compass
 ```
 
-### finally in the command promt do:
+### finally in the command prompt do:
 #### on windows
 ```
 install.bat
@@ -37,3 +37,9 @@ bower install
 grunt compass
 grunt server
 ```
+
+# Responsive
+We tested the game on various devices with different resolutions, iphone 6, ipad mini and galaxy s4
+
+# CSS Precompiler
+We used SASS for CSS components throughout the assignment
