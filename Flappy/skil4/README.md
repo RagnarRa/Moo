@@ -38,8 +38,8 @@ grunt compass
 grunt server
 ```
 
-# Responsive
-We tested the game on various devices with different resolutions, iphone 6, ipad mini and galaxy s4
+# Responsive and look
+We tested the game on various devices with different resolutions, iphone 6, ipad mini and galaxy s4.  We also made a game icon and an png image for phones if a user want's to add a link to the game on his homescreen.
 
 # CSS Precompiler
 We used SASS for CSS components throughout the assignment
